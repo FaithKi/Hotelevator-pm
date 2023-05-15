@@ -7,11 +7,11 @@ public class CustomerGenerator implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		Randomizer random = new Randomizer();
-		int customerType = random.getRandomInt(0, 0);
+//		Randomizer random = new Randomizer();
+		int customerType = Randomizer.getRandomInt(1, 4);
 		
 		switch(customerType) {
-		case 0 :
+		case 1 :
 			
 		}
 	}

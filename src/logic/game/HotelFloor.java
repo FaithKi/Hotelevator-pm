@@ -19,4 +19,12 @@ public enum HotelFloor {
 		return this.floorNumber;
 	}
 	
+	public static HotelFloor toHotelFloor(int floorNumber) {
+		switch(floorNumber) {
+		case 1:
+			return HotelFloor.FIRST;
+		}
+		return null;
+	}
+	
 }

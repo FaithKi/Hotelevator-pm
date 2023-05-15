@@ -9,14 +9,13 @@ public class GameLogic {
 	
 	private static GameLogic instance = null;
 	
-	private GameLogic(Hotel hotel) {
-		this.hotel = hotel;
-		this.wallet = new Wallet();
+	private GameLogic() {
+		this.hotel = new Hotel();
 	}
 	
 	public static GameLogic getInstance() {
         if(instance == null) {
-            instance = new GameLogic(new Hotel());
+            instance = new GameLogic();
         }
         return instance;
     }
