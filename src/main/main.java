@@ -28,7 +28,7 @@ public class main extends Application {
 
 		stage.setScene(scene);
 		stage.setTitle("Elevator TheGame");
-		stage.setResizable(false);
+		stage.setResizable(true);
 		stage.show();
 	}
 

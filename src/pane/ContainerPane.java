@@ -12,7 +12,7 @@ public class ContainerPane extends BorderPane {
 		sideBarPane = new SideBarPane();
 		hotelPane = new HotelPane();
 		bottomBarPane = new BottomBarPane();
-		this.setLeft(sideBarPane);
+		this.setRight(sideBarPane);
 		this.setCenter(hotelPane);
 		this.setBottom(bottomBarPane);
 	}
