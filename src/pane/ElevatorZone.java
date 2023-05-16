@@ -16,8 +16,7 @@ import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class ElevatorZone extends HBox {
-    GridPane shaft1;
-	private StackPane shaft2,shaft3;
+    GridPane shaft1, shaft2, shaft3;
     private Canvas elevCanvas1,elevCanvas2,elevCanvas3;
     private GraphicsContext gc1,gc2,gc3;
     private ArrayList<GraphicsContext> gcs;
@@ -31,8 +30,8 @@ public class ElevatorZone extends HBox {
     
     public void initializeShafts() {
         shaft1 = new GridPane();
-        shaft2 = new StackPane();
-        shaft3 = new StackPane();
+        shaft2 = new GridPane();
+        shaft3 = new GridPane();
         shaft1.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
         shaft2.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
         shaft3.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
@@ -46,11 +45,11 @@ public class ElevatorZone extends HBox {
         this.getChildren().addAll(shaft1,shaft2,shaft3);
         
         elevCanvas1 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
-        elevCanvas2 = new Canvas();
-        elevCanvas3 = new Canvas();
+        elevCanvas2 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
+        elevCanvas3 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
         shaft1.add(elevCanvas1,0,0);
-        shaft2.getChildren().add(elevCanvas2);
-        shaft3.getChildren().add(elevCanvas3);
+        shaft2.add(elevCanvas2,0,0);
+        shaft3.add(elevCanvas3,0,0);
         gc1 = elevCanvas1.getGraphicsContext2D();
         gc2 = elevCanvas2.getGraphicsContext2D();
         gc3 = elevCanvas3.getGraphicsContext2D();

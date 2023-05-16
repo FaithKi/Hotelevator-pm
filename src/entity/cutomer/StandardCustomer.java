@@ -1,13 +1,26 @@
 package entity.cutomer;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import logic.game.PatienceLevel;
+import utils.CustomerUtils;
 
 public class StandardCustomer extends BaseCustomer {
 
+//	private int currentFloor; --SETTED
+//	private int destinationFloor; --SETTED
+////	protected PatienceLevel patienceLevel;
+//	protected double patienceLeft;
+//	protected int reward;// extra time
+//	protected int punishment;// reduced time
+//	protected int z;
+//	protected Image image;
+	
 	public StandardCustomer() {
+		super();
+		
 		reward = 1;
 		punishment = 10;
-		
 	}
 
 	@Override

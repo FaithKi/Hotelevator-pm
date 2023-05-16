@@ -10,12 +10,12 @@ public abstract class BaseCustomer extends Entity {
 
 	private int currentFloor;
 	private int destinationFloor;
-	private PatienceLevel patienceLevel;
-	private double patienceLeft;
+//	protected PatienceLevel patienceLevel;
+	protected double patienceLeft;
 	protected int reward;// extra time
 	protected int punishment;// reduced time
 	protected int z;
-	private Image image;
+	protected Image image;
 
 	public BaseCustomer() {
 		currentFloor = Randomizer.getRandomInt(1, 7);
@@ -38,7 +38,7 @@ public abstract class BaseCustomer extends Entity {
 	}
 
 	public void setCurrentFloor(int currentFloor) {
-		if (Config.FIRST_FLOOR <= currentFloor && currentFloor <= Config.TOP_FLOOR)
+		if (Config.FIRST_FLOOR <= currentFloor && currentFloor <= Config.TOP_FLOOR);
 			this.currentFloor = currentFloor;
 	}
 
@@ -46,9 +46,9 @@ public abstract class BaseCustomer extends Entity {
 		return destinationFloor;
 	}
 
-	public PatienceLevel getPateinceLevel() {
-		return patienceLevel;
-	}
+//	public PatienceLevel getPatienceLevel() {
+//		return patienceLevel;
+//	}
 
 	public double getPatienceLeft() {
 		return patienceLeft;
