@@ -30,7 +30,6 @@ public class Elevator extends Entity{
 		this.z = 100;
 		this.upKey = upKey;
 		this.downKey = downKey;
-		this.moveY = 0;
 	}
 	
 	public int moveUp() {
@@ -44,13 +43,8 @@ public class Elevator extends Entity{
 	}
 	
 	public void move() {
-		if(this.moveY > 0) {
-			this.moveY -= 0.0225*Config.UNIT;
-			this.y += 0.0225*Config.UNIT;
-		}
-		if(this.moveY < 0) {
-			this.moveY += 0.0225*Config.UNIT;
-			this.y -= 0.0225*Config.UNIT;
+		while(this.y != (7 - this.currentFloor) * Config.FLOOR_HEIGHT) {
+			this.y += Config.FLOOR_HEIGHT / 50;
 		}
 	}
 
@@ -64,19 +58,16 @@ public class Elevator extends Entity{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		move();
-		System.out.println(this.y);
-		if(this.y - ((7-this.getCurrentFloor())*1.125*Config.UNIT) < 10e-8) {
-			if(InputUtility.getKeyPressed(this.upKey)) {
-				System.out.println(this.currentFloor);
-				moveUp();
-				System.out.println(this.currentFloor);
-				this.moveY = -1.125*Config.UNIT;
+		this.move();
+		if(this.y == (7 - this.currentFloor) * Config.FLOOR_HEIGHT) {
+			if(InputUtility.getKeyPressed(upKey)) {
+				this.moveY = (this.getCurrentFloor() + 1) * Config.FLOOR_HEIGHT;
+				this.setCurrentFloor(this.getCurrentFloor() + 1);
 			}
-			if(InputUtility.getKeyPressed(this.downKey)) {
-				moveDown();
-				this.moveY = 1.125*Config.UNIT;
-			}	
+			if(InputUtility.getKeyPressed(downKey)) {
+				this.moveY = (this.getCurrentFloor() - 1) * Config.FLOOR_HEIGHT;
+				this.setCurrentFloor(this.getCurrentFloor() - 1);
+			}
 		}
 	}
 
