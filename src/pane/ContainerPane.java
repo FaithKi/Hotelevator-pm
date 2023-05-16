@@ -1,6 +1,8 @@
 package pane;
 
 import entity.elevator.Elevator;
+import input.InputUtility;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
@@ -18,6 +20,17 @@ public class ContainerPane extends BorderPane {
 		this.setRight(sideBarPane);
 		this.setCenter(hotelPane);
 		this.setBottom(bottomBarPane);
+		addListerner();
+	}
+	
+	public void addListerner() {
+		this.setOnKeyPressed((KeyEvent event) -> {
+			InputUtility.setKeyPressed(event.getCode(), true);
+		});
+
+		this.setOnKeyReleased((KeyEvent event) -> {
+			InputUtility.setKeyPressed(event.getCode(), false);
+		});
 	}
 
 	public static SideBarPane getSideBarPane() {
@@ -36,7 +49,6 @@ public class ContainerPane extends BorderPane {
 		for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
 			if(entity instanceof Elevator) {
 				Elevator elev = (Elevator) entity;
-				System.out.println(elev.getId());
 				entity.draw(ContainerPane.getHotelPane().getElevatorZone().getGcs().get(elev.getId()));
 			}
 		}
