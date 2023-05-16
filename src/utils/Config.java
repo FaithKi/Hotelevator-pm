@@ -17,7 +17,4 @@ public class Config {
 	
 	public static final Color PATIENCE_GAUGE = Color.ALICEBLUE;
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
-	
-	public static final double FLOOR_HEIGHT = UNIT * 1.125;
-	
 }
