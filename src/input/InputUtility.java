@@ -12,6 +12,7 @@ public class InputUtility {
 	private static boolean isLeftClickedLastTick = false;
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>(); 
 	
+	
 	public static boolean getKeyPressed(KeyCode keycode) {
 		return keyPressed.contains(keycode);
 	}
