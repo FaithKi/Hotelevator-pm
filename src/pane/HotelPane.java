@@ -6,13 +6,14 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 
-public class HotelPane extends HBox {
+public class HotelPane extends GridPane {
 	HBox elevatorZone;
 	VBox floorZone;
 
@@ -33,7 +34,9 @@ public class HotelPane extends HBox {
 //				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, null)));
 
 //		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, null, null, null, null)));
-		this.getChildren().addAll(elevatorZone, floorZone);
+//		this.getChildren().addAll(elevatorZone, floorZone);
+		this.add(elevatorZone, 0, 0);
+		this.add(floorZone, 1, 0);
 
 	}
 
