@@ -72,13 +72,13 @@ public class Elevator extends Entity{
 		move();
 		System.out.println(this.y);
 		if(Math.abs(this.y - ((7-this.getCurrentFloor())*1.125*Config.UNIT)) < 10e-8) {
-			if(InputUtility.getKeyPressed(this.upKey)) {
+			if(InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 7) {
 				System.out.println(this.currentFloor);
 				moveUp();
 				System.out.println(this.currentFloor);
 				this.moveY = -1.125*Config.UNIT;
 			}
-			if(InputUtility.getKeyPressed(this.downKey)) {
+			if(InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 1) {
 				moveDown();
 				this.moveY = 1.125*Config.UNIT;
 			}	
