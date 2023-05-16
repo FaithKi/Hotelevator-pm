@@ -1,6 +1,7 @@
 package main;
 
 import utils.Config;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -30,6 +31,16 @@ public class Main extends Application {
 		stage.setTitle("Elevator TheGame");
 		stage.setResizable(true);
 		stage.show();
+		
+		AnimationTimer animation = new AnimationTimer() {
+
+			@Override
+			public void handle(long arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
 	}
 
 	public static void main(String[] args) {

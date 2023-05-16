@@ -49,4 +49,5 @@ public class ElevatorZone extends HBox {
         gc3.drawImage(RenderableHolder.cabinSprite, (Config.UNIT * 1.5), (Config.UNIT * 1.125));
         
     }
+    
 }
