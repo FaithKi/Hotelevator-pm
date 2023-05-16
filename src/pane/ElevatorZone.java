@@ -18,6 +18,10 @@ public class ElevatorZone extends HBox {
 	}
 	
 	public void initializeShafts() {
+		shaft1 = new Canvas();
+		shaft2 = new Canvas();
+		shaft3 = new Canvas();
 		
+		this.getChildren().addAll(shaft1,shaft2,shaft3);
 	}
 }
