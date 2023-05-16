@@ -23,7 +23,7 @@ public class FloorZone extends StackPane {
 	private VBox hotelPane;
 	private ArrayList<FloorPane> floorsPane;
 	private Canvas hotelCanvas;
-	private GraphicsContext gcHotel;
+	private GraphicsContext gc;
 
 	public FloorZone() {
 		initializeFloorZoneStyle();
@@ -61,10 +61,15 @@ public class FloorZone extends StackPane {
 
 	public void initializeCanvas() {
 		this.hotelCanvas = new Canvas(Config.UNIT * (8.5), Config.UNIT * (7 * 1.125));
-		this.gcHotel = hotelCanvas.getGraphicsContext2D();
+		this.gc = hotelCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(hotelCanvas);
 //		gcHotel.setFill(Color.BLACK);
 //		gcHotel.fillRect(0, 0, hotelCanvas.getWidth(), hotelCanvas.getHeight());
 	}
+
+	public GraphicsContext getGc() {
+		return gc;
+	}
+
 }

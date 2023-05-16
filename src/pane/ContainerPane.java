@@ -1,5 +1,6 @@
 package pane;
 
+import entity.building.Hotel;
 import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.scene.input.KeyEvent;
@@ -22,7 +23,7 @@ public class ContainerPane extends BorderPane {
 		this.setBottom(bottomBarPane);
 		addListerner();
 	}
-	
+
 	public void addListerner() {
 		this.setOnKeyPressed((KeyEvent event) -> {
 			InputUtility.setKeyPressed(event.getCode(), true);
@@ -44,12 +45,16 @@ public class ContainerPane extends BorderPane {
 	public static BottomBarPane getBottomBarPane() {
 		return bottomBarPane;
 	}
-	
+
 	public void paintComponent() {
-		for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
-			if(entity instanceof Elevator) {
+		for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
+			if (entity instanceof Elevator) {
 				Elevator elev = (Elevator) entity;
 				entity.draw(ContainerPane.getHotelPane().getElevatorZone().getGcs().get(elev.getId()));
+			}
+			if (entity instanceof Hotel) {
+				Hotel hotel = (Hotel) entity;
+				hotel.draw(ContainerPane.getHotelPane().getFloorZone().getGc());
 			}
 		}
 	}
