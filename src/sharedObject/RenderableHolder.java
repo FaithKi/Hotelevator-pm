@@ -16,8 +16,10 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image hotelSprite;
-	public static WritableImage elevatorRailSprite;
+	public static Image elevatorRailSprite;
 	public static Image cabinSprite;
+	public static Image sideBarSprite;
+	public static Image bottomBarSprite;
 	
 	
 	static {
@@ -38,9 +40,11 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-		hotelSprite = new Image(ClassLoader.getSystemResource("Hotel.png").toString(),1000,800,true,false);
-		elevatorRailSprite = new WritableImage(new Image(ClassLoader.getSystemResource("Elevator Rail.png").toString(),100,800,true,false).getPixelReader(),0,0,190,799);
-		cabinSprite = new Image(ClassLoader.getSystemResource("Box.png").toString(),120,120,true,false);
+		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(),1000,800,true,false);
+		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevator.png").toString(),100,800,true,false);
+		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(),120,120,true,false);
+		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(),120,120,true,false);
+		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(),120,120,true,false);
 	}
 
 	public void add(IRenderable entity) {
