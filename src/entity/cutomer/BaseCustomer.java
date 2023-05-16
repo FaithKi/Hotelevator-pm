@@ -1,10 +1,10 @@
 package entity.cutomer;
 
+import entity.Entity;
 import logic.game.PatienceLevel;
-import sharedObject.IRenderable;
 import utils.Randomizer;
 
-public abstract class BaseCustomer implements IRenderable{
+public abstract class BaseCustomer extends Entity{
 
 	private int currentFloor;
 	private int destinationFloor;
@@ -37,9 +37,5 @@ public abstract class BaseCustomer implements IRenderable{
 
 	public PatienceLevel getPateinceLevel() {
 		return pateinceLevel;
-	}
-	
-	public int getZ() {
-		return z;
 	}
 }

@@ -17,14 +17,12 @@ public class GamePage extends Canvas{
 		GraphicsContext gc = this.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
 		for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
-			// System.out.println(entity.getZ());
 			if (entity.isVisible()) {
 				entity.draw(gc);
 			}
 		}
-
+		
 		// System.out.println("===============");
 		// System.out.println("===============");
-
 	}
 }

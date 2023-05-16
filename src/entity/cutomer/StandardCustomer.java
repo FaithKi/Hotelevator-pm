@@ -12,7 +12,7 @@ public class StandardCustomer extends BaseCustomer{
 	@Override
 	public void successAction() {
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
@@ -29,6 +29,11 @@ public class StandardCustomer extends BaseCustomer{
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
