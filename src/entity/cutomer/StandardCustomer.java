@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;
-import utils.CustomerUtils;
 
 public class StandardCustomer extends BaseCustomer {
 
@@ -42,13 +41,13 @@ public class StandardCustomer extends BaseCustomer {
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

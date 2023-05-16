@@ -55,10 +55,15 @@ public class GameLogic {
 		}
 	}
 
+	public Hotel getHotel() {
+		return hotel;
+	}
+
 //    public static GameLogic getInstance(int level) {
 //        if(instance == null) {
 //            instance = new GameLogic(level);
 //        }
 //        return instance;
 //    }
+	
 }

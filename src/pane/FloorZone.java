@@ -4,26 +4,41 @@ import java.util.ArrayList;
 
 import entity.building.Hotel;
 import entity.cutomer.BaseCustomer;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
-public class FloorZone extends VBox {
+public class FloorZone extends StackPane {
 	private Hotel hotel;
+	private VBox hotelPane;
 	private ArrayList<FloorPane> floorsPane;
+	private Canvas hotelCanvas;
+	private GraphicsContext gcHotel;
 
 	public FloorZone() {
 		initializeFloorZoneStyle();
+		InitializeFloorPane();
 
-		hotel = new Hotel(); // getHotelInstance from RenderAbleHolder
+		initializeCanvas();
+	}
+
+	public void InitializeFloorPane() {
+
+		this.hotelPane = new VBox();
+		hotelPane.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
+
+		hotel = GameLogic.getInstance().getHotel(); // getHotelInstance from RenderAbleHolder
 		this.floorsPane = new ArrayList<>();
-
 		ArrayList<ArrayList<BaseCustomer>> hotelFloors = hotel.getFloors();
 		for (int i = 1; i < hotelFloors.size() + 1; i++) {
 			ArrayList<BaseCustomer> hotelFloor = hotelFloors.get(i - 1); // arrayList<BaseCustomer>
@@ -31,11 +46,9 @@ public class FloorZone extends VBox {
 			floorsPane.add(currentFloorPane);
 		}
 
-		this.getChildren().addAll(floorsPane);
-	}
+		hotelPane.getChildren().addAll(floorsPane);
 
-	public void InitializeFloorPane() {
-
+		this.getChildren().add(hotelPane);
 	}
 
 	public void initializeFloorZoneStyle() {
@@ -44,5 +57,14 @@ public class FloorZone extends VBox {
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, null, null)));
 
+	}
+
+	public void initializeCanvas() {
+		this.hotelCanvas = new Canvas(Config.UNIT * (8.5), Config.UNIT * (7 * 1.125));
+		this.gcHotel = hotelCanvas.getGraphicsContext2D();
+
+		this.getChildren().add(hotelCanvas);
+//		gcHotel.setFill(Color.BLACK);
+//		gcHotel.fillRect(0, 0, hotelCanvas.getWidth(), hotelCanvas.getHeight());
 	}
 }
