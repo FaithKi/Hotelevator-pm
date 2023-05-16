@@ -37,9 +37,13 @@ public class HotelPane extends GridPane {
 		this.add(floorZone, 1, 0);
 
 	}
-	
-	public void paintComponent() {
-		this.elevatorZone.paintComponent();
+
+	public ElevatorZone getElevatorZone() {
+		return elevatorZone;
+	}
+
+	public FloorZone getFloorZone() {
+		return floorZone;
 	}
 
 }

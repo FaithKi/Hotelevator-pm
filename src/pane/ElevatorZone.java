@@ -1,19 +1,26 @@
 package pane;
 
+import java.util.ArrayList;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class ElevatorZone extends HBox {
-    private StackPane shaft1,shaft2,shaft3;
+    GridPane shaft1;
+	private StackPane shaft2,shaft3;
     private Canvas elevCanvas1,elevCanvas2,elevCanvas3;
     private GraphicsContext gc1,gc2,gc3;
+    private ArrayList<GraphicsContext> gcs;
     
     
     public ElevatorZone() {
@@ -23,7 +30,7 @@ public class ElevatorZone extends HBox {
     }
     
     public void initializeShafts() {
-        shaft1 = new StackPane();
+        shaft1 = new GridPane();
         shaft2 = new StackPane();
         shaft3 = new StackPane();
         shaft1.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
@@ -38,18 +45,23 @@ public class ElevatorZone extends HBox {
         
         this.getChildren().addAll(shaft1,shaft2,shaft3);
         
-        elevCanvas1 = new Canvas();
+        elevCanvas1 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
         elevCanvas2 = new Canvas();
         elevCanvas3 = new Canvas();
+        shaft1.add(elevCanvas1,0,0);
+        shaft2.getChildren().add(elevCanvas2);
+        shaft3.getChildren().add(elevCanvas3);
         gc1 = elevCanvas1.getGraphicsContext2D();
         gc2 = elevCanvas2.getGraphicsContext2D();
         gc3 = elevCanvas3.getGraphicsContext2D();
-        gc1.drawImage(RenderableHolder.cabinSprite, (Config.UNIT * 1.5), (Config.UNIT * 1.125));
-        gc2.drawImage(RenderableHolder.cabinSprite, (Config.UNIT * 1.5), (Config.UNIT * 1.125));
-        gc3.drawImage(RenderableHolder.cabinSprite, (Config.UNIT * 1.5), (Config.UNIT * 1.125));
-        
+        gcs = new ArrayList<>();
+        gcs.add(gc1);
+        gcs.add(gc2);
+        gcs.add(gc3);
     }
-    public void paintComponent() {
-    	
-    }
+
+	public ArrayList<GraphicsContext> getGcs() {
+		return gcs;
+	}
+
 }

@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import logic.game.GameLogic;
 import pane.ContainerPane;
 
 public class Main extends Application {
@@ -26,6 +27,8 @@ public class Main extends Application {
 		root.getChildren().addAll(bgImageView, containerPane);
 
 		Scene scene = new Scene(root, Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
+		
+		GameLogic logic = GameLogic.getInstance();
 
 		stage.setScene(scene);
 		stage.setTitle("Elevator TheGame");
@@ -41,6 +44,7 @@ public class Main extends Application {
 			}
 			
 		};
+		animation.start();
 	}
 
 	public static void main(String[] args) {
