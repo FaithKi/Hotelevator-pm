@@ -7,7 +7,6 @@ import entity.cutomer.BaseCustomer;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
@@ -19,6 +18,7 @@ public class Elevator extends Entity{
 	private int currentFloor;
 	private int id;
 	private KeyCode upKey, downKey;
+	private double moveY;
 	
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
@@ -30,16 +30,28 @@ public class Elevator extends Entity{
 		this.z = 100;
 		this.upKey = upKey;
 		this.downKey = downKey;
+		this.moveY = 0;
 	}
 	
 	public int moveUp() {
-		this.currentFloor += 1;
+		this.setCurrentFloor(this.getCurrentFloor()+1);
 		return this.currentFloor;
 	}
 	
 	public int moveDown() {
-		this.currentFloor -= 1;
+		this.setCurrentFloor(this.getCurrentFloor()-1);
 		return this.currentFloor;
+	}
+	
+	public void move() {
+		if(this.moveY > 0) {
+			this.moveY -= 0.0225*Config.UNIT;
+			this.y += 0.0225*Config.UNIT;
+		}
+		if(this.moveY < 0) {
+			this.moveY += 0.0225*Config.UNIT;
+			this.y -= 0.0225*Config.UNIT;
+		}
 	}
 
 	@Override
@@ -52,13 +64,19 @@ public class Elevator extends Entity{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		if(InputUtility.getKeyPressed(this.upKey)) {
-			this.y -= (1.125*Config.UNIT);
-			this.setCurrentFloor(this.getCurrentFloor()+1);
-		}
-		if(InputUtility.getKeyPressed(this.downKey)) {
-			this.y += (1.125*Config.UNIT);
-			this.setCurrentFloor(this.getCurrentFloor()-1);
+		move();
+		System.out.println(this.y);
+		if(this.y - ((7-this.getCurrentFloor())*1.125*Config.UNIT) < 10e-8) {
+			if(InputUtility.getKeyPressed(this.upKey)) {
+				System.out.println(this.currentFloor);
+				moveUp();
+				System.out.println(this.currentFloor);
+				this.moveY = -1.125*Config.UNIT;
+			}
+			if(InputUtility.getKeyPressed(this.downKey)) {
+				moveDown();
+				this.moveY = 1.125*Config.UNIT;
+			}	
 		}
 	}
 

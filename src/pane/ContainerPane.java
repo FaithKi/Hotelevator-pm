@@ -49,7 +49,7 @@ public class ContainerPane extends BorderPane {
 		for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
 			if(entity instanceof Elevator) {
 				Elevator elev = (Elevator) entity;
-				entity.draw(ContainerPane.getHotelPane().getElevatorZone().getGcs().get(elev.getId()));
+				elev.draw(ContainerPane.getHotelPane().getElevatorZone().getGcs().get(elev.getId()));
 			}
 		}
 	}
