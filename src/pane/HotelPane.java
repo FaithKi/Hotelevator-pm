@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 
 public class HotelPane extends GridPane {
-	HBox elevatorZone;
+	ElevatorZone elevatorZone;
 	FloorZone floorZone;
 
 	public HotelPane() {
@@ -36,6 +36,10 @@ public class HotelPane extends GridPane {
 		this.add(elevatorZone, 0, 0);
 		this.add(floorZone, 1, 0);
 
+	}
+	
+	public void paintComponent() {
+		this.elevatorZone.paintComponent();
 	}
 
 }

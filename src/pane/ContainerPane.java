@@ -28,4 +28,8 @@ public class ContainerPane extends BorderPane {
 	public static BottomBarPane getBottomBarPane() {
 		return bottomBarPane;
 	}
+	
+	public void paintComponent() {
+		this.hotelPane.paintComponent();
+	}
 }

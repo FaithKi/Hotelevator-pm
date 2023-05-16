@@ -37,7 +37,7 @@ public class Main extends Application {
 			@Override
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
-				
+				containerPane.paintComponent();
 			}
 			
 		};
