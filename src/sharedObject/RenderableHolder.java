@@ -20,6 +20,7 @@ public class RenderableHolder {
 	public static Image cabinSprite;
 	public static Image sideBarSprite;
 	public static Image bottomBarSprite;
+	public static Image hotelFloorSprite;
 
 	static {
 		loadResource();
@@ -42,9 +43,10 @@ public class RenderableHolder {
 		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125 * 7), true, false);
 		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(), (Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
-		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(), 120, 120, true, false);
+		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(), (Config.UNIT * 1.5), (Config.UNIT * 1.125), true, false);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
+		hotelFloorSprite =  new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5), (Config.UNIT * 1.125), true, false);
 	}
 
 	public void add(IRenderable entity) {
