@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import entity.Entity;
 import entity.building.Hotel;
 import entity.elevator.Elevator;
+import javafx.scene.input.KeyCode;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
+import utils.Config;
 
 public class GameLogic {
 	private ArrayList<Entity> gameObjectContainer;
@@ -23,9 +25,9 @@ public class GameLogic {
 		this.gameObjectContainer = new ArrayList<>();
 //		this.timeGauge = new TimeGauge();
 		this.hotel = new Hotel();
-		this.elevator1 = new Elevator(0,0,0);
-		this.elevator2 = new Elevator(1,0,0);
-		this.elevator3 = new Elevator(2,0,0);
+		this.elevator1 = new Elevator(0,0,0,KeyCode.Q,KeyCode.A);
+		this.elevator2 = new Elevator(1,0,0,KeyCode.W,KeyCode.S);
+		this.elevator3 = new Elevator(2,0,0,KeyCode.E,KeyCode.D);
 //		addNewObject(timeGauge);
 		addNewObject(hotel);
 		addNewObject(elevator1);
@@ -46,7 +48,9 @@ public class GameLogic {
 	}
 	
 	public void logicUpdate(){
-		
+		for(Entity entity: this.gameObjectContainer) {
+			entity.update();
+		}
 	}
 
 //    public static GameLogic getInstance(int level) {

@@ -4,15 +4,8 @@ import java.util.ArrayList;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import sharedObject.IRenderable;
-import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class ElevatorZone extends HBox {
@@ -35,18 +28,12 @@ public class ElevatorZone extends HBox {
         shaft1.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
         shaft2.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
         shaft3.setPrefSize(Config.UNIT*1.5, Config.UNIT*7*1.125);
-        shaft1.setBackground(new Background(new BackgroundImage(RenderableHolder.elevatorRailSprite, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, null, null)));
-        shaft2.setBackground(new Background(new BackgroundImage(RenderableHolder.elevatorRailSprite, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, null, null)));
-        shaft3.setBackground(new Background(new BackgroundImage(RenderableHolder.elevatorRailSprite, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, null, null)));
         
         this.getChildren().addAll(shaft1,shaft2,shaft3);
         
-        elevCanvas1 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
-        elevCanvas2 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
-        elevCanvas3 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125);
+        elevCanvas1 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125*7);
+        elevCanvas2 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125*7);
+        elevCanvas3 = new Canvas(Config.UNIT*1.5,Config.UNIT*1.125*7);
         shaft1.add(elevCanvas1,0,0);
         shaft2.add(elevCanvas2,0,0);
         shaft3.add(elevCanvas3,0,0);
