@@ -23,7 +23,7 @@ public class GameLogic {
 		this.gameObjectContainer = new ArrayList<>();
 //		this.timeGauge = new TimeGauge();
 		this.hotel = new Hotel();
-		this.elevator1 = new Elevator(0,0,0);
+		this.elevator1 = new Elevator(50,50);
 //		this.elevator2 = new Elevator();
 //		this.elevator3 = new Elevator();
 //		addNewObject(timeGauge);

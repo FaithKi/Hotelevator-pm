@@ -21,6 +21,7 @@ public class FloorPane extends HBox {
 		initializeFloorPaneStyle();
 		this.floorNumber = floorNumber;
 
+		
 	}
 
 	public void initializeFloorPaneStyle() {

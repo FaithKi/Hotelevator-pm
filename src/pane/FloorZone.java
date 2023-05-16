@@ -21,7 +21,7 @@ public class FloorZone extends VBox {
 	public FloorZone() {
 		initializeFloorZoneStyle();
 
-		hotel = new Hotel();
+		hotel = new Hotel(); // getHotelInstance from RenderAbleHolder
 		this.floorsPane = new ArrayList<>();
 
 		ArrayList<ArrayList<BaseCustomer>> hotelFloors = hotel.getFloors();
