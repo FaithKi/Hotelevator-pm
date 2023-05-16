@@ -3,6 +3,8 @@ package entity.cutomer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.game.PatienceLevel;
+import sharedObject.RenderableHolder;
+import utils.Config;
 import utils.CustomerUtils;
 
 public class StandardCustomer extends BaseCustomer {
@@ -12,15 +14,17 @@ public class StandardCustomer extends BaseCustomer {
 ////	protected PatienceLevel patienceLevel;
 //	protected double patienceLeft;
 //	protected int reward;// extra time
-//	protected int punishment;// reduced time
-//	protected int z;
+//	protected int punishment;// reduced time 
+//	protected int z; --SETTED
 //	protected Image image;
-	
+
 	public StandardCustomer() {
 		super();
-		
-		reward = 1;
-		punishment = 10;
+		this.maxPatience = setStartingPatience(Config.STANDARD_PATIENCE);
+		this.patienceLeft = maxPatience;
+		this.reward = 1;
+		this.punishment = 10;
+		setImage(RenderableHolder.standardCustomerHappy);
 	}
 
 	@Override
@@ -33,12 +37,6 @@ public class StandardCustomer extends BaseCustomer {
 	public void failedAction() {
 		// TODO Auto-generated method stub
 		System.out.println("failedAction for StandartCustomer");
-	}
-
-	@Override
-	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
