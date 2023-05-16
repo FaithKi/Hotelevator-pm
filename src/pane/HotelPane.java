@@ -18,14 +18,14 @@ public class HotelPane extends GridPane {
 	FloorZone floorZone;
 
 	public HotelPane() {
-		this.elevatorZone = new HBox();
+		this.elevatorZone = new ElevatorZone();
 		this.floorZone = new FloorZone();
 
 		this.setPadding(new Insets(0, Config.UNIT, 0, Config.UNIT));
 		this.setPrefSize(Config.UNIT * 15, Config.UNIT * (1.125 * 7));
-		this.elevatorZone.setPrefSize((Config.UNIT * 4.5), (Config.UNIT * (1.125 * 7)));
+//		this.elevatorZone.setPrefSize((Config.UNIT * 4.5), (Config.UNIT * (1.125 * 7)));
 
-		elevatorZone.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
+//		elevatorZone.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
 //		elevatorZone.setBackground(new Background(new BackgroundImage(RenderableHolder.elevatorRailSprite,
 //				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, null)));
 //		floorZone.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite,
