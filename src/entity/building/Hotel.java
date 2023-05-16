@@ -35,4 +35,10 @@ public class Hotel extends Entity {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public ArrayList<ArrayList<BaseCustomer>> getFloors() {
+		return floors;
+	}
+	
+	
 }
