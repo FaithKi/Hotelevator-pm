@@ -13,8 +13,8 @@ public class GameLogic {
 //	private TimeGauge timeGauge;
 	private Hotel hotel;
 	private Elevator elevator1;
-//	private Elevator elevator2;
-//	private Elevator elevator3;
+	private Elevator elevator2;
+	private Elevator elevator3;
 	
 	
 	private static GameLogic instance = null;
@@ -24,13 +24,13 @@ public class GameLogic {
 //		this.timeGauge = new TimeGauge();
 		this.hotel = new Hotel();
 		this.elevator1 = new Elevator(0,0,0);
-//		this.elevator2 = new Elevator();
-//		this.elevator3 = new Elevator();
+		this.elevator2 = new Elevator(1,0,0);
+		this.elevator3 = new Elevator(2,0,0);
 //		addNewObject(timeGauge);
 		addNewObject(hotel);
 		addNewObject(elevator1);
-//		addNewObject(elevator2);
-//		addNewObject(elevator3);
+		addNewObject(elevator2);
+		addNewObject(elevator3);
 	}
 	
 	public static GameLogic getInstance() {
