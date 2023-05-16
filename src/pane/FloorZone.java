@@ -1,5 +1,6 @@
 package pane;
 
+import entity.building.Hotel;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundRepeat;
@@ -10,7 +11,8 @@ import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class FloorZone extends GridPane {
-	
+	private Hotel hotel = new Hotel();
+
 	public FloorZone() {
 		this.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
 //		this.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
