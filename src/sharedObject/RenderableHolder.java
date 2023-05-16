@@ -39,7 +39,7 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 1.5),
+		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125 * 7), true, false);
 		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevator.png").toString(), 100, 800, true, false);
 		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(), 120, 120, true, false);

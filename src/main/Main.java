@@ -10,7 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pane.ContainerPane;
 
-public class main extends Application {
+public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
