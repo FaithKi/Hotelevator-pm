@@ -21,6 +21,7 @@ public class RenderableHolder {
 	public static Image sideBarSprite;
 	public static Image bottomBarSprite;
 	public static Image hotelFloorSprite;
+	public static Image standardCustomerHappy;
 
 	static {
 		loadResource();
@@ -47,6 +48,7 @@ public class RenderableHolder {
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
 		hotelFloorSprite =  new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5), (Config.UNIT * 1.125), true, false);
+		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(), (Config.UNIT * 0.75), (Config.UNIT), true, false);
 	}
 
 	public void add(IRenderable entity) {
