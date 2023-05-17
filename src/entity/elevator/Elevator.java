@@ -70,12 +70,9 @@ public class Elevator extends Entity{
 	public void update() {
 		// TODO Auto-generated method stub
 		move();
-		System.out.println(this.y);
-		if(Math.abs(this.y - ((7-this.getCurrentFloor())*1.125*Config.UNIT)) < 10e-8) {
+		if(this.y == ((7-this.getCurrentFloor())*1.125*Config.UNIT)) {
 			if(InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 7) {
-				System.out.println(this.currentFloor);
 				moveUp();
-				System.out.println(this.currentFloor);
 				this.moveY = -1.125*Config.UNIT;
 			}
 			if(InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 1) {
