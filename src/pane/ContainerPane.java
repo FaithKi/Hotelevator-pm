@@ -1,6 +1,6 @@
 package pane;
 
-import entity.building.Hotel;
+import entity.building.CustomerGrid;
 import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.scene.input.KeyEvent;
@@ -57,8 +57,8 @@ public class ContainerPane extends BorderPane {
 					Elevator elev = (Elevator) entity;
 					elev.draw(ContainerPane.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
 				}
-				if (entity instanceof Hotel) {
-					Hotel hotel = (Hotel) entity;
+				if (entity instanceof CustomerGrid) {
+					CustomerGrid hotel = (CustomerGrid) entity;
 					hotel.draw(ContainerPane.getHotelPane().getFloorZone().getGc());
 				}
 				if (entity instanceof TimeGauge) {

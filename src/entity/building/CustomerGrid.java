@@ -10,12 +10,12 @@ import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
 
-public class Hotel extends Entity {
+public class CustomerGrid extends Entity {
 
-	private BaseCustomer[][] floors;
+	private BaseCustomer[][] customersGrid;
 
-	public Hotel() {
-		floors = new BaseCustomer[10][7];
+	public CustomerGrid() {
+		customersGrid = new BaseCustomer[10][7];
 		this.z = 0;
 
 		testCustomer();
@@ -27,8 +27,8 @@ public class Hotel extends Entity {
 		gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 7; col++) {
-				if (!(floors[row][col] == null))
-					floors[row][col].draw(gc);
+				if (!(customersGrid[row][col] == null))
+					customersGrid[row][col].draw(gc);
 			}
 		}
 
@@ -63,7 +63,7 @@ public class Hotel extends Entity {
 			BaseCustomer customer = getCustomer((int) x, (int) y);
 			if (customer == null)
 				return;
-			floors[x][y] = null;
+			customersGrid[x][y] = null;
 			GameLogic.selectedElev.getPassengers().add(customer);
 			GameLogic.selectedElev.setNumberOfPassenger(GameLogic.selectedElev.getNumberOfPassenger()+1);
 		}
@@ -73,7 +73,7 @@ public class Hotel extends Entity {
 	}
 
 	public BaseCustomer[][] getFloors() {
-		return floors;
+		return customersGrid;
 	}
 
 	private void testCustomer() {
@@ -87,8 +87,8 @@ public class Hotel extends Entity {
 		System.out.println(customer1.getCurrentFloor());
 		System.out.println(customer2.getCurrentFloor());
 
-		floors[0][customer1.getCurrentFloor()] = customer1;
-		floors[1][customer2.getCurrentFloor()] = customer2;
+		customersGrid[0][customer1.getCurrentFloor()] = customer1;
+		customersGrid[1][customer2.getCurrentFloor()] = customer2;
 
 //		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
 //		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
@@ -104,9 +104,9 @@ public class Hotel extends Entity {
 	}
 
 	public BaseCustomer getCustomer(int x, int y) {
-		if (floors[x][y] == null)
+		if (customersGrid[x][y] == null)
 			return null;
-		return floors[x][y];
+		return customersGrid[x][y];
 
 	}
 

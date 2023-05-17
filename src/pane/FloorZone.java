@@ -2,7 +2,7 @@ package pane;
 
 import java.util.ArrayList;
 
-import entity.building.Hotel;
+import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
@@ -20,7 +20,7 @@ import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class FloorZone extends GridPane {
-	private Hotel hotel;
+	private CustomerGrid hotel;
 	private VBox hotelPane;
 	private Canvas hotelCanvas;
 	private GraphicsContext gc;
