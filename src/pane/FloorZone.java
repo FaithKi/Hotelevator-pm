@@ -39,7 +39,7 @@ public class FloorZone extends GridPane {
 
 		ArrayList<FloorPane> floorsPane = new ArrayList<>();
 		BaseCustomer[][] hotelFloors = hotel.getFloors();
-		for (int i = hotelFloors[0].length; i > 0; i--) {
+		for (int i = hotelFloors[0].length - 1; i >= 0; i--) {
 			FloorPane currentFloorPane = new FloorPane(i);
 			floorsPane.add(currentFloorPane);
 		}
