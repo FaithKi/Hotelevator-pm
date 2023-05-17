@@ -20,7 +20,6 @@ public class FloorPane extends HBox {
 	public FloorPane(int floorNumber, ArrayList<BaseCustomer> hotelFloor) {
 		// TODO Auto-generated constructor stub
 		initializeFloorPaneStyle();
-
 		this.floorNumber = floorNumber;
 
 	}
