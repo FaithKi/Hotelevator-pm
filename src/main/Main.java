@@ -10,6 +10,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import logic.game.GameLogic;
 import pane.ContainerPane;
+import pane.GameScreen;
+import pane.MainMenu;
 import pane.PausePane;
 
 public class Main extends Application {
@@ -18,20 +20,21 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Image backgroundImage = new Image(ClassLoader.getSystemResource("gameBackgroundImage.png").toString(),
-				Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT, true, false);
-		ImageView bgImageView = new ImageView(backgroundImage);
-
-		ContainerPane containerPane = new ContainerPane();
-		/// ---///
-		PausePane pausePane = new PausePane();
-		pausePane.setVisible(false);
-		/// ---///
-		StackPane root = new StackPane();
-		root.getChildren().addAll(bgImageView, containerPane, pausePane);
-
-		Scene scene = new Scene(root, Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
-		containerPane.requestFocus();
+//		Image backgroundImage = new Image(ClassLoader.getSystemResource("gameBackgroundImage.png").toString(),
+//				Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT, true, false);
+//		ImageView bgImageView = new ImageView(backgroundImage);
+//
+//		ContainerPane containerPane = new ContainerPane();
+//		/// ---///
+//		PausePane pausePane = new PausePane();
+//		pausePane.setVisible(false);
+//		/// ---///
+//		StackPane root = new StackPane();
+//		root.getChildren().addAll(bgImageView, containerPane, pausePane);
+		MainMenu mainMenu = new MainMenu();
+		GameScreen gameScreen = new GameScreen();
+		Scene scene = new Scene(gameScreen, Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
+		gameScreen.getContainerPane().requestFocus();
 
 		GameLogic logic = GameLogic.getInstance();
 
@@ -47,7 +50,7 @@ public class Main extends Application {
 				// timer from GPT
 				long elapsedTime = arg0 - GameLogic.startTime;
 				elapsedTimeMilliSeconds = elapsedTime / 1_000_000.0;
-				containerPane.paintComponent();
+				gameScreen.getContainerPane().paintComponent();
 				logic.logicUpdate();
 			}
 

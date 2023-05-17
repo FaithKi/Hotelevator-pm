@@ -113,7 +113,7 @@ public abstract class BaseCustomer extends Entity {
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight * 7;
 		double XPos = i * widthWithPadding;
-		double YPos = yFirstFloor - ((j - 1) * floorHeight); // +5 = space for patienceGauge
+		double YPos = yFirstFloor - ((j) * floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
