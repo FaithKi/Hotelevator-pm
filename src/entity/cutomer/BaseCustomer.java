@@ -105,20 +105,22 @@ public abstract class BaseCustomer extends Entity {
 	public void draw(GraphicsContext gc) {
 		int i = getCurrentQueue(); // starts from 0
 		int j = getCurrentFloor(); // starts at 1
-		double maxWidth = Config.UNIT * (0.75);
-		double currentPatienceWidth = maxWidth * (getPatienceLeft() / getMaxPatience());
+		double LeftPadding = Config.UNIT * (0.2);
+		double widthWithPadding = Config.UNIT * (0.8);
+		double allowedWidth = Config.UNIT * (0.75);
+		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight * 7;
-		double XPos = i * maxWidth;
+		double XPos = i * widthWithPadding;
 		double YPos = yFirstFloor - ((j - 1) * floorHeight); // +5 = space for patienceGauge
-		double oneEightUnit = (Config.UNIT * 1/8);
+		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
 		//
-		gc.drawImage(image, XPos, YPos - (floorHeight)); // image draws from top left -> down right
-		gc.strokeRect(XPos, YPos - oneEightUnit, maxWidth, oneEightUnit); // (startx,starty,width,height)
-		gc.fillRect(XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
+		gc.drawImage(image, LeftPadding + XPos, YPos - (floorHeight)); // image draws from top left -> down right
+		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
+		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 	}
 
 }

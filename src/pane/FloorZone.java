@@ -65,7 +65,7 @@ public class FloorZone extends GridPane {
 
 		this.add(hotelCanvas,0,0);
 		gc.setFill(Color.BLACK);
-		gc.strokeRect(1, 1, hotelCanvas.getWidth()-2, hotelCanvas.getHeight()-2);
+		gc.strokeRect(0, 20, 0.2*Config.UNIT, 5);
 	}
 
 	public GraphicsContext getGc() {
