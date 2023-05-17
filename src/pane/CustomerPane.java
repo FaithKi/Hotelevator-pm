@@ -1,5 +1,6 @@
 package pane;
 
+import java.awt.Stroke;
 import java.util.ArrayList;
 
 import javafx.event.Event;
@@ -10,6 +11,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -52,14 +55,14 @@ public class CustomerPane extends GridPane {
 	public void addEventListener() {
 		this.setOnMouseClicked((e) -> {
 			System.out.println(getPos().toString());
-			System.out.println("what the hellllll");
 		});
 	}
 
 	public void initializeCustomerPaneStyle() {
 		this.setPrefSize(Config.UNIT * 0.75, Config.UNIT * 1.125);
 //		this.setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
-		this.setBorder(new Border(new BorderStroke(Color.BLACK, null, null, null)));
+		this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)),
+				null, null));
 	}
 
 }

@@ -39,7 +39,7 @@ public class FloorPane extends HBox {
 //		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelFloorSprite,
 //				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, null)));
 		this.setSpacing(Config.UNIT * 0.05);
-		this.setPadding(new Insets(0, Config.UNIT * 0.2, 0, 0));
+		this.setPadding(new Insets(0, 0, 0, Config.UNIT * 0.2));
 	}
 
 }
