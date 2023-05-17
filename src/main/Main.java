@@ -1,7 +1,6 @@
 package main;
 
 import utils.Config;
-import input.InputUtility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -11,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import logic.game.GameLogic;
 import pane.ContainerPane;
+import pane.PausePane;
 
 public class Main extends Application {
 
@@ -22,9 +22,12 @@ public class Main extends Application {
 		ImageView bgImageView = new ImageView(backgroundImage);
 
 		ContainerPane containerPane = new ContainerPane();
-
+		///---///
+		PausePane pausePane = new PausePane();
+		pausePane.setVisible(false);
+		///---///
 		StackPane root = new StackPane();
-		root.getChildren().addAll(bgImageView, containerPane);
+		root.getChildren().addAll(bgImageView, containerPane, pausePane);
 		
 		Scene scene = new Scene(root, Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
 		containerPane.requestFocus();
