@@ -27,10 +27,10 @@ public class FloorZone extends GridPane {
 	private GraphicsContext gc;
 
 	public FloorZone() {
+		initializeCanvas();
 		initializeFloorZoneStyle();
 		InitializeFloorPane();
 
-		initializeCanvas();
 	}
 
 	public void InitializeFloorPane() {
@@ -57,7 +57,7 @@ public class FloorZone extends GridPane {
 //		this.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, null, null)));
-		this.setPadding(new Insets(0, Config.UNIT * 0.2, 0, Config.UNIT * 0.2));
+
 	}
 
 	public void initializeCanvas() {
