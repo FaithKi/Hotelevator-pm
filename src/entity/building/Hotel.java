@@ -5,21 +5,15 @@ import java.util.ArrayList;
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
+import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import sharedObject.RenderableHolder;
 
 public class Hotel extends Entity {
 
-	private ArrayList<ArrayList<BaseCustomer>> floors;
+	private BaseCustomer[][] floors;
 
 	public Hotel() {
-		this.floors = new ArrayList<>();
-		for (int i = 0; i < 7; i++) {
-			this.floors.add(new ArrayList<>());
-		}
-//		this.x = 0;
-//		this.y = 0;
+		floors = new BaseCustomer[10][7];
 		this.z = 0;
 
 		testCustomer();
@@ -28,9 +22,11 @@ public class Hotel extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		for (ArrayList<BaseCustomer> floor : floors) {
-			for (BaseCustomer customer : floor) {
-				customer.draw(gc);
+
+		for (int row = 0; row < 10; row++) {
+			for (int col = 0; col < 7; col++) {
+				if (!(floors[row][col] == null))
+					floors[row][col].draw(gc);
 			}
 		}
 
@@ -54,10 +50,9 @@ public class Hotel extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
 	}
 
-	public ArrayList<ArrayList<BaseCustomer>> getFloors() {
+	public BaseCustomer[][] getFloors() {
 		return floors;
 	}
 
@@ -71,8 +66,12 @@ public class Hotel extends Entity {
 
 		System.out.println(customer1.getCurrentFloor());
 		System.out.println(customer2.getCurrentFloor());
-		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
-		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
+
+		floors[0][customer1.getCurrentFloor() - 1] = customer1;
+		floors[1][customer2.getCurrentFloor() - 1] = customer2;
+
+//		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
+//		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
 	}
 
 }
