@@ -3,20 +3,23 @@ package sidebar;
 import entity.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import logic.game.GameLogic;
 import sharedObject.IRenderable;
 import utils.Config;
 
 public class TimeGauge extends Entity{
 	
-    private final int MAX_TIME = 10_000;
-    private int currentTime;
+    private final int MAX_TIME = 300;
+    private int timeLeft;
+    private double height;
     
     
     public TimeGauge() {
-    	currentTime = MAX_TIME;
+    	timeLeft = MAX_TIME;
     	//this.x = ;
-    	//this.y = ;
+    	this.y = Config.UNIT;
     	//this.z = ;
+    	this.height = Config.UNIT*6*1.125;
     }
     
 	@Override
@@ -27,8 +30,10 @@ public class TimeGauge extends Entity{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
+		gc.setFill(Color.GOLDENROD);
+		gc.fillRect(0, 0, Config.UNIT * 1, Config.UNIT * (7 * 1.125));
 		gc.setFill(Color.CRIMSON);
-		gc.fillRect(0, 0, Config.UNIT , Config.UNIT*6*1.125);
+		gc.fillRect(Config.UNIT/4, this.y, Config.UNIT/2 , this.height);
 	}
 	@Override
 	public boolean isVisible() {
@@ -38,14 +43,21 @@ public class TimeGauge extends Entity{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		this.setCurrentTime(this.getCurrentTime()-1);
+		if (this.getTimeLeft() != 0) {
+			System.out.println(this.getTimeLeft());
+			this.setTimeLeft(this.getTimeLeft()-1);
+			this.y += Config.UNIT*6*1.125/300;
+			this.height -= Config.UNIT*6*1.125/300;
+		} else {
+			GameLogic.isGameOver = true;
+		}
 	}
 
-	public int getCurrentTime() {
-		return currentTime;
+	public int getTimeLeft() {
+		return timeLeft;
 	}
 
-	public void setCurrentTime(int currentTime) {
-		this.currentTime = currentTime;
+	public void setTimeLeft(int timeLeft) {
+		this.timeLeft = timeLeft;
 	}
 }

@@ -5,6 +5,9 @@ import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import logic.game.GameLogic;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
@@ -48,15 +51,25 @@ public class ContainerPane extends BorderPane {
 	}
 
 	public void paintComponent() {
-		for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
-			if (entity instanceof Elevator) {
-				Elevator elev = (Elevator) entity;
-				elev.draw(ContainerPane.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
+		if(!GameLogic.isGameOver) {
+			for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
+				if (entity instanceof Elevator) {
+					Elevator elev = (Elevator) entity;
+					elev.draw(ContainerPane.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
+				}
+				if (entity instanceof Hotel) {
+					Hotel hotel = (Hotel) entity;
+					hotel.draw(ContainerPane.getHotelPane().getFloorZone().getGc());
+				}
+				if (entity instanceof TimeGauge) {
+					TimeGauge timeGauge = (TimeGauge) entity;
+					timeGauge.draw(ContainerPane.getSideBarPane().getGc());
+				}
 			}
-			if (entity instanceof Hotel) {
-				Hotel hotel = (Hotel) entity;
-				hotel.draw(ContainerPane.getHotelPane().getFloorZone().getGc());
-			}
+		} else {
+			Text gameOverText = new Text("GameOver!");
+			gameOverText.setFont(new Font(100));
+			this.setCenter(gameOverText);
 		}
 	}
 }

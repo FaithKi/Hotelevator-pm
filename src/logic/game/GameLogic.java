@@ -12,9 +12,11 @@ import sidebar.TimeGauge;
 import utils.Config;
 
 public class GameLogic {
+	
+	public static boolean isGameOver = false;
+	public static long startTime;
 	private ArrayList<Entity> gameObjectContainer;
 	private TimeGauge timeGauge;
-	public static long startTime;
 	private Hotel hotel;
 	private Elevator elevator1;
 	private Elevator elevator2;
