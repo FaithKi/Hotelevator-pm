@@ -51,10 +51,13 @@ public class ContainerPane extends BorderPane {
 	}
 
 	public void paintComponent() {
-		if(!GameLogic.isGameOver) {
+		if (!GameLogic.isGameOver) {
 			for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
 				if (entity instanceof Elevator) {
 					Elevator elev = (Elevator) entity;
+					if (elev.isSelected()) {
+						elev.getInsideCabin().draw(ContainerPane.getBottomBarPane().getCustomerManager().getGc());
+					}
 					elev.draw(ContainerPane.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
 				}
 				if (entity instanceof CustomerGrid) {
