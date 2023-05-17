@@ -70,6 +70,8 @@ public class ContainerPane extends BorderPane {
 			Text gameOverText = new Text("GameOver!");
 			gameOverText.setFont(new Font(100));
 			this.setCenter(gameOverText);
+			this.setRight(null);
+			this.setBottom(null);
 		}
 	}
 }
