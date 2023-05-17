@@ -38,8 +38,8 @@ public class FloorZone extends GridPane {
 		hotelPane.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
 
 		ArrayList<FloorPane> floorsPane = new ArrayList<>();
-		ArrayList<ArrayList<BaseCustomer>> hotelFloors = hotel.getFloors();
-		for (int i = hotelFloors.size(); i > 0; i--) {
+		BaseCustomer[][] hotelFloors = hotel.getFloors();
+		for (int i = hotelFloors[0].length; i > 0; i--) {
 			FloorPane currentFloorPane = new FloorPane(i);
 			floorsPane.add(currentFloorPane);
 		}
