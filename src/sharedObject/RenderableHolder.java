@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import entity.building.Hotel;
+import entity.building.CustomerGrid;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 

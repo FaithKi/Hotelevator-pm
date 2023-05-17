@@ -3,7 +3,7 @@ package logic.game;
 import java.util.ArrayList;
 
 import entity.Entity;
-import entity.building.Hotel;
+import entity.building.CustomerGrid;
 import entity.elevator.Elevator;
 import javafx.scene.input.KeyCode;
 import main.Main;
@@ -18,7 +18,7 @@ public class GameLogic {
 	public static Elevator selectedElev;
 	private ArrayList<Entity> gameObjectContainer;
 	private TimeGauge timeGauge;
-	private Hotel hotel;
+	private CustomerGrid hotel;
 	private Elevator elevator1;
 	private Elevator elevator2;
 	private Elevator elevator3;
@@ -29,7 +29,7 @@ public class GameLogic {
 		startTime = System.nanoTime();
 		this.gameObjectContainer = new ArrayList<>();
 		this.timeGauge = new TimeGauge();
-		this.hotel = new Hotel();
+		this.hotel = new CustomerGrid();
 
 		this.elevator1 = new Elevator(0, 0, 6.75 * Config.UNIT, KeyCode.Q, KeyCode.A);
 		this.elevator1.setSelected(true);
@@ -67,7 +67,7 @@ public class GameLogic {
 		}
 	}
 
-	public Hotel getHotel() {
+	public CustomerGrid getHotel() {
 		return hotel;
 	}
 	

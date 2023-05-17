@@ -1,0 +1,48 @@
+package entity.elevator;
+
+import java.util.ArrayList;
+
+import entity.Entity;
+import entity.cutomer.BaseCustomer;
+import javafx.scene.canvas.GraphicsContext;
+import utils.Config;
+
+public class InsideCabin extends Entity {
+	private final int capacity = 5;
+	private int numberOfPassenger;
+	private BaseCustomer[] passengers;
+
+	public InsideCabin() {
+		this.numberOfPassenger = 0;
+		this.passengers = new BaseCustomer[Config.MAX_CUSTOMER_PER_FLOOR];
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public int getNumberOfPassenger() {
+		return numberOfPassenger;
+	}
+
+	public void setNumberOfPassenger(int numberOfPassenger) {
+		this.numberOfPassenger = numberOfPassenger;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public BaseCustomer[] getPassengers() {
+		return passengers;
+	}
+
+}

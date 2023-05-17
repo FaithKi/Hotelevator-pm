@@ -14,9 +14,7 @@ import utils.Config;
 public class Elevator extends Entity {
 
 	private boolean isSelected;
-	private final int capacity = 5;
-	private int numberOfPassenger;
-	private ArrayList<BaseCustomer> passengers;
+	private InsideCabin insideCabin;
 	private int currentFloor;
 	private int id;
 	private KeyCode upKey, downKey;
@@ -26,9 +24,8 @@ public class Elevator extends Entity {
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
 		this.isSelected = false;
-		this.passengers = new ArrayList<>();
 		this.currentFloor = 0;
-		this.numberOfPassenger = 0;
+		this.insideCabin = new InsideCabin();
 		this.x = x;
 		this.y = y;
 		this.z = 100;
@@ -85,6 +82,15 @@ public class Elevator extends Entity {
 				this.moveY = 1.125 * Config.UNIT;
 			}
 		}
+
+//		getInsideCabin().getPassengers(); // update All
+		if (this.isSelected) {
+			Integer index = InputUtility.getPassengerIndexPressed();
+			if (index == null)
+				return;
+			BaseCustomer customer = this.getInsideCabin().getPassengers()[index];
+
+		}
 	}
 
 	public int getId() {
@@ -107,15 +113,8 @@ public class Elevator extends Entity {
 		this.isSelected = select;
 	}
 
-	public ArrayList<BaseCustomer> getPassengers() {
-		return passengers;
+	public InsideCabin getInsideCabin() {
+		return insideCabin;
 	}
 
-	public int getNumberOfPassenger() {
-		return numberOfPassenger;
-	}
-
-	public void setNumberOfPassenger(int numberOfPassenger) {
-		this.numberOfPassenger = numberOfPassenger;
-	}
 }
