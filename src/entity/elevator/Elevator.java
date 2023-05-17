@@ -103,4 +103,16 @@ public class Elevator extends Entity {
 	public void setSelected(boolean select) {
 		this.isSelected = select;
 	}
+
+	public ArrayList<BaseCustomer> getPassengers() {
+		return passengers;
+	}
+
+	public int getNumberOfPassenger() {
+		return numberOfPassenger;
+	}
+
+	public void setNumberOfPassenger(int numberOfPassenger) {
+		this.numberOfPassenger = numberOfPassenger;
+	}
 }
