@@ -23,8 +23,8 @@ public class CustomerPane extends GridPane {
 		addEventListener();
 	}
 
-	public int[] getPos() {
-		int[] pos = new int[2];
+	public Integer[] getPos() {
+		Integer[] pos = new Integer[2];
 		pos[0] = getIndex();
 		pos[1] = getFloorNumber();
 		return pos;
