@@ -41,7 +41,7 @@ public class FloorZone extends GridPane {
 		hotel = GameLogic.getInstance().getHotel(); // getHotelInstance from RenderAbleHolder
 		this.floorsPane = new ArrayList<>();
 		ArrayList<ArrayList<BaseCustomer>> hotelFloors = hotel.getFloors();
-		for (int i = 1; i < hotelFloors.size() + 1; i++) {
+		for (int i = hotelFloors.size(); i > 0; i--) {
 			ArrayList<BaseCustomer> hotelFloor = hotelFloors.get(i - 1); // arrayList<BaseCustomer>
 			FloorPane currentFloorPane = new FloorPane(i, hotelFloor);
 			floorsPane.add(currentFloorPane);
