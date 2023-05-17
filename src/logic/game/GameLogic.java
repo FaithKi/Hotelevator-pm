@@ -60,6 +60,10 @@ public class GameLogic {
 	public Hotel getHotel() {
 		return hotel;
 	}
+	
+	public ArrayList<Entity> getGameObjectContainer(){
+		return this.gameObjectContainer;
+	}
 
 //    public static GameLogic getInstance(int level) {
 //        if(instance == null) {
