@@ -36,7 +36,7 @@ public class Main extends Application {
 		
 		stage.setScene(scene);
 		stage.setTitle("Elevator TheGame");
-		stage.setResizable(true);
+		stage.setResizable(false);
 		stage.show();
 		
 		AnimationTimer animation = new AnimationTimer() {
