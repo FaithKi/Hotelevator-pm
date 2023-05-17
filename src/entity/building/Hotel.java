@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
+import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
+import logic.game.GameLogic;
 
 public class Hotel extends Entity {
 
@@ -22,7 +24,7 @@ public class Hotel extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-
+		gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 7; col++) {
 				if (!(floors[row][col] == null))
@@ -49,9 +51,25 @@ public class Hotel extends Entity {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		// update everycustomer loop
 
-		System.out.println(InputUtility.getHotelGridPressed()[0]);
+		Integer[] grid = InputUtility.getHotelGridPressed();
+		if (grid[0] == null)
+			return;
+		Integer x = grid[0];
+		Integer y = grid[1];
+		
+		if(GameLogic.selectedElev.getCurrentFloor() == y) {
+			BaseCustomer customer = getCustomer((int) x, (int) y);
+			if (customer == null)
+				return;
+			floors[x][y] = null;
+			GameLogic.selectedElev.getPassengers().add(customer);
+			GameLogic.selectedElev.setNumberOfPassenger(GameLogic.selectedElev.getNumberOfPassenger()+1);
+		}
+		
+//		return customer;
+//		addtoCabin(customer, GameLogic.getInstance().something);
 	}
 
 	public BaseCustomer[][] getFloors() {
@@ -74,6 +92,26 @@ public class Hotel extends Entity {
 
 //		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
 //		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
+	}
+
+	public void transferCustomer(int x, int y) {
+		boolean hasSpace = true; // IMPLEMENT METHOD check if target elevator have enough space
+		boolean isMoving = false; // IMPLEMENT METHOD check if target elevator is moving
+		if (hasSpace && !isMoving) {
+
+		}
+
+	}
+
+	public BaseCustomer getCustomer(int x, int y) {
+		if (floors[x][y] == null)
+			return null;
+		return floors[x][y];
+
+	}
+
+	public void addToCabin(BaseCustomer baseCustomer, Elevator elevator) {
+
 	}
 
 }

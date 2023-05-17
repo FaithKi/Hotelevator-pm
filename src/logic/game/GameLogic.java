@@ -15,6 +15,7 @@ public class GameLogic {
 	
 	public static boolean isGameOver = false;
 	public static long startTime;
+	public static Elevator selectedElev;
 	private ArrayList<Entity> gameObjectContainer;
 	private TimeGauge timeGauge;
 	private Hotel hotel;
@@ -31,6 +32,7 @@ public class GameLogic {
 		this.hotel = new Hotel();
 
 		this.elevator1 = new Elevator(0, 0, 6.75 * Config.UNIT, KeyCode.Q, KeyCode.A);
+		this.elevator1.setSelected(true);
 		this.elevator2 = new Elevator(1, 0, 6.75 * Config.UNIT, KeyCode.W, KeyCode.S);
 		this.elevator3 = new Elevator(2, 0, 6.75 * Config.UNIT, KeyCode.E, KeyCode.D);
 
@@ -58,6 +60,10 @@ public class GameLogic {
 		
 		for (Entity entity : this.gameObjectContainer) {
 			entity.update();
+			if(entity instanceof Elevator) {
+				Elevator elev = (Elevator) entity;
+				if(elev.isSelected()) this.selectedElev = elev;
+			}
 		}
 	}
 
