@@ -24,7 +24,7 @@ public class Hotel extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-
+		gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 7; col++) {
 				if (!(floors[row][col] == null))
@@ -51,17 +51,24 @@ public class Hotel extends Entity {
 
 	@Override
 	public void update() {
-		//update everycustomer loop
+		// update everycustomer loop
+
+		Integer[] grid = InputUtility.getHotelGridPressed();
+		if (grid[0] == null)
+			return;
+		Integer x = grid[0];
+		Integer y = grid[1];
 		
-//		// TODO Auto-generated method stub
-//		Integer[] grid = InputUtility.getHotelGridPressed();
-//		int x = grid[0];
-//		int y = grid[1];
-//		BaseCustomer customer = getCustomer(int x, int y);
-//		if(customer == null)
-//			return;
+		if(GameLogic.selectedElev.getCurrentFloor() == y) {
+			BaseCustomer customer = getCustomer((int) x, (int) y);
+			if (customer == null)
+				return;
+			floors[x][y] = null;
+			GameLogic.selectedElev.getPassengers().add(customer);
+			GameLogic.selectedElev.setNumberOfPassenger(GameLogic.selectedElev.getNumberOfPassenger()+1);
+		}
 		
-		
+//		return customer;
 //		addtoCabin(customer, GameLogic.getInstance().something);
 	}
 
