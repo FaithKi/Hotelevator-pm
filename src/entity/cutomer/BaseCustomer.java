@@ -118,7 +118,6 @@ public abstract class BaseCustomer extends Entity {
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
-		//
 		gc.drawImage(image, LeftPadding + XPos, YPos - (floorHeight)); // image draws from top left -> down right
 		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
 		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);

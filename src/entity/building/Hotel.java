@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
+import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Hotel extends Entity {
@@ -49,7 +50,6 @@ public class Hotel extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-
 	}
 
 	public BaseCustomer[][] getFloors() {
