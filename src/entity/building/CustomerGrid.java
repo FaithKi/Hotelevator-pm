@@ -64,7 +64,7 @@ public class CustomerGrid extends Entity {
 			if (customer == null)
 				return;
 			customersGrid[x][y] = null;
-			GameLogic.selectedElev.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
+			GameLogic.selectedElev.getInsideCabin().getPassengers()[1] = customer; // FIXTHIS
 			GameLogic.selectedElev.getInsideCabin()
 					.setNumberOfPassenger(GameLogic.selectedElev.getInsideCabin().getNumberOfPassenger() + 1);
 		}
@@ -95,6 +95,10 @@ public class CustomerGrid extends Entity {
 //		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
 	}
 
+	public BaseCustomer[][] getCustomersGrid() {
+		return customersGrid;
+	}
+
 	public void transferCustomer(int x, int y) {
 		boolean hasSpace = true; // IMPLEMENT METHOD check if target elevator have enough space
 		boolean isMoving = false; // IMPLEMENT METHOD check if target elevator is moving
@@ -114,5 +118,7 @@ public class CustomerGrid extends Entity {
 	public void addToCabin(BaseCustomer baseCustomer, Elevator elevator) {
 
 	}
+	
+	
 
 }
