@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
-public class Elevator extends Entity{
+public class Elevator extends Entity {
 
 	private final int capacity = 5;
 	private int numberOfPassenger;
@@ -19,7 +19,7 @@ public class Elevator extends Entity{
 	private int id;
 	private KeyCode upKey, downKey;
 	private double moveY;
-	
+
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
 		this.passengers = new ArrayList<>();
@@ -32,25 +32,30 @@ public class Elevator extends Entity{
 		this.downKey = downKey;
 		this.moveY = 0;
 	}
-	
+
 	public int moveUp() {
-		this.setCurrentFloor(this.getCurrentFloor()+1);
+		this.setCurrentFloor(this.getCurrentFloor() + 1);
 		return this.currentFloor;
 	}
-	
+
 	public int moveDown() {
-		this.setCurrentFloor(this.getCurrentFloor()-1);
+		this.setCurrentFloor(this.getCurrentFloor() - 1);
 		return this.currentFloor;
 	}
-	
+
 	public void move() {
-		if(this.moveY > 0) {
-			this.moveY -= 0.0225*Config.UNIT;
-			this.y += 0.0225*Config.UNIT;
-		}
-		if(this.moveY < 0) {
-			this.moveY += 0.0225*Config.UNIT;
-			this.y -= 0.0225*Config.UNIT;
+		if (Math.abs(this.y - ((7 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) < 10e-8) {
+			this.y = (7 - this.getCurrentFloor()) * 1.125 * Config.UNIT;
+			this.moveY = 0;
+		} else {
+			if (this.moveY > 0) {
+				this.moveY -= 0.0225 * Config.UNIT;
+				this.y += 0.0225 * Config.UNIT;
+			}
+			if (this.moveY < 0) {
+				this.moveY += 0.0225 * Config.UNIT;
+				this.y -= 0.0225 * Config.UNIT;
+			}
 		}
 	}
 
@@ -58,25 +63,27 @@ public class Elevator extends Entity{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.elevatorRailSprite, 0, 0);
-		gc.drawImage(RenderableHolder.cabinSprite , x, y);
+		gc.drawImage(RenderableHolder.cabinSprite, x, y);
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 		move();
-//		System.out.println(this.y);
-		if(this.y - ((7-this.getCurrentFloor())*1.125*Config.UNIT) < 10e-8) {
-			if(InputUtility.getKeyPressed(this.upKey)) {
+
+		System.out.println(this.y);
+		if (Math.abs(this.y - ((7 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) < 10e-8) {
+			if (InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 7) {
+
 				System.out.println(this.currentFloor);
 				moveUp();
 				System.out.println(this.currentFloor);
-				this.moveY = -1.125*Config.UNIT;
+				this.moveY = -1.125 * Config.UNIT;
 			}
-			if(InputUtility.getKeyPressed(this.downKey)) {
+			if (InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 1) {
 				moveDown();
-				this.moveY = 1.125*Config.UNIT;
-			}	
+				this.moveY = 1.125 * Config.UNIT;
+			}
 		}
 	}
 

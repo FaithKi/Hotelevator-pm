@@ -23,8 +23,19 @@ public enum HotelFloor {
 		switch(floorNumber) {
 		case 1:
 			return HotelFloor.FIRST;
+		case 2:
+			return HotelFloor.SECOND;
+		case 3:
+			return HotelFloor.THIRD;
+		case 4:
+			return HotelFloor.FOURTH;
+		case 5:
+			return HotelFloor.FIFTH;
+		case 6:
+			return HotelFloor.SIXTH;
+		case 7:
+			return HotelFloor.SEVENTH;
 		}
 		return null;
 	}
-	
 }
