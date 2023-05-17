@@ -22,15 +22,14 @@ import utils.Config;
 public class FloorZone extends GridPane {
 	private Hotel hotel;
 	private VBox hotelPane;
-	private ArrayList<FloorPane> floorsPane;
 	private Canvas hotelCanvas;
 	private GraphicsContext gc;
 
 	public FloorZone() {
+		hotel = GameLogic.getInstance().getHotel(); // getHotelInstance from gameLOgic
 		initializeCanvas();
 		initializeFloorZoneStyle();
 		InitializeFloorPane();
-
 	}
 
 	public void InitializeFloorPane() {
@@ -38,12 +37,10 @@ public class FloorZone extends GridPane {
 		this.hotelPane = new VBox();
 		hotelPane.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
 
-		hotel = GameLogic.getInstance().getHotel(); // getHotelInstance from RenderAbleHolder
-		this.floorsPane = new ArrayList<>();
+		ArrayList<FloorPane> floorsPane = new ArrayList<>();
 		ArrayList<ArrayList<BaseCustomer>> hotelFloors = hotel.getFloors();
 		for (int i = hotelFloors.size(); i > 0; i--) {
-			ArrayList<BaseCustomer> hotelFloor = hotelFloors.get(i - 1); // arrayList<BaseCustomer>
-			FloorPane currentFloorPane = new FloorPane(i, hotelFloor);
+			FloorPane currentFloorPane = new FloorPane(i);
 			floorsPane.add(currentFloorPane);
 		}
 
@@ -54,7 +51,6 @@ public class FloorZone extends GridPane {
 
 	public void initializeFloorZoneStyle() {
 		this.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
-//		this.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, null, null)));
 

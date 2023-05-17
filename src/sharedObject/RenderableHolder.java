@@ -44,13 +44,18 @@ public class RenderableHolder {
 	public static void loadResource() {
 		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125 * 7), true, false);
-		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(), (Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
-		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(), (Config.UNIT * 1.5), (Config.UNIT * 1.125), true, false);
+		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(),
+				(Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
+		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(), (Config.UNIT * 1.5),
+				(Config.UNIT * 1.125), true, false);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
-		hotelFloorSprite =  new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5), (Config.UNIT * 1.125), true, false);
-		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(), (Config.UNIT * 0.75), (Config.UNIT), true, false);
-		bgSprite = new Image(ClassLoader.getSystemResource("background.png").toString(), (Config.UNIT * 0.75), (Config.UNIT), true, false);
+		hotelFloorSprite = new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5),
+				(Config.UNIT * 1.125), true, false);
+		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		bgSprite = new Image(ClassLoader.getSystemResource("background.png").toString(), (Config.UNIT * 0.75),
+				(Config.UNIT), true, false);
 	}
 
 	public void add(IRenderable entity) {
