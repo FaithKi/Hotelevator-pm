@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
+import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
@@ -54,7 +55,14 @@ public class Hotel extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		int[] grid = InputUtility.getHotelGridPressed();
+		System.out.println(grid[0] + "-" + grid[1]);
+		if (!(grid[1] == 0)) {
+			if (!(floors.get(grid[1]).get(grid[0]) == null))
+				System.out.println(floors.get(grid[1]).remove(grid[0]));
+
+		}
+//		if(grid)
 	}
 
 	public ArrayList<ArrayList<BaseCustomer>> getFloors() {

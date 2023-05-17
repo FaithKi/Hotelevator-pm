@@ -11,7 +11,7 @@ public class InputUtility {
 	private static boolean isLeftDown = false;
 	private static boolean isLeftClickedLastTick = false;
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>();
-	private static ArrayList<Integer> hotelGridPressed = new ArrayList<>();
+	private static int[] hotelGridPressed = new int[2];
 
 	public static boolean getKeyPressed(KeyCode keycode) {
 		return keyPressed.contains(keycode);
@@ -28,21 +28,19 @@ public class InputUtility {
 		System.out.println(keyPressed);
 	}
 
-	public static ArrayList<Integer> getHotelGridPressed() {
-		ArrayList<Integer> hotelGrid = hotelGridPressed;
-		hotelGridPressed = null;
-		return hotelGrid;
+	public static int[] getHotelGridPressed() {
+		return hotelGridPressed;
 	}
 
-	public static void setHotelGridPressed(ArrayList<Integer> hotelGrid, boolean pressed) {
+	public static void setHotelGridPressed(int[] hotelGrid, boolean pressed) {
 		if (pressed) {
 			if (!hotelGridPressed.equals(hotelGrid)) {
 				hotelGridPressed = hotelGrid;
 			}
 		} else {
-			hotelGridPressed = null;
+			hotelGridPressed = new int[2];
 		}
-		System.out.println("InputUtil Grid P:" + hotelGridPressed);
+		System.out.println("InputUtil Grid P:" + hotelGridPressed[0] + "-" + hotelGridPressed[1]);
 	}
 
 	public static void mouseLeftDown() {
