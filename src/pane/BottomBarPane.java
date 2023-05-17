@@ -3,21 +3,22 @@ package pane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import utils.Config;
 
-public class BottomBarPane extends BorderPane {
+public class BottomBarPane extends GridPane {
 	
 	private CustomerManager customerManager;
 	private StackPane menuBtn;
 	
 	public BottomBarPane() {
 		this.setPrefSize(Config.UNIT * 16, Config.UNIT * 1.125);
-		this.setBackground(new Background(new BackgroundFill(Color.SALMON, null, null)));
+//		this.setBackground(new Background(new BackgroundFill(Color.SALMON, null, null)));
 		this.customerManager = new CustomerManager();
-		this.setCenter(customerManager);
+		this.add(customerManager,0,0);
 		initializeMenuBtn();
 	}
 	
@@ -25,7 +26,7 @@ public class BottomBarPane extends BorderPane {
 		this.menuBtn = new StackPane();
 		this.getMenuBtn().setPrefWidth(2*Config.UNIT);
 		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE,null,null)));
-		this.setRight(this.getMenuBtn());
+		this.add(this.getMenuBtn(),1,0);
 		this.getMenuBtn().setOnMouseClicked((e) -> {
 			PausePane pausePane = (PausePane) this.getParent().getParent().getChildrenUnmodifiable().get(2);
 			pausePane.setVisible(true);
