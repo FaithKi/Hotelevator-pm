@@ -19,6 +19,7 @@ public abstract class BaseCustomer extends Entity {
 	protected int reward;// extra time
 	protected int punishment;// reduced time
 	protected int z;
+
 	protected Image image;
 
 	public BaseCustomer() {

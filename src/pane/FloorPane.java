@@ -14,14 +14,15 @@ import utils.Config;
 
 public class FloorPane extends HBox {
 	private int floorNumber;
+	private ArrayList<CustomerPane> customerPanes;
 	private ArrayList<BaseCustomer> customers;
 
 	public FloorPane(int floorNumber, ArrayList<BaseCustomer> hotelFloor) {
 		// TODO Auto-generated constructor stub
 		initializeFloorPaneStyle();
+
 		this.floorNumber = floorNumber;
 
-		
 	}
 
 	public void initializeFloorPaneStyle() {

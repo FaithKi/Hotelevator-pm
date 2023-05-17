@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.building.Hotel;
 import entity.cutomer.BaseCustomer;
+import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Background;
@@ -48,7 +49,7 @@ public class FloorZone extends GridPane {
 
 		hotelPane.getChildren().addAll(floorsPane);
 
-		this.add(hotelPane,0,0);
+		this.add(hotelPane, 0, 0);
 	}
 
 	public void initializeFloorZoneStyle() {
@@ -56,16 +57,16 @@ public class FloorZone extends GridPane {
 //		this.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, null, null)));
-
+		this.setPadding(new Insets(0, Config.UNIT * 0.2, 0, Config.UNIT * 0.2));
 	}
 
 	public void initializeCanvas() {
 		this.hotelCanvas = new Canvas(Config.UNIT * (8.5), Config.UNIT * (7 * 1.125));
 		this.gc = hotelCanvas.getGraphicsContext2D();
 
-		this.add(hotelCanvas,0,0);
+		this.add(hotelCanvas, 0, 0);
 		gc.setFill(Color.BLACK);
-		gc.strokeRect(0, 20, 0.2*Config.UNIT, 5);
+		gc.strokeRect(0, 20, 0.2 * Config.UNIT, 5);
 	}
 
 	public GraphicsContext getGc() {
