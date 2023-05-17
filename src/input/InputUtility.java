@@ -29,7 +29,9 @@ public class InputUtility {
 	}
 
 	public static int[] getHotelGridPressed() {
-		return hotelGridPressed;
+		int[] grid = (int[]) hotelGridPressed;
+		hotelGridPressed = new int[2];
+		return grid;
 	}
 
 	public static void setHotelGridPressed(int[] hotelGrid, boolean pressed) {
