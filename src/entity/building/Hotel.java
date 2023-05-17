@@ -22,17 +22,7 @@ public class Hotel extends Entity {
 //		this.y = 0;
 		this.z = 0;
 
-		// TEST
-		StandardCustomer customer1 = new StandardCustomer();
-		customer1.setCurrentQueue(0);
-		StandardCustomer customer2 = new StandardCustomer();
-		customer2.setCurrentQueue(1);
-		customer2.setPatienceLeft(15550);
-
-		System.out.println(customer1.getCurrentFloor());
-		System.out.println(customer2.getCurrentFloor());
-		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
-		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
+		testCustomer();
 	}
 
 	@Override
@@ -69,6 +59,20 @@ public class Hotel extends Entity {
 
 	public ArrayList<ArrayList<BaseCustomer>> getFloors() {
 		return floors;
+	}
+
+	private void testCustomer() {
+		// TEST
+		StandardCustomer customer1 = new StandardCustomer();
+		customer1.setCurrentQueue(0);
+		StandardCustomer customer2 = new StandardCustomer();
+		customer2.setCurrentQueue(1);
+		customer2.setPatienceLeft(15550);
+
+		System.out.println(customer1.getCurrentFloor());
+		System.out.println(customer2.getCurrentFloor());
+		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
+		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
 	}
 
 }
