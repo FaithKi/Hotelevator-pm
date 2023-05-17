@@ -18,7 +18,7 @@ import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
-public class FloorZone extends StackPane {
+public class FloorZone extends GridPane {
 	private Hotel hotel;
 	private VBox hotelPane;
 	private ArrayList<FloorPane> floorsPane;
@@ -48,7 +48,7 @@ public class FloorZone extends StackPane {
 
 		hotelPane.getChildren().addAll(floorsPane);
 
-		this.getChildren().add(hotelPane);
+		this.add(hotelPane,0,0);
 	}
 
 	public void initializeFloorZoneStyle() {
@@ -63,9 +63,9 @@ public class FloorZone extends StackPane {
 		this.hotelCanvas = new Canvas(Config.UNIT * (8.5), Config.UNIT * (7 * 1.125));
 		this.gc = hotelCanvas.getGraphicsContext2D();
 
-		this.getChildren().add(hotelCanvas);
-//		gcHotel.setFill(Color.BLACK);
-//		gcHotel.fillRect(0, 0, hotelCanvas.getWidth(), hotelCanvas.getHeight());
+		this.add(hotelCanvas,0,0);
+		gc.setFill(Color.BLACK);
+		gc.strokeRect(1, 1, hotelCanvas.getWidth()-2, hotelCanvas.getHeight()-2);
 	}
 
 	public GraphicsContext getGc() {

@@ -15,6 +15,6 @@ public class Config {
 	public static final int FIRST_FLOOR = 1;
 	public static final int TOP_FLOOR = 7;
 	
-	public static final Color PATIENCE_GAUGE = Color.ALICEBLUE;
+	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
 }
