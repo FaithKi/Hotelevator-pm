@@ -25,7 +25,7 @@ public class Elevator extends Entity {
 		this.id = id;
 		this.isSelected = false;
 		this.passengers = new ArrayList<>();
-		this.currentFloor = 1;
+		this.currentFloor = 0;
 		this.numberOfPassenger = 0;
 		this.x = x;
 		this.y = y;
@@ -46,8 +46,8 @@ public class Elevator extends Entity {
 	}
 
 	public void move() {
-		if (Math.abs(this.y - ((7 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) < 10e-8) {
-			this.y = (7 - this.getCurrentFloor()) * 1.125 * Config.UNIT;
+		if (Math.abs(this.y - ((6 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) < 10e-8) {
+			this.y = (6 - this.getCurrentFloor()) * 1.125 * Config.UNIT;
 			this.moveY = 0;
 		} else {
 			if (this.moveY > 0) {
@@ -72,12 +72,12 @@ public class Elevator extends Entity {
 	public void update() {
 		// TODO Auto-generated method stub
 		move();
-		if(this.y == ((7-this.getCurrentFloor())*1.125*Config.UNIT)) {
-			if(InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 7) {
+		if(this.y == ((6-this.getCurrentFloor())*1.125*Config.UNIT)) {
+			if(InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 6) {
 				moveUp();
 				this.moveY = -1.125*Config.UNIT;
 			}
-			if (InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 1) {
+			if (InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 0) {
 				moveDown();
 				this.moveY = 1.125 * Config.UNIT;
 			}
