@@ -12,6 +12,7 @@ import utils.Config;
 
 public class Elevator extends Entity {
 
+	private boolean isSelected;
 	private final int capacity = 5;
 	private int numberOfPassenger;
 	private ArrayList<BaseCustomer> passengers;
@@ -22,6 +23,7 @@ public class Elevator extends Entity {
 
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
+		this.isSelected = false;
 		this.passengers = new ArrayList<>();
 		this.currentFloor = 1;
 		this.numberOfPassenger = 0;
@@ -92,5 +94,13 @@ public class Elevator extends Entity {
 
 	public void setCurrentFloor(int currentFloor) {
 		this.currentFloor = currentFloor;
+	}
+	
+	public boolean isSelected() {
+		return this.isSelected;
+	}
+	
+	public void setSelected(boolean select) {
+		this.isSelected = select;
 	}
 }

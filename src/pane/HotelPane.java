@@ -1,24 +1,23 @@
 package pane;
 
 import utils.Config;
+
+import java.util.ArrayList;
+
 import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import sharedObject.RenderableHolder;
 
 public class HotelPane extends GridPane {
-	ElevatorZone elevatorZone;
-	FloorZone floorZone;
+	
+	private ArrayList<ElevatorZone> elevs;
+	private ElevatorZone elevatorZone1,elevatorZone2,elevatorZone3;
+	private FloorZone floorZone;
 
 	public HotelPane() {
-		this.elevatorZone = new ElevatorZone();
+		this.elevs = new ArrayList<>();
+		this.elevatorZone1 = new ElevatorZone(0);
+		this.elevatorZone2 = new ElevatorZone(1);
+		this.elevatorZone3 = new ElevatorZone(2);
 		this.floorZone = new FloorZone();
 
 		this.setPadding(new Insets(0, Config.UNIT, 0, Config.UNIT));
@@ -33,17 +32,27 @@ public class HotelPane extends GridPane {
 
 //		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, null, null, null, null)));
 //		this.getChildren().addAll(elevatorZone, floorZone);
-		this.add(elevatorZone, 0, 0);
-		this.add(floorZone, 1, 0);
+		this.elevs.add(elevatorZone1);
+		this.elevs.add(elevatorZone2);
+		this.elevs.add(elevatorZone3);
+		
+		this.add(elevatorZone1, 0, 0);
+		this.add(elevatorZone2, 1, 0);
+		this.add(elevatorZone3, 2, 0);
+		this.add(floorZone, 3, 0);
 
 	}
 
-	public ElevatorZone getElevatorZone() {
-		return elevatorZone;
-	}
+//	public ElevatorZone getElevatorZone() {
+//		return elevatorZone;
+//	}
 
 	public FloorZone getFloorZone() {
 		return floorZone;
+	}
+
+	public ArrayList<ElevatorZone> getElevs() {
+		return elevs;
 	}
 
 }
