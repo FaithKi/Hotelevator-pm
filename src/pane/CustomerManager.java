@@ -67,8 +67,8 @@ public class CustomerManager extends StackPane {
 		this.gc = customerManagerCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(customerManagerCanvas);
-//		gc.setFill(Color.ALICEBLUE);
-//		gc.fillRect(0, 0, (Config.UNIT * 14), (Config.UNIT * (1.125)));
+		gc.setFill(Color.ALICEBLUE);
+		gc.fillRect(0, 0, (Config.UNIT * 14), (Config.UNIT * (1.125)));
 	}
 
 	public GraphicsContext getGc() {

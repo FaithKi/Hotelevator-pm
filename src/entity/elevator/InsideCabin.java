@@ -20,34 +20,13 @@ public class InsideCabin extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 
-		for (int col = 0; col < Config.MAX_CUSTOMER_PER_FLOOR; col++) {
-			if (!(passengers[col] == null))
-				passengers[col].draw(gc);
-		}
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 
-		for (int col = 0; col < Config.MAX_CUSTOMER_PER_FLOOR; col++) {
-			if (!(passengers[col] == null))
-				passengers[col].update();
-		}
-	}
-
-	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return super.getZ();
 	}
 
 	public int getNumberOfPassenger() {
