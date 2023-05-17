@@ -59,14 +59,14 @@ public class CustomerGrid extends Entity {
 		Integer x = grid[0];
 		Integer y = grid[1];
 
-		if (GameLogic.selectedElev.getCurrentFloor() == y) {
+		if (GameLogic.getInstance().selectedElev.getCurrentFloor() == y) {
 			BaseCustomer customer = getCustomer((int) x, (int) y);
 			if (customer == null)
 				return;
 			customersGrid[x][y] = null;
-			GameLogic.selectedElev.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
-			GameLogic.selectedElev.getInsideCabin()
-					.setNumberOfPassenger(GameLogic.selectedElev.getInsideCabin().getNumberOfPassenger() + 1);
+			GameLogic.getInstance().selectedElev.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
+			GameLogic.getInstance().selectedElev.getInsideCabin()
+					.setNumberOfPassenger(GameLogic.getInstance().selectedElev.getInsideCabin().getNumberOfPassenger() + 1);
 		}
 
 //		return customer;

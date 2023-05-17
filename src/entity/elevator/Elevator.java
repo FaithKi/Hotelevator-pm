@@ -1,13 +1,11 @@
 package entity.elevator;
 
-import java.util.ArrayList;
 
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
-import pane.CustomerManager;
 import sharedObject.RenderableHolder;
 import utils.Config;
 

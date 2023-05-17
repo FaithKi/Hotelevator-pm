@@ -49,7 +49,7 @@ public class TimeGauge extends Entity {
 			this.y += Config.UNIT * 6 * 1.125 / MAX_TIME;
 			this.height -= Config.UNIT * 6 * 1.125 / MAX_TIME;
 		} else {
-			GameLogic.isGameOver = true;
+			GameLogic.getInstance().setGameOver(true);
 		}
 	}
 
