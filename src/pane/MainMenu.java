@@ -1,6 +1,7 @@
 package pane;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -12,6 +13,7 @@ public class MainMenu extends HBox {
 	
 	private VBox btnWrapper;
 	private Button startBtn, instructionBtn, exitBtn;
+	private static MainMenu instance = new MainMenu();
 	
 	public MainMenu() {
 //		this.getChildren().add(image);
@@ -19,9 +21,20 @@ public class MainMenu extends HBox {
 		this.getChildren().add(btnWrapper);
 	}
 	
+	public static MainMenu getInstance() {
+		return instance;
+	}
+	
 	private void initializebtnWrapper() {
 		this.btnWrapper = new VBox(Config.UNIT/2);
 		this.btnWrapper.setAlignment(Pos.CENTER);
+		initializeStart();
+		initializeInstruction();
+		initializeExit();
+		this.btnWrapper.getChildren().addAll(startBtn, instructionBtn, exitBtn);
+	}
+	
+	private void initializeStart() {
 		this.startBtn = new Button("Start!");
 		this.startBtn.setOnAction((e) -> {
 			GameScreen gameScreen = new GameScreen();
@@ -47,9 +60,17 @@ public class MainMenu extends HBox {
 			};
 			animation.start();
 		});
+	}
+	
+	private void initializeInstruction() {
 		this.instructionBtn = new Button("Instruction");
+	}
+	
+	private void initializeExit() {
 		this.exitBtn = new Button("Exit");
-		this.btnWrapper.getChildren().addAll(startBtn, instructionBtn, exitBtn);
+		this.exitBtn.setOnAction((e) -> {
+			Platform.exit();
+		});
 	}
 	
 }
