@@ -50,6 +50,8 @@ public class Hotel extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+
+		System.out.println(InputUtility.getHotelGridPressed()[0]);
 	}
 
 	public BaseCustomer[][] getFloors() {
@@ -67,8 +69,8 @@ public class Hotel extends Entity {
 		System.out.println(customer1.getCurrentFloor());
 		System.out.println(customer2.getCurrentFloor());
 
-		floors[0][customer1.getCurrentFloor() - 1] = customer1;
-		floors[1][customer2.getCurrentFloor() - 1] = customer2;
+		floors[0][customer1.getCurrentFloor()] = customer1;
+		floors[1][customer2.getCurrentFloor()] = customer2;
 
 //		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
 //		floors.get(customer2.getCurrentFloor() - 1).add(customer2);

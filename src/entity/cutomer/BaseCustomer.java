@@ -23,9 +23,9 @@ public abstract class BaseCustomer extends Entity {
 	protected Image image;
 
 	public BaseCustomer() {
-		currentFloor = Randomizer.getRandomInt(1, 7);
+		currentFloor = Randomizer.getRandomInt(0, 6);
 		do {
-			destinationFloor = Randomizer.getRandomInt(1, 7);
+			destinationFloor = Randomizer.getRandomInt(0, 6);
 		} while (destinationFloor == currentFloor);
 		this.patienceLeft = Config.MAX_PATIENCE;
 		this.reward = 0;
