@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
+import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
+import logic.game.GameLogic;
 
 public class Hotel extends Entity {
 
@@ -49,9 +51,18 @@ public class Hotel extends Entity {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
-		System.out.println(InputUtility.getHotelGridPressed()[0]);
+		//update everycustomer loop
+		
+//		// TODO Auto-generated method stub
+//		Integer[] grid = InputUtility.getHotelGridPressed();
+//		int x = grid[0];
+//		int y = grid[1];
+//		BaseCustomer customer = getCustomer(int x, int y);
+//		if(customer == null)
+//			return;
+		
+		
+//		addtoCabin(customer, GameLogic.getInstance().something);
 	}
 
 	public BaseCustomer[][] getFloors() {
@@ -74,6 +85,26 @@ public class Hotel extends Entity {
 
 //		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
 //		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
+	}
+
+	public void transferCustomer(int x, int y) {
+		boolean hasSpace = true; // IMPLEMENT METHOD check if target elevator have enough space
+		boolean isMoving = false; // IMPLEMENT METHOD check if target elevator is moving
+		if (hasSpace && !isMoving) {
+
+		}
+
+	}
+
+	public BaseCustomer getCustomer(int x, int y) {
+		if (floors[x][y] == null)
+			return null;
+		return floors[x][y];
+
+	}
+
+	public void addToCabin(BaseCustomer baseCustomer, Elevator elevator) {
+
 	}
 
 }
