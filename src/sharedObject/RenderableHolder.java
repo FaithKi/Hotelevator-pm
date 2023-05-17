@@ -59,14 +59,14 @@ public class RenderableHolder {
 	}
 
 	public void add(IRenderable entity) {
-		System.out.println("add");
+//		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
-		for (IRenderable x : entities) {
-			if (x instanceof Hotel)
-				System.out.println("hotel");
-
-		}
+//		for (IRenderable x : entities) {
+//			if (x instanceof Hotel)
+//				System.out.println("hotel");
+//
+//		}
 	}
 
 	public void update() {
