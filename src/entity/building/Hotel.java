@@ -27,6 +27,7 @@ public class Hotel extends Entity {
 		customer1.setCurrentQueue(0);
 		StandardCustomer customer2 = new StandardCustomer();
 		customer2.setCurrentQueue(1);
+		customer2.setPatienceLeft(15550);
 
 		System.out.println(customer1.getCurrentFloor());
 		System.out.println(customer2.getCurrentFloor());
