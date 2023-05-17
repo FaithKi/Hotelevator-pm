@@ -39,14 +39,13 @@ public class Main extends Application {
 		stage.setTitle("Elevator TheGame");
 		stage.setResizable(false);
 		stage.show();
-		startTime = System.nanoTime();
 		AnimationTimer animation = new AnimationTimer() {
 
 			@Override
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
 				// timer from GPT
-				long elapsedTime = arg0 - startTime;
+				long elapsedTime = arg0 - GameLogic.startTime;
 				elapsedTimeMilliSeconds = elapsedTime / 1_000_000.0;
 				containerPane.paintComponent();
 				logic.logicUpdate();

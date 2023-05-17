@@ -13,7 +13,8 @@ import utils.Config;
 
 public class GameLogic {
 	private ArrayList<Entity> gameObjectContainer;
-//	private TimeGauge timeGauge;
+	private TimeGauge timeGauge;
+	public static long startTime;
 	private Hotel hotel;
 	private Elevator elevator1;
 	private Elevator elevator2;
@@ -22,15 +23,16 @@ public class GameLogic {
 	private static GameLogic instance = null;
 
 	private GameLogic() {
+		startTime = System.nanoTime();
 		this.gameObjectContainer = new ArrayList<>();
-//		this.timeGauge = new TimeGauge();
+		this.timeGauge = new TimeGauge();
 		this.hotel = new Hotel();
 
 		this.elevator1 = new Elevator(0, 0, 6.75 * Config.UNIT, KeyCode.Q, KeyCode.A);
 		this.elevator2 = new Elevator(1, 0, 6.75 * Config.UNIT, KeyCode.W, KeyCode.S);
 		this.elevator3 = new Elevator(2, 0, 6.75 * Config.UNIT, KeyCode.E, KeyCode.D);
 
-//		addNewObject(timeGauge);
+		addNewObject(timeGauge);
 		addNewObject(hotel);
 		addNewObject(elevator1);
 		addNewObject(elevator2);

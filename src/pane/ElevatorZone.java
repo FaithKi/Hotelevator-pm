@@ -24,9 +24,10 @@ public class ElevatorZone extends Canvas{
 					Elevator elev = (Elevator) entity;
 					if(elev.getId() == this.id) {
 						elev.setSelected(true);
-						System.out.println("select elev" + elev.getId());
+						System.out.println("select elev " + elev.getId());
 					} else {
 						elev.setSelected(false);
+						System.out.println("unselect elev " + elev.getId());
 					}
 				}
 			}

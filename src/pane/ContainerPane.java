@@ -7,6 +7,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
+import sidebar.TimeGauge;
 
 public class ContainerPane extends BorderPane {
 	private static SideBarPane sideBarPane;
