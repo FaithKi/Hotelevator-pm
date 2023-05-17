@@ -1,20 +1,14 @@
 package pane;
 
-import java.awt.Stroke;
 import java.util.ArrayList;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Cursor;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+import input.InputUtility;
+
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import utils.Config;
 
@@ -54,7 +48,8 @@ public class CustomerPane extends GridPane {
 
 	public void addEventListener() {
 		this.setOnMouseClicked((e) -> {
-			System.out.println(getPos().toString());
+//			System.out.println(getPos().toString());
+			InputUtility.setHotelGridPressed(getPos(), true);
 		});
 	}
 

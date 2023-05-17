@@ -54,7 +54,7 @@ public class Hotel extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	public ArrayList<ArrayList<BaseCustomer>> getFloors() {
