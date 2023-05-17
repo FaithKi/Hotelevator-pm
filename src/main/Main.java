@@ -31,7 +31,7 @@ public class Main extends Application {
 //		/// ---///
 //		StackPane root = new StackPane();
 //		root.getChildren().addAll(bgImageView, containerPane, pausePane);
-		MainMenu mainMenu = MainMenu.getInstance();
+		MainMenu mainMenu = new MainMenu();
 //		GameScreen gameScreen = new GameScreen();
 		Scene scene = new Scene(mainMenu, Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
 //		gameScreen.getContainerPane().requestFocus();

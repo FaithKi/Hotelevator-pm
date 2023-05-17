@@ -76,7 +76,7 @@ public class ContainerPane extends BorderPane {
 			this.setRight(null);
 			this.setBottom(null);
 			this.setOnMouseClicked((e) -> {
-				this.getParent().getScene().setRoot(MainMenu.getInstance());
+				this.getParent().getScene().setRoot(new MainMenu());
 			});
 		}
 	}
