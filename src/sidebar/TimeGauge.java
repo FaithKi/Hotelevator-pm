@@ -9,7 +9,7 @@ import utils.Config;
 
 public class TimeGauge extends Entity {
 
-	private final int MAX_TIME = 50000;
+	private final int MAX_TIME = Config.MAX_TIME_GAUGE;
 	private int timeLeft;
 	private double height;
 
