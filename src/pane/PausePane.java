@@ -7,6 +7,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import logic.game.GameLogic;
 import utils.Config;
 
 public class PausePane extends VBox{
@@ -34,6 +35,10 @@ public class PausePane extends VBox{
 	public void initializeMainMenuBtn() {
 		this.mainMenuBtn = new Button("Main Menu");
 		this.getMainMenuBtn().setFont(new Font("Arial",30));
+		this.getMainMenuBtn().setOnAction((e) -> {
+			GameLogic.getInstance().setGameOver(true);
+			this.getParent().getScene().setRoot(MainMenu.getInstance());
+		});
 		this.getChildren().add(mainMenuBtn);
 	}
 

@@ -1,6 +1,7 @@
 package pane;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -12,11 +13,16 @@ public class MainMenu extends HBox {
 	
 	private VBox btnWrapper;
 	private Button startBtn, instructionBtn, exitBtn;
+	private static MainMenu instance = new MainMenu();
 	
 	public MainMenu() {
 //		this.getChildren().add(image);
 		initializebtnWrapper();
 		this.getChildren().add(btnWrapper);
+	}
+	
+	public static MainMenu getInstance() {
+		return instance;
 	}
 	
 	private void initializebtnWrapper() {
@@ -49,6 +55,9 @@ public class MainMenu extends HBox {
 		});
 		this.instructionBtn = new Button("Instruction");
 		this.exitBtn = new Button("Exit");
+		this.exitBtn.setOnAction((e) -> {
+			Platform.exit();
+		});
 		this.btnWrapper.getChildren().addAll(startBtn, instructionBtn, exitBtn);
 	}
 	
