@@ -64,8 +64,8 @@ public class FloorZone extends StackPane {
 		this.gc = hotelCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(hotelCanvas);
-//		gcHotel.setFill(Color.BLACK);
-//		gcHotel.fillRect(0, 0, hotelCanvas.getWidth(), hotelCanvas.getHeight());
+		gc.setFill(Color.BLACK);
+		gc.strokeRect(1, 1, hotelCanvas.getWidth()-2, hotelCanvas.getHeight()-2);
 	}
 
 	public GraphicsContext getGc() {

@@ -109,13 +109,34 @@ public abstract class BaseCustomer extends Entity {
 		double currentPatienceWidth = maxWidth * (getPatienceLeft() / getMaxPatience());
 		double yFirstFloor = Config.UNIT * (7 * 1.125);
 		double XPos = i * maxWidth;
-		double YPos = yFirstFloor - ((j - 1) * Config.UNIT); // +5 = space for patienceGauge
+		double YPos = yFirstFloor - ((j) * Config.UNIT); // +5 = space for patienceGauge
+		double oneEightUnit = Config.UNIT * 0.125;
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
-		gc.drawImage(image, XPos, YPos + 5);
-		gc.strokeRect(XPos, XPos + maxWidth, YPos + 5, YPos);
-		gc.fillRect(XPos, XPos + currentPatienceWidth, YPos + 5, YPos);
-
+		gc.fillOval(XPos, YPos, oneEightUnit, oneEightUnit);
+		gc.drawImage(image, XPos, YPos - (Config.UNIT - oneEightUnit)); // image draws from top left -> down right
+		gc.strokeLine(10, yFirstFloor - 20, 50, yFirstFloor);
+		gc.strokeRect(XPos, YPos + oneEightUnit, maxWidth, oneEightUnit); // (startx,starty,width,height)
+		gc.fillRect(XPos, YPos + oneEightUnit, currentPatienceWidth, oneEightUnit);
 	}
+
+	public void draw(GraphicsContext gc, int i, int j) {
+		double maxWidth = Config.UNIT * (0.75);
+		double currentPatienceWidth = maxWidth * (getPatienceLeft() / getMaxPatience());
+		double yFirstFloor = Config.UNIT * (7 * 1.125);
+		double XPos = i * maxWidth;
+		double YPos = yFirstFloor - ((j) * Config.UNIT); // +5 = space for
+		double oneEightUnit = Config.UNIT * 0.125;
+
+		// TODO Auto-generated method stub
+		gc.setFill(Config.PATIENCE_GAUGE);
+		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
+		gc.fillOval(XPos, YPos, 5, 5);
+		gc.drawImage(image, XPos, YPos - (Config.UNIT - 5)); // image draws from top left -> down right
+		gc.strokeLine(10, yFirstFloor - 20, 50, yFirstFloor);
+		gc.strokeRect(XPos, YPos + 5, maxWidth, 5); // (startx,starty,width,height)
+		gc.fillRect(XPos, YPos + 5, currentPatienceWidth, 5);
+	}
+
 }
