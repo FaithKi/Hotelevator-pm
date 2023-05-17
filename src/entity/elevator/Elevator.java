@@ -7,6 +7,7 @@ import entity.cutomer.BaseCustomer;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import pane.CustomerManager;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
@@ -20,6 +21,7 @@ public class Elevator extends Entity {
 	private int id;
 	private KeyCode upKey, downKey;
 	private double moveY;
+//	private CustomerManager customerManager;
 
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
@@ -33,6 +35,7 @@ public class Elevator extends Entity {
 		this.upKey = upKey;
 		this.downKey = downKey;
 		this.moveY = 0;
+//		customerManager = new CustomerManager(passengers);
 	}
 
 	public int moveUp() {
@@ -72,10 +75,10 @@ public class Elevator extends Entity {
 	public void update() {
 		// TODO Auto-generated method stub
 		move();
-		if(this.y == ((6-this.getCurrentFloor())*1.125*Config.UNIT)) {
-			if(InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 6) {
+		if (this.y == ((6 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) {
+			if (InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 6) {
 				moveUp();
-				this.moveY = -1.125*Config.UNIT;
+				this.moveY = -1.125 * Config.UNIT;
 			}
 			if (InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 0) {
 				moveDown();
@@ -95,11 +98,11 @@ public class Elevator extends Entity {
 	public void setCurrentFloor(int currentFloor) {
 		this.currentFloor = currentFloor;
 	}
-	
+
 	public boolean isSelected() {
 		return this.isSelected;
 	}
-	
+
 	public void setSelected(boolean select) {
 		this.isSelected = select;
 	}
