@@ -20,9 +20,11 @@ public class InsideCabin extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-//		for (int i = 0; i < passengers.length-1; i++) {
-//			passengers[i].drawInCabin(gc);
-//		}
+		for (int i = 0; i < passengers.length - 1; i++) {
+			if (!(passengers[i] == null))
+				passengers[i].drawInCabin(gc);
+
+		}
 	}
 
 	@Override

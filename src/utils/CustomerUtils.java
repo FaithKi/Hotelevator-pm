@@ -69,10 +69,12 @@ public class CustomerUtils {
 			if (passengers[queue] == null) {
 				customer.setCurrentQueue(queue);
 				passengers[queue] = customer;
+				insideCabin.setNumberOfPassenger(insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
+				;
 				return true;
 			}
 		}
-		return false; //somethings is wrong
+		return false; // somethings is wrong
 
 	}
 

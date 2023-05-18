@@ -131,14 +131,14 @@ public abstract class BaseCustomer extends Entity {
 	
 	public void drawInCabin(GraphicsContext gc) {
 		int index = getCurrentQueue(); // starts from 0
-		double LeftPadding = Config.UNIT * (3);
-		double widthWithPadding = Config.UNIT * (1);
+		double LeftPadding = Config.UNIT * (1.5);
+		double widthWithPadding = Config.UNIT * (0.75+0.4);
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight;
 		double XPos = index * widthWithPadding;
-		double YPos = yFirstFloor - (floorHeight); // +5 = space for patienceGauge
+		double YPos = yFirstFloor; // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
