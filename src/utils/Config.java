@@ -11,10 +11,10 @@ public class Config {
 
 	public static final int DECREASE_RATE = 20;
 	public static final double MAX_PATIENCE = 30000;
-	public static final double STANDARD_PATIENCE = 60000;
-	public static final double INFLUANCER_PATIENCE = 60000;
-	public static final double FAT_PATIENCE = 60000;
-	public static final double VIP_PATIENCE = 60000;
+	public static final double STANDARD_PATIENCE = 120000;
+	public static final double INFLUANCER_PATIENCE = 120000;
+	public static final double FAT_PATIENCE = 120000;
+	public static final double VIP_PATIENCE = 120000;
 
 	public static final int FIRST_FLOOR = 0;
 	public static final int TOP_FLOOR = 6;
@@ -26,5 +26,7 @@ public class Config {
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
 	public static final Color TEXT_FILL = Color.WHITE;
 	public static final Color TEXT_STROKE = Color.BLACK;
+	
+	public static final double ELEV_SPEED = UNIT * 0.01125;
 
 }
