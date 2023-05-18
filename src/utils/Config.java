@@ -23,5 +23,7 @@ public class Config {
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
+	public static final Color TEXT_FILL = Color.WHITE;
+	public static final Color TEXT_STROKE = Color.BLACK;
 
 }

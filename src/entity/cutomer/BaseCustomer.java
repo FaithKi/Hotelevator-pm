@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import logic.game.PatienceLevel;
+import sharedObject.RenderableHolder;
 import utils.Config;
 import utils.Randomizer;
 
@@ -152,17 +153,15 @@ public abstract class BaseCustomer extends Entity {
 		gc.strokeRect(leftPaddingOfTheClickingPane + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
 		gc.fillRect(leftPaddingOfTheClickingPane + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 
-		Font font = new Font("Arial", 16);
-		gc.setFont(font);
+		gc.setFont(RenderableHolder.pixelStyleFont);
 
 		// Set fill color
-		Color fill = Color.DEEPSKYBLUE;
-		gc.setFill(fill);
+		gc.setFill(Config.TEXT_FILL);
+		gc.setStroke(Config.TEXT_STROKE);
 
-		// Set shadow effect
-
-		// Draw text
 		gc.fillText(Integer.toString(getDestinationFloor() + 1),
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.8));
+		gc.strokeText(Integer.toString(getDestinationFloor() + 1),
 				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.8));
 
 	}
