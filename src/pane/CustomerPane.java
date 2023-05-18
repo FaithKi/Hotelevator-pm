@@ -3,7 +3,7 @@ package pane;
 import java.util.ArrayList;
 
 import input.InputUtility;
-
+import javafx.scene.Cursor;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -50,6 +50,16 @@ public class CustomerPane extends GridPane {
 		this.setOnMouseClicked((e) -> {
 //			System.out.println(getPos().toString());
 			InputUtility.setHotelGridPressed(getPos(), true);
+		});
+
+		// Event handler for mouse enter event
+		this.setOnMouseEntered(event -> {
+			this.setCursor(Cursor.HAND);
+		});
+
+		// Event handler for mouse exit event
+		this.setOnMouseExited(event -> {
+			this.setCursor(Cursor.DEFAULT);
 		});
 	}
 
