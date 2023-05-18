@@ -9,7 +9,7 @@ public class Config {
 	public static final double SCREEN_HEIGHT = 720;
 	public static final double UNIT = (SCREEN_WIDTH / 16); // 16:9
 
-	public static final int DECREASE_RATE = 50;
+	public static final int DECREASE_RATE = 20;
 	public static final double MAX_PATIENCE = 30000;
 	public static final double STANDARD_PATIENCE = 60000;
 	public static final double INFLUANCER_PATIENCE = 60000;
@@ -19,7 +19,7 @@ public class Config {
 	public static final int FIRST_FLOOR = 0;
 	public static final int TOP_FLOOR = 6;
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
-	public static final int MAX_TIME_GAUGE = 3000;
+	public static final int MAX_TIME_GAUGE = 10000;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
