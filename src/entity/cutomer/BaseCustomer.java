@@ -37,13 +37,13 @@ public abstract class BaseCustomer extends Entity {
 	}
 
 	public void performEffect() {
-		if(this.currentFloor == this.destinationFloor) {
+		if (this.currentFloor == this.destinationFloor) {
 			this.successAction();
 			return;
 		}
 		this.failedAction();
 	}
-	
+
 	public abstract void successAction();
 
 	public abstract void failedAction();
@@ -136,11 +136,11 @@ public abstract class BaseCustomer extends Entity {
 		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
 		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 	}
-	
+
 	public void drawInCabin(GraphicsContext gc) {
 		int index = getCurrentQueue(); // starts from 0
 		double LeftPadding = Config.UNIT * (1.5);
-		double widthWithPadding = Config.UNIT * (0.75+0.4);
+		double widthWithPadding = Config.UNIT * (0.75 + 0.4);
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;

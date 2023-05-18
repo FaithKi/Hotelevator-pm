@@ -62,7 +62,6 @@ public class CustomerGrid extends Entity {
 		Integer floor = grid[1];
 		Elevator selectedElevator = GameLogic.getInstance().selectedElev;
 
-
 		if (selectedElevator.getCurrentFloor() == floor) {
 			BaseCustomer customer = getCustomer((int) queue, (int) floor);
 			if (customer == null)
@@ -99,7 +98,8 @@ public class CustomerGrid extends Entity {
 
 	public static boolean addCustomerToCabin(BaseCustomer customer, Elevator elevator) {
 		InsideCabin insideCabin = elevator.getInsideCabin();
-		boolean isFull = (insideCabin.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace()));
+		boolean isFull = (insideCabin
+				.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace()));
 		if (isFull)
 			return false; // Implement new interface Enterable to check if condition is valid?
 		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin);
@@ -134,6 +134,7 @@ public class CustomerGrid extends Entity {
 
 	public BaseCustomer[][] getCustomersGrid() {
 		return customersGrid;
+
 	}
 
 	public void setCustomersGrid(BaseCustomer[][] customersGrid) {
