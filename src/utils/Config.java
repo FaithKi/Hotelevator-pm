@@ -9,6 +9,7 @@ public class Config {
 	public static final double SCREEN_HEIGHT = 720;
 	public static final double UNIT = (SCREEN_WIDTH / 16); // 16:9
 
+	public static final int DECREASE_RATE = 80;
 	public static final double MAX_PATIENCE = 30000;
 	public static final double STANDARD_PATIENCE = 60000;
 	public static final double INFLUANCER_PATIENCE = 60000;

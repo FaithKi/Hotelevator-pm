@@ -119,7 +119,7 @@ public abstract class BaseCustomer extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		this.setPatienceLeft(getPatienceLeft() - 1);
+		this.setPatienceLeft(getPatienceLeft() - Config.DECREASE_RATE);
 	}
 
 	public void draw(GraphicsContext gc) {
