@@ -11,13 +11,14 @@ public class FatCustomer extends BaseCustomer {
 		this.patienceLeft = maxPatience;
 		this.reward = 10;
 		this.punishment = 10;
-		setImage(RenderableHolder.standardCustomerHappy);
+		this.occupiedSpace = 2;
+		setImage(RenderableHolder.fatCustomerHappy);
 	}
 
 	@Override
 	public void successAction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
