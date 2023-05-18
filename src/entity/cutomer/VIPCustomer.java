@@ -42,7 +42,6 @@ public class VIPCustomer extends BaseCustomer {
 					return false;
 			}
 		}
-
 		if (cabinCapacity < currentSpace + spaceNeeded) {
 			return false;
 		}
