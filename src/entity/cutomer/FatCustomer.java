@@ -18,7 +18,7 @@ public class FatCustomer extends BaseCustomer {
 	}
 
 	@Override
-	public boolean canEnterCabin(InsideCabin insideCabin) {
+	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
 		int spaceNeeded = this.getOccupiedSpace();

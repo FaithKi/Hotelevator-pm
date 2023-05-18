@@ -35,9 +35,6 @@ public class CustomerGrid extends Entity {
 			}
 		}
 
-//		gc.drawImage(RenderableHolder.hotelSprite, x, y);
-//		gc.setFill(Color.BLACK);
-//		gc.fillRect(0, 0, 20, 20);
 	}
 
 	@Override
@@ -62,7 +59,9 @@ public class CustomerGrid extends Entity {
 					customer.update();
 					if (customer.getPatienceLeft() == 0) {
 						CustomerUtils.removeCustomerFromFloor(customer, customersGrid, row, column);
-						GameLogic.getInstance().getTimeGauge().setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE*0.05));
+						GameLogic.getInstance().getTimeGauge()
+								.setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft()
+										- (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
 					}
 				}
 
@@ -114,7 +113,7 @@ public class CustomerGrid extends Entity {
 		InsideCabin insideCabin = elevator.getInsideCabin();
 		boolean isFull = (insideCabin
 				.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace()));
-		if (isFull)
+		if (!customer.canEnter(insideCabin))
 			return false; // Implement new interface Enterable to check if condition is valid?
 		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin);
 		return true;
