@@ -14,6 +14,7 @@ public abstract class BaseCustomer extends Entity {
 	private int currentQueue;
 	private int destinationFloor;
 //	protected PatienceLevel patienceLevel;
+	protected int occupiedSpace; // final?
 	protected double maxPatience;
 	protected double patienceLeft;
 	protected int reward;// extra time
@@ -31,6 +32,7 @@ public abstract class BaseCustomer extends Entity {
 		this.reward = 0;
 		this.punishment = 0;
 		this.z = 100; // layer of the guy
+		this.occupiedSpace = 1;
 
 	}
 
@@ -103,17 +105,21 @@ public abstract class BaseCustomer extends Entity {
 		return maxPatience;
 	}
 
+	public int getOccupiedSpace() {
+		return occupiedSpace;
+	}
+
 	public void draw(GraphicsContext gc) {
-		int i = getCurrentQueue(); // starts from 0
-		int j = getCurrentFloor(); // starts at 1
+		int index = getCurrentQueue(); // starts from 0
+		int currentFloor = getCurrentFloor(); // starts at 1
 		double LeftPadding = Config.UNIT * (0.2);
 		double widthWithPadding = Config.UNIT * (0.8);
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight * 7;
-		double XPos = i * widthWithPadding;
-		double YPos = yFirstFloor - ((j) * floorHeight); // +5 = space for patienceGauge
+		double XPos = index * widthWithPadding;
+		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
@@ -122,16 +128,16 @@ public abstract class BaseCustomer extends Entity {
 		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
 		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 	}
-
-	public void drawInsideCabin(GraphicsContext gc) {
-		int i = getCurrentQueue(); // starts from 0
-		double LeftPadding = Config.UNIT * (1.5);
-		double widthWithPadding = Config.UNIT * (0.75+0.4);
+	
+	public void drawInCabin(GraphicsContext gc) {
+		int index = getCurrentQueue(); // starts from 0
+		double LeftPadding = Config.UNIT * (3);
+		double widthWithPadding = Config.UNIT * (1);
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight;
-		double XPos = i * widthWithPadding;
+		double XPos = index * widthWithPadding;
 		double YPos = yFirstFloor - (floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
@@ -141,4 +147,5 @@ public abstract class BaseCustomer extends Entity {
 		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
 		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 	}
+
 }

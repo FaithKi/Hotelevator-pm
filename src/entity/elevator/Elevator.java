@@ -2,12 +2,12 @@ package entity.elevator;
 
 
 import entity.Entity;
-import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import pane.CustomerManager;
+import logic.game.GameLogic;
 import logic.game.GameLogic;
 import pane.CustomerManager;
 import sharedObject.RenderableHolder;
@@ -85,16 +85,13 @@ public class Elevator extends Entity {
 			}
 		}
 
-//		getInsideCabin().getPassengers(); // update All
+//		getInsideCabin().getPassengers(); // update All 
 		if (this.isSelected) {
-			this.getInsideCabin().update();
 			Integer index = InputUtility.getPassengerIndexPressed();
 			if (index == null)
 				return;
-			BaseCustomer customer = this.getInsideCabin().getPassengers()[index];
-			if (customer == null)
-				return;
-			GameLogic.getInstance().getHotel().getCustomersGrid()[0][this.getCurrentFloor()] = customer;
+			BaseCustomer customer = this.getInsideCabin().getPassengers()[index]; //TODO
+			
 
 		}
 	}

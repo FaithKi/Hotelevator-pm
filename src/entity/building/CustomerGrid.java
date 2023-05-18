@@ -6,9 +6,11 @@ import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
 import entity.elevator.Elevator;
+import entity.elevator.InsideCabin;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
+import utils.CustomerUtils;
 
 public class CustomerGrid extends Entity {
 
@@ -56,17 +58,19 @@ public class CustomerGrid extends Entity {
 		Integer[] grid = InputUtility.getHotelGridPressed();
 		if (grid[0] == null)
 			return;
-		Integer x = grid[0];
-		Integer y = grid[1];
+		Integer queue = grid[0];
+		Integer floor = grid[1];
+		Elevator selectedElevator = GameLogic.getInstance().selectedElev;
 
-		if (GameLogic.getInstance().selectedElev.getCurrentFloor() == y) {
-			BaseCustomer customer = getCustomer((int) x, (int) y);
+
+		if (selectedElevator.getCurrentFloor() == floor) {
+			BaseCustomer customer = getCustomer((int) queue, (int) floor);
 			if (customer == null)
 				return;
-			customersGrid[x][y] = null;
-			GameLogic.getInstance().selectedElev.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
-			GameLogic.getInstance().selectedElev.getInsideCabin()
-					.setNumberOfPassenger(GameLogic.getInstance().selectedElev.getInsideCabin().getNumberOfPassenger() + 1);
+			boolean isAdded = addCustomerToCabin(customer, selectedElevator);
+			if (isAdded) {
+				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);
+			}
 		}
 
 //		return customer;
@@ -74,28 +78,6 @@ public class CustomerGrid extends Entity {
 	}
 
 	public BaseCustomer[][] getFloors() {
-		return customersGrid;
-	}
-
-	private void testCustomer() {
-		// TEST
-		StandardCustomer customer1 = new StandardCustomer();
-		customer1.setCurrentQueue(0);
-		StandardCustomer customer2 = new StandardCustomer();
-		customer2.setCurrentQueue(1);
-		customer2.setPatienceLeft(15550);
-
-		System.out.println(customer1.getCurrentFloor());
-		System.out.println(customer2.getCurrentFloor());
-
-		customersGrid[0][customer1.getCurrentFloor()] = customer1;
-		customersGrid[1][customer2.getCurrentFloor()] = customer2;
-
-//		floors.get(customer1.getCurrentFloor() - 1).add(customer1);
-//		floors.get(customer2.getCurrentFloor() - 1).add(customer2);
-	}
-
-	public BaseCustomer[][] getCustomersGrid() {
 		return customersGrid;
 	}
 
@@ -115,10 +97,38 @@ public class CustomerGrid extends Entity {
 
 	}
 
-	public void addToCabin(BaseCustomer baseCustomer, Elevator elevator) {
+	public static boolean addCustomerToCabin(BaseCustomer customer, Elevator elevator) {
+		InsideCabin insideCabin = elevator.getInsideCabin();
+		boolean isFull = insideCabin.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
+		if (isFull)
+			return false; // Implement new interface Enterable to check if condition is valid?
+		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin);
+		return true;
+	}
+
+	private void testCustomer() {
+		// TEST
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
 
 	}
-	
-	
-
 }
