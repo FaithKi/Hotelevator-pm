@@ -4,12 +4,18 @@ import java.util.ArrayList;
 
 import entity.Entity;
 import entity.building.CustomerGrid;
+import entity.cutomer.StandardCustomer;
 import entity.elevator.Elevator;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import main.Main;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class GameLogic {
 	
@@ -22,6 +28,7 @@ public class GameLogic {
 	private Elevator elevator1;
 	private Elevator elevator2;
 	private Elevator elevator3;
+	private Timeline customerGenerator;
 
 	private static GameLogic instance = null;
 
@@ -42,6 +49,12 @@ public class GameLogic {
 		addNewObject(elevator1);
 		addNewObject(elevator2);
 		addNewObject(elevator3);
+		
+		this.customerGenerator = new Timeline(
+                new KeyFrame(Duration.seconds(2.5), event -> generateCustomer())
+        );
+        customerGenerator.setCycleCount(Timeline.INDEFINITE);
+        customerGenerator.play();
 	}
 
 	public static GameLogic getInstance() {
@@ -70,6 +83,10 @@ public class GameLogic {
 				if(elev.isSelected()) instance.selectedElev = elev;
 			}
 		}
+	}
+	
+	private void generateCustomer() {
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
 	}
 
 	public CustomerGrid getHotel() {

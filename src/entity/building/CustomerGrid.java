@@ -20,7 +20,7 @@ public class CustomerGrid extends Entity {
 		customersGrid = new BaseCustomer[10][7];
 		this.z = 0;
 
-		testCustomer();
+//		testCustomer();
 	}
 
 	@Override
@@ -106,29 +106,38 @@ public class CustomerGrid extends Entity {
 		return true;
 	}
 
-	private void testCustomer() {
-		// TEST
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//	private void testCustomer() {
+//		// TEST
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+//
+//	}
 
+	public BaseCustomer[][] getCustomersGrid() {
+		return customersGrid;
 	}
+
+	public void setCustomersGrid(BaseCustomer[][] customersGrid) {
+		this.customersGrid = customersGrid;
+	}
+	
 }

@@ -20,7 +20,7 @@ public class CustomerUtils {
 
 	public static boolean customerQueueIsFull(BaseCustomer[][] customerGrid, int floorIndex) {
 
-		for (int row = customerGrid[0].length - 1; row >= 0; row--) {
+		for (int row = customerGrid.length - 1; row >= 0; row--) {
 			BaseCustomer customer = customerGrid[row][floorIndex];
 			// Perform operations with the element of the desired row
 			if (customer == null)
