@@ -33,15 +33,12 @@ public class FloorZone extends GridPane {
 
 	public void InitializeFloorPane() {
 		VBox floorPanes = new VBox();
-		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
-		
-		ArrayList<FloorPane> floorPane = new ArrayList<>();
+		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (7 * 1.125)));
+
 		for (int i = Config.TOP_FLOOR; i >= 0; i--) {
 			FloorPane currentFloorPane = new FloorPane(i);
-			floorPane.add(currentFloorPane);
+			floorPanes.getChildren().add(currentFloorPane);
 		}
-
-		floorPanes.getChildren().addAll(floorPane);
 
 		this.add(floorPanes, 0, 0);
 	}
