@@ -6,6 +6,7 @@ import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.StandardCustomer;
 import entity.elevator.Elevator;
+import entity.elevator.InsideCabin;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
@@ -57,17 +58,23 @@ public class CustomerGrid extends Entity {
 		Integer[] grid = InputUtility.getHotelGridPressed();
 		if (grid[0] == null)
 			return;
-		Integer x = grid[0];
-		Integer y = grid[1];
+		Integer queue = grid[0];
+		Integer floor = grid[1];
+		Elevator selectedElevator = GameLogic.selectedElev;
 
-		if (GameLogic.selectedElev.getCurrentFloor() == y) {
-			BaseCustomer customer = getCustomer((int) x, (int) y);
+		if (selectedElevator.getCurrentFloor() == floor) {
+			BaseCustomer customer = getCustomer((int) queue, (int) floor);
 			if (customer == null)
 				return;
-			customersGrid[x][y] = null;
-			GameLogic.selectedElev.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
-			GameLogic.selectedElev.getInsideCabin()
-					.setNumberOfPassenger(GameLogic.selectedElev.getInsideCabin().getNumberOfPassenger() + 1);
+			boolean isAdded = addCustomerToCabin(customer, selectedElevator);
+			if (isAdded) {
+				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);
+				
+				selectedElevator.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
+				selectedElevator.getInsideCabin()
+						.setNumberOfPassenger(selectedElevator.getInsideCabin().getNumberOfPassenger() + 1);
+			}
+
 		}
 
 //		return customer;
@@ -76,71 +83,6 @@ public class CustomerGrid extends Entity {
 
 	public BaseCustomer[][] getFloors() {
 		return customersGrid;
-	}
-
-	private void testCustomer() {
-		// TEST
-
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-
 	}
 
 	public void transferCustomer(int x, int y) {
@@ -159,8 +101,38 @@ public class CustomerGrid extends Entity {
 
 	}
 
-	public void addToCabin(BaseCustomer baseCustomer, Elevator elevator) {
-
+	public static boolean addCustomerToCabin(BaseCustomer customer, Elevator elevator) {
+		InsideCabin insideCabin = elevator.getInsideCabin();
+		boolean isFull = insideCabin.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
+		if (isFull)
+			return false; // Implement new interface Enterable to check if condition is valid?
+		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin.getPassengers());
+		return true;
 	}
 
+	private void testCustomer() {
+		// TEST
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
+
+	}
 }

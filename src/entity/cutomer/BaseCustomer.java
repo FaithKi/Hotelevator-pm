@@ -14,6 +14,7 @@ public abstract class BaseCustomer extends Entity {
 	private int currentQueue;
 	private int destinationFloor;
 //	protected PatienceLevel patienceLevel;
+	protected int occupiedSpace; // final?
 	protected double maxPatience;
 	protected double patienceLeft;
 	protected int reward;// extra time
@@ -31,6 +32,7 @@ public abstract class BaseCustomer extends Entity {
 		this.reward = 0;
 		this.punishment = 0;
 		this.z = 100; // layer of the guy
+		this.occupiedSpace = 1;
 
 	}
 
@@ -101,6 +103,10 @@ public abstract class BaseCustomer extends Entity {
 
 	public double getMaxPatience() {
 		return maxPatience;
+	}
+
+	public int getOccupiedSpace() {
+		return occupiedSpace;
 	}
 
 	public void draw(GraphicsContext gc) {
