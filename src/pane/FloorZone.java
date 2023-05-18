@@ -34,9 +34,9 @@ public class FloorZone extends GridPane {
 	public void InitializeFloorPane() {
 		VBox floorPanes = new VBox();
 		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
+		
 		ArrayList<FloorPane> floorPane = new ArrayList<>();
-		BaseCustomer[][] hotelFloors = hotel.getFloors();
-		for (int i = hotelFloors[0].length - 1; i >= 0; i--) {
+		for (int i = Config.TOP_FLOOR; i >= 0; i--) {
 			FloorPane currentFloorPane = new FloorPane(i);
 			floorPane.add(currentFloorPane);
 		}
