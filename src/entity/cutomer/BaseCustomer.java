@@ -20,7 +20,6 @@ public abstract class BaseCustomer extends Entity {
 	protected int reward;// extra time
 	protected int punishment;// reduced time
 	protected int z;
-
 	protected Image image;
 
 	public BaseCustomer() {
@@ -115,6 +114,12 @@ public abstract class BaseCustomer extends Entity {
 
 	public int getOccupiedSpace() {
 		return occupiedSpace;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		this.setPatienceLeft(getPatienceLeft() - Config.DECREASE_RATE);
 	}
 
 	public void draw(GraphicsContext gc) {

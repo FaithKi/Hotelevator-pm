@@ -44,10 +44,4 @@ public class StandardCustomer extends BaseCustomer {
 		return true;
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

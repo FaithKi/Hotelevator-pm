@@ -53,7 +53,19 @@ public class CustomerGrid extends Entity {
 
 	@Override
 	public void update() {
-		// update everycustomer loop
+
+		for (int row = 0; row < customersGrid.length; row++) {
+			for (int column = 0; column < customersGrid[0].length; column++) {
+				if (!(customersGrid[row][column] == null)) {
+					BaseCustomer customer = customersGrid[row][column];
+					customer.update();
+					if (customer.getPatienceLeft() == 0) {
+						CustomerUtils.removeCustomerFromFloor(customer, customersGrid, row, column);
+					}
+				}
+
+			}
+		}
 
 		Integer[] grid = InputUtility.getHotelGridPressed();
 		if (grid[0] == null)
@@ -140,5 +152,5 @@ public class CustomerGrid extends Entity {
 	public void setCustomersGrid(BaseCustomer[][] customersGrid) {
 		this.customersGrid = customersGrid;
 	}
-	
+
 }

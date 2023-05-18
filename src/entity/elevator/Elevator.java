@@ -85,7 +85,7 @@ public class Elevator extends Entity {
 			}
 		}
 
-//		getInsideCabin().getPassengers(); // update All 
+		getInsideCabin().update();
 		if (this.isSelected) {
 			Integer queue = InputUtility.getPassengerIndexPressed();
 			if (queue == null)

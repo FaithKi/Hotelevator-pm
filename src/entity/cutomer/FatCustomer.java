@@ -17,7 +17,7 @@ public class FatCustomer extends BaseCustomer {
 	@Override
 	public void successAction() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -25,11 +25,4 @@ public class FatCustomer extends BaseCustomer {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
 }
