@@ -4,7 +4,9 @@ import entity.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import logic.game.PatienceLevel;
+import sharedObject.RenderableHolder;
 import utils.Config;
 import utils.Randomizer;
 
@@ -123,42 +125,44 @@ public abstract class BaseCustomer extends Entity {
 	}
 
 	public void draw(GraphicsContext gc) {
-		int index = getCurrentQueue(); // starts from 0
-		int currentFloor = getCurrentFloor(); // starts at 1
-		double LeftPadding = Config.UNIT * (0.2);
-		double widthWithPadding = Config.UNIT * (0.8);
+		int currentQueue = getCurrentQueue();
+		int currentFloor = getCurrentFloor();
+		drawCleaner(gc, currentQueue, currentFloor, Config.UNIT * (0.2), Config.UNIT * (0.8), 7);
+	}
+
+	public void drawInCabin(GraphicsContext gc) {
+
+		int currentQueue = getCurrentQueue();
+		drawCleaner(gc, currentQueue, 0, Config.UNIT * (1.5), Config.UNIT * (0.75 + 0.4), 1);
+	}
+
+	private void drawCleaner(GraphicsContext gc, int currentQueue, int currentFloor,
+			double leftPaddingOfTheClickingPane, double customerWidthIncludePaneSpacing, int totalFloor) {
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
-		double yFirstFloor = floorHeight * 7;
-		double XPos = index * widthWithPadding;
+		double yFirstFloor = floorHeight * totalFloor;
+		double XPos = currentQueue * customerWidthIncludePaneSpacing;
 		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
-		gc.drawImage(image, LeftPadding + XPos, YPos - (floorHeight)); // image draws from top left -> down right
-		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
-		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
-	}
+		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight)); // image draws from top left ->
+																						// // down right
+		gc.strokeRect(leftPaddingOfTheClickingPane + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
+		gc.fillRect(leftPaddingOfTheClickingPane + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 
-	public void drawInCabin(GraphicsContext gc) {
-		int index = getCurrentQueue(); // starts from 0
-		double LeftPadding = Config.UNIT * (1.5);
-		double widthWithPadding = Config.UNIT * (0.75 + 0.4);
-		double allowedWidth = Config.UNIT * (0.75);
-		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
-		double floorHeight = Config.UNIT * 1.125;
-		double yFirstFloor = floorHeight;
-		double XPos = index * widthWithPadding;
-		double YPos = yFirstFloor; // +5 = space for patienceGauge
-		double oneEightUnit = (Config.UNIT * 1 / 8);
-		// TODO Auto-generated method stub
-		gc.setFill(Config.PATIENCE_GAUGE);
-		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
-		gc.drawImage(image, LeftPadding + XPos, YPos - (floorHeight)); // image draws from top left -> down right
-		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
-		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
-	}
+		gc.setFont(RenderableHolder.pixelStyleFont);
 
+		// Set fill color
+		gc.setFill(Config.TEXT_FILL);
+		gc.setStroke(Config.TEXT_STROKE);
+
+		gc.fillText(Integer.toString(getDestinationFloor() + 1),
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.8));
+		gc.strokeText(Integer.toString(getDestinationFloor() + 1),
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.8));
+
+	}
 }

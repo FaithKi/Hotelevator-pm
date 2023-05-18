@@ -9,6 +9,7 @@ import java.util.List;
 import entity.building.CustomerGrid;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.text.Font;
 
 public class RenderableHolder {
 	private static RenderableHolder instance = new RenderableHolder();
@@ -23,6 +24,7 @@ public class RenderableHolder {
 	public static Image hotelFloorSprite;
 	public static Image standardCustomerHappy, fatCustomerHappy;
 	public static Image bgSprite;
+	public static Font pixelStyleFont;
 
 	static {
 		loadResource();
@@ -62,6 +64,7 @@ public class RenderableHolder {
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 		bgSprite = new Image(ClassLoader.getSystemResource("background.png").toString(), (Config.UNIT * 0.75),
 				(Config.UNIT), true, false);
+		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
 	public void add(IRenderable entity) {
