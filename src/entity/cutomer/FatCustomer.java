@@ -1,7 +1,9 @@
 package entity.cutomer;
 
+import entity.elevator.InsideCabin;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class FatCustomer extends BaseCustomer {
 
@@ -13,6 +15,20 @@ public class FatCustomer extends BaseCustomer {
 		this.punishment = 10;
 		this.occupiedSpace = 2;
 		setImage(RenderableHolder.fatCustomerHappy);
+	}
+
+	@Override
+	public boolean canEnterCabin(InsideCabin insideCabin) {
+		int cabinCapacity = insideCabin.getCapacity();
+		int currentSpace = insideCabin.getNumberOfPassenger();
+		int spaceNeeded = this.getOccupiedSpace();
+		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
+			return false;
+		if (cabinCapacity < currentSpace + spaceNeeded) {
+			return false;
+		}
+		return true;
+
 	}
 
 	@Override
