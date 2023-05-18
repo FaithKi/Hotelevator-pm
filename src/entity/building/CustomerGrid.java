@@ -68,7 +68,7 @@ public class CustomerGrid extends Entity {
 				return;
 			boolean isAdded = addCustomerToCabin(customer, selectedElevator);
 			if (isAdded) {
-				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);;
+				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);
 			}
 
 		}
