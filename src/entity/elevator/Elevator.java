@@ -1,6 +1,5 @@
 package entity.elevator;
 
-
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import input.InputUtility;
@@ -12,6 +11,7 @@ import logic.game.GameLogic;
 import pane.CustomerManager;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class Elevator extends Entity {
 
@@ -87,11 +87,18 @@ public class Elevator extends Entity {
 
 //		getInsideCabin().getPassengers(); // update All 
 		if (this.isSelected) {
-			Integer index = InputUtility.getPassengerIndexPressed();
-			if (index == null)
+			Integer queue = InputUtility.getPassengerIndexPressed();
+			if (queue == null) {
+				System.out.println("queue is null");
 				return;
-			BaseCustomer customer = this.getInsideCabin().getPassengers()[index]; //TODO
-			
+			}
+			// perform effect then remove
+			BaseCustomer customer = this.getInsideCabin().getPassengers()[queue];
+			if (customer == null)
+				return;
+			CustomerUtils.removeCustomerFromCabin(customer, getInsideCabin(), queue);
+			// remove passenger from cabin
+//			BaseCustomer customer = this.getInsideCabin().getPassengers()[index]; // TODO
 
 		}
 	}

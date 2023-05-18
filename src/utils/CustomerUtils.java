@@ -78,4 +78,21 @@ public class CustomerUtils {
 
 	}
 
+	public static void removeCustomerFromCabin(BaseCustomer customer, InsideCabin insideCabin, int queueIndex) {
+		BaseCustomer[] passengers = insideCabin.getPassengers();
+		passengers[queueIndex] = null;
+		// Perform the rearrangement
+		int nullIndex = 0;
+		for (int queue = 0; queue < passengers.length; queue++) {
+			if (passengers[queue] != null) {
+				BaseCustomer tempCustomer = passengers[queue];
+				tempCustomer.setCurrentQueue(nullIndex);
+				passengers[queue] = passengers[nullIndex];
+				passengers[nullIndex] = tempCustomer;
+				nullIndex++;
+			}
+		}
+		insideCabin.setNumberOfPassenger((insideCabin.getNumberOfPassenger() - customer.getOccupiedSpace()));
+	}
+
 }
