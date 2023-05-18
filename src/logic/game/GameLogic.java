@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.Entity;
 import entity.building.CustomerGrid;
+import entity.cutomer.FatCustomer;
 import entity.cutomer.StandardCustomer;
 import entity.elevator.Elevator;
 import javafx.animation.KeyFrame;
@@ -16,6 +17,7 @@ import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
+import utils.Randomizer;
 
 public class GameLogic {
 	
@@ -87,7 +89,20 @@ public class GameLogic {
 	}
 	
 	private void generateCustomer() {
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
+		int cType = Randomizer.getRandomInt(0, 2);
+		switch(cType) {
+		case 0:
+			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
+			break;
+		case 1:
+			CustomerUtils.addCustomerToFloorFromGenerator(new FatCustomer(), this.hotel.getCustomersGrid());
+			break;
+		case 2:
+			CustomerUtils.addCustomerToFloorFromGenerator(new VIPCustomer(), this.hotel.getCustomersGrid());
+			break;
+		default :
+			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
+		}
 	}
 
 	public CustomerGrid getHotel() {
