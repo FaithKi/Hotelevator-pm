@@ -88,16 +88,19 @@ public class Elevator extends Entity {
 //		getInsideCabin().getPassengers(); // update All 
 		if (this.isSelected) {
 			Integer queue = InputUtility.getPassengerIndexPressed();
-			if (queue == null) {
-				System.out.println("queue is null");
+			if (queue == null)
 				return;
-			}
-			// perform effect then remove
+
 			BaseCustomer customer = this.getInsideCabin().getPassengers()[queue];
 			if (customer == null)
 				return;
-			CustomerUtils.removeCustomerFromCabin(customer, getInsideCabin(), queue);
+			customer.setCurrentFloor(currentFloor);
+			// perform effect then remove TODO
+			customer.performEffect();
 			// remove passenger from cabin
+
+			CustomerUtils.removeCustomerFromCabin(customer, getInsideCabin(), queue);
+
 //			BaseCustomer customer = this.getInsideCabin().getPassengers()[index]; // TODO
 
 		}

@@ -36,6 +36,14 @@ public abstract class BaseCustomer extends Entity {
 
 	}
 
+	public void performEffect() {
+		if(this.currentFloor == this.destinationFloor) {
+			this.successAction();
+			return;
+		}
+		this.failedAction();
+	}
+	
 	public abstract void successAction();
 
 	public abstract void failedAction();
