@@ -1,6 +1,7 @@
 package entity.cutomer;
 
 import entity.Entity;
+import entity.elevator.InsideCabin;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -49,6 +50,8 @@ public abstract class BaseCustomer extends Entity {
 
 	public abstract void failedAction();
 
+	public abstract boolean canEnter(InsideCabin insideCabin);
+
 	public int getCurrentFloor() {
 		return currentFloor;
 	}
@@ -62,10 +65,6 @@ public abstract class BaseCustomer extends Entity {
 	public int getDestinationFloor() {
 		return destinationFloor;
 	}
-
-//	public PatienceLevel getPatienceLevel() {
-//		return patienceLevel;
-//	}
 
 	public double getPatienceLeft() {
 		return patienceLeft;
@@ -131,13 +130,13 @@ public abstract class BaseCustomer extends Entity {
 	}
 
 	public void drawInCabin(GraphicsContext gc) {
-
 		int currentQueue = getCurrentQueue();
 		drawCleaner(gc, currentQueue, 0, Config.UNIT * (1.5), Config.UNIT * (0.75 + 0.4), 1);
 	}
 
 	private void drawCleaner(GraphicsContext gc, int currentQueue, int currentFloor,
 			double leftPaddingOfTheClickingPane, double customerWidthIncludePaneSpacing, int totalFloor) {
+
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
@@ -145,7 +144,6 @@ public abstract class BaseCustomer extends Entity {
 		double XPos = currentQueue * customerWidthIncludePaneSpacing;
 		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
-		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
 		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight)); // image draws from top left ->

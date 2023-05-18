@@ -5,30 +5,16 @@ import sharedObject.RenderableHolder;
 import utils.Config;
 import utils.CustomerUtils;
 
-public class FatCustomer extends BaseCustomer {
+public class VIPCustomer extends BaseCustomer {
 
-	public FatCustomer() {
+	public VIPCustomer() {
 		super();
-		this.maxPatience = setStartingPatience(Config.INFLUANCER_PATIENCE);
+		this.maxPatience = setStartingPatience(Config.VIP_PATIENCE);
 		this.patienceLeft = maxPatience;
 		this.reward = 10;
 		this.punishment = 10;
-		this.occupiedSpace = 2;
-		setImage(RenderableHolder.fatCustomerHappy);
-	}
-
-	@Override
-	public boolean canEnter(InsideCabin insideCabin) {
-		int cabinCapacity = insideCabin.getCapacity();
-		int currentSpace = insideCabin.getNumberOfPassenger();
-		int spaceNeeded = this.getOccupiedSpace();
-		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
-			return false;
-		if (cabinCapacity < currentSpace + spaceNeeded) {
-			return false;
-		}
-		return true;
-
+		this.occupiedSpace = 1;
+		setImage(RenderableHolder.vipCustomerHappy);
 	}
 
 	@Override
@@ -42,4 +28,18 @@ public class FatCustomer extends BaseCustomer {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public boolean canEnter(InsideCabin insideCabin) {
+		int cabinCapacity = insideCabin.getCapacity();
+		int currentSpace = insideCabin.getNumberOfPassenger();
+		int spaceNeeded = this.getOccupiedSpace();
+		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
+			return false;
+		if (cabinCapacity < currentSpace + spaceNeeded) {
+			return false;
+		}
+		return true;
+	}
+
 }

@@ -1,10 +1,12 @@
 package entity.cutomer;
 
+import entity.elevator.InsideCabin;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class StandardCustomer extends BaseCustomer {
 
@@ -36,6 +38,19 @@ public class StandardCustomer extends BaseCustomer {
 	public void failedAction() {
 		// TODO Auto-generated method stub
 		System.out.println("failedAction for StandartCustomer");
+	}
+
+	@Override
+	public boolean canEnter(InsideCabin insideCabin) {
+		int cabinCapacity = insideCabin.getCapacity();
+		int currentSpace = insideCabin.getNumberOfPassenger();
+		int spaceNeeded = this.getOccupiedSpace();
+		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
+			return false;
+		if (cabinCapacity < currentSpace + spaceNeeded) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override

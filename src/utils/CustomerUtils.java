@@ -2,6 +2,7 @@ package utils;
 
 import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
+import entity.cutomer.VIPCustomer;
 import entity.elevator.Elevator;
 import entity.elevator.InsideCabin;
 
@@ -95,4 +96,12 @@ public class CustomerUtils {
 		insideCabin.setNumberOfPassenger((insideCabin.getNumberOfPassenger() - customer.getOccupiedSpace()));
 	}
 
+	public static boolean containVIP(BaseCustomer[] passengers) {
+		for (int i = 0; i < passengers.length; i++) {
+			if (passengers[i] instanceof VIPCustomer) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
