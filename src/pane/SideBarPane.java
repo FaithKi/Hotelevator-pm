@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import utils.Config;
 
 public class SideBarPane extends Canvas {
+	
 	private GraphicsContext gc;
 	
 	public SideBarPane() {
