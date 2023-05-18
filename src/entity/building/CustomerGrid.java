@@ -99,7 +99,7 @@ public class CustomerGrid extends Entity {
 
 	public static boolean addCustomerToCabin(BaseCustomer customer, Elevator elevator) {
 		InsideCabin insideCabin = elevator.getInsideCabin();
-		boolean isFull = insideCabin.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
+		boolean isFull = (insideCabin.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace()));
 		if (isFull)
 			return false; // Implement new interface Enterable to check if condition is valid?
 		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin);

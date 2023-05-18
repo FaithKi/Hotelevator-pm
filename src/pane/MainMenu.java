@@ -10,23 +10,23 @@ import logic.game.GameLogic;
 import utils.Config;
 
 public class MainMenu extends HBox {
-	
+
 	private VBox btnWrapper;
 	private Button startBtn, instructionBtn, exitBtn;
 	private static MainMenu instance = new MainMenu();
-	
+
 	public MainMenu() {
 //		this.getChildren().add(image);
 		initializebtnWrapper();
 		this.getChildren().add(btnWrapper);
 	}
-	
+
 	public static MainMenu getInstance() {
 		return instance;
 	}
-	
+
 	private void initializebtnWrapper() {
-		this.btnWrapper = new VBox(Config.UNIT/2);
+		this.btnWrapper = new VBox(Config.UNIT / 2);
 		this.btnWrapper.setAlignment(Pos.CENTER);
 		this.startBtn = new Button("Start!");
 		this.startBtn.setOnAction((e) -> {
@@ -42,7 +42,7 @@ public class MainMenu extends HBox {
 					// timer from GPT
 					gameScreen.getContainerPane().paintComponent();
 					logic.logicUpdate();
-					if(logic.isGameOver()) {
+					if (logic.isGameOver()) {
 						gameScreen.getContainerPane().paintComponent();
 						logic.logicUpdate();
 						logic.resetInstance();
@@ -60,5 +60,5 @@ public class MainMenu extends HBox {
 		});
 		this.btnWrapper.getChildren().addAll(startBtn, instructionBtn, exitBtn);
 	}
-	
+
 }
