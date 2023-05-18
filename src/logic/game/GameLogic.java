@@ -6,6 +6,7 @@ import entity.Entity;
 import entity.building.CustomerGrid;
 import entity.cutomer.FatCustomer;
 import entity.cutomer.StandardCustomer;
+import entity.cutomer.VIPCustomer;
 import entity.elevator.Elevator;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
