@@ -1,11 +1,13 @@
 package entity.elevator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
 import javafx.scene.canvas.GraphicsContext;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class InsideCabin extends Entity {
 	private final int capacity = 5;
@@ -29,7 +31,15 @@ public class InsideCabin extends Entity {
 
 	@Override
 	public void update() {
-		// TODO update all customer state
+		for (int i = 0; i < passengers.length; i++) {
+			if (!(passengers[i] == null)) {
+				BaseCustomer customer = passengers[i];
+				customer.update();
+				if (customer.getPatienceLeft() == 0)
+					CustomerUtils.removeCustomerFromCabin(customer, this, i);
+			}
+
+		}
 
 	}
 
