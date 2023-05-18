@@ -10,10 +10,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -62,8 +58,6 @@ public class CustomerManager extends StackPane {
 
 	public void initializeCanvas() {
 		this.customerManagerCanvas = new Canvas(Config.UNIT * (14), Config.UNIT * (1.125));
-		this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(5)),
-				null, null));
 		this.gc = customerManagerCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(customerManagerCanvas);
