@@ -10,6 +10,7 @@ import logic.game.GameLogic;
 import logic.game.GameLogic;
 import pane.CustomerManager;
 import sharedObject.RenderableHolder;
+import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
 
@@ -53,11 +54,11 @@ public class Elevator extends Entity {
 			this.moveY = 0;
 		} else {
 			if (this.moveY > 0) {
-				this.moveY -= 0.0225 * Config.UNIT;
+//				this.moveY -= 0.0225 * Config.UNIT;
 				this.y += 0.0225 * Config.UNIT;
 			}
 			if (this.moveY < 0) {
-				this.moveY += 0.0225 * Config.UNIT;
+//				this.moveY += 0.0225 * Config.UNIT;
 				this.y -= 0.0225 * Config.UNIT;
 			}
 		}
@@ -96,10 +97,12 @@ public class Elevator extends Entity {
 				return;
 			customer.setCurrentFloor(currentFloor);
 			// perform effect then remove TODO
+			TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
 			if(customer.getCurrentFloor() == customer.getDestinationFloor()) {
-				GameLogic.getInstance().getTimeGauge().setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE*0.025));
+				timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE*0.025));
+				timeGauge.setScore(timeGauge.getScore() + 100);
 			} else {
-				GameLogic.getInstance().getTimeGauge().setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE*0.05));
+				timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE*0.05));
 			}
 			
 			customer.performEffect();
