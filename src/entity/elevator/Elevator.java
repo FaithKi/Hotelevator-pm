@@ -83,12 +83,13 @@ public class Elevator extends Entity {
 			}
 		}
 
-//		getInsideCabin().getPassengers(); // update All
+//		getInsideCabin().getPassengers(); // update All 
 		if (this.isSelected) {
 			Integer index = InputUtility.getPassengerIndexPressed();
 			if (index == null)
 				return;
-			BaseCustomer customer = this.getInsideCabin().getPassengers()[index];
+			BaseCustomer customer = this.getInsideCabin().getPassengers()[index]; //TODO
+			
 
 		}
 	}

@@ -128,5 +128,24 @@ public abstract class BaseCustomer extends Entity {
 		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
 		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
 	}
+	
+	public void drawInCabin(GraphicsContext gc) {
+		int index = getCurrentQueue(); // starts from 0
+		double LeftPadding = Config.UNIT * (3);
+		double widthWithPadding = Config.UNIT * (1);
+		double allowedWidth = Config.UNIT * (0.75);
+		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
+		double floorHeight = Config.UNIT * 1.125;
+		double yFirstFloor = floorHeight;
+		double XPos = index * widthWithPadding;
+		double YPos = yFirstFloor - (floorHeight); // +5 = space for patienceGauge
+		double oneEightUnit = (Config.UNIT * 1 / 8);
+		// TODO Auto-generated method stub
+		gc.setFill(Config.PATIENCE_GAUGE);
+		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
+		gc.drawImage(image, LeftPadding + XPos, YPos - (floorHeight)); // image draws from top left -> down right
+		gc.strokeRect(LeftPadding + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
+		gc.fillRect(LeftPadding + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
+	}
 
 }
