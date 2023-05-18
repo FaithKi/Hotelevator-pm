@@ -83,6 +83,7 @@ public class GameLogic {
 				if(elev.isSelected()) instance.selectedElev = elev;
 			}
 		}
+//		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.getHotel().getCustomersGrid());
 	}
 	
 	private void generateCustomer() {

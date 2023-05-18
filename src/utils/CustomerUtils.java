@@ -10,11 +10,11 @@ public class CustomerUtils {
 	public static boolean addCustomerToFloorFromGenerator(BaseCustomer customer, BaseCustomer[][] customerGrid) { // BaseCustomer[queue][floor]
 		int floorIndex = customer.getCurrentFloor();
 		if (customerQueueIsFull(customerGrid, floorIndex)) {
-			System.out.println("customer NOT addded");
+//			System.out.println("customer NOT addded");
 			return false;
 		}
 		addCustomerToFirstEmptyQueueOfFloor(customer, customerGrid, floorIndex);
-		System.out.println("customer addded");
+//		System.out.println("customer addded");
 		return true;
 	}
 
