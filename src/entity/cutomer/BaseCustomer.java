@@ -50,7 +50,7 @@ public abstract class BaseCustomer extends Entity {
 
 	public abstract void failedAction();
 
-	public abstract boolean canEnterCabin(InsideCabin insideCabin);
+	public abstract boolean canEnter(InsideCabin insideCabin);
 
 	public int getCurrentFloor() {
 		return currentFloor;
