@@ -27,7 +27,7 @@ public class Elevator extends Entity {
 		this.id = id;
 		this.isSelected = false;
 		this.currentFloor = 0;
-		this.insideCabin = new InsideCabin();
+		this.insideCabin = new InsideCabin(this);
 		this.x = x;
 		this.y = y;
 		this.z = 100;
