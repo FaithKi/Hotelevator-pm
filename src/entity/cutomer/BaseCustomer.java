@@ -104,16 +104,16 @@ public abstract class BaseCustomer extends Entity {
 	}
 
 	public void draw(GraphicsContext gc) {
-		int i = getCurrentQueue(); // starts from 0
-		int j = getCurrentFloor(); // starts at 1
+		int index = getCurrentQueue(); // starts from 0
+		int currentFloor = getCurrentFloor(); // starts at 1
 		double LeftPadding = Config.UNIT * (0.2);
 		double widthWithPadding = Config.UNIT * (0.8);
 		double allowedWidth = Config.UNIT * (0.75);
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight * 7;
-		double XPos = i * widthWithPadding;
-		double YPos = yFirstFloor - ((j) * floorHeight); // +5 = space for patienceGauge
+		double XPos = index * widthWithPadding;
+		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
 		// TODO Auto-generated method stub
 		gc.setFill(Config.PATIENCE_GAUGE);
