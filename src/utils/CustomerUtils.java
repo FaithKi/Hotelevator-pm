@@ -3,6 +3,7 @@ package utils;
 import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
 import entity.elevator.Elevator;
+import entity.elevator.InsideCabin;
 
 public class CustomerUtils {
 
@@ -29,16 +30,17 @@ public class CustomerUtils {
 
 	}
 
-	public static void addCustomerToFirstEmptyQueueOfFloor(BaseCustomer customer, BaseCustomer[][] customerGrid,
+	public static boolean addCustomerToFirstEmptyQueueOfFloor(BaseCustomer customer, BaseCustomer[][] customerGrid,
 			int floorIndex) {
 
 		for (int queue = 0; queue < customerGrid.length; queue++) {
 			if (customerGrid[queue][floorIndex] == null) {
 				customer.setCurrentQueue(queue);
 				customerGrid[queue][floorIndex] = customer;
-				break;
+				return true; // added
 			}
 		}
+		return false; // floor is full
 
 	}
 
@@ -60,15 +62,17 @@ public class CustomerUtils {
 
 	}
 
-	public static void addPassengerToFirstToFirstEmptyQueueOfCabin(BaseCustomer customer, BaseCustomer[] passengers) {
+	public static boolean addPassengerToFirstToFirstEmptyQueueOfCabin(BaseCustomer customer, InsideCabin insideCabin) {
+		BaseCustomer[] passengers = insideCabin.getPassengers();
 
 		for (int queue = 0; queue < passengers.length; queue++) {
 			if (passengers[queue] == null) {
 				customer.setCurrentQueue(queue);
 				passengers[queue] = customer;
-				break;
+				return true;
 			}
 		}
+		return false; //somethings is wrong
 
 	}
 

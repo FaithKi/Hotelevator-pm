@@ -68,11 +68,7 @@ public class CustomerGrid extends Entity {
 				return;
 			boolean isAdded = addCustomerToCabin(customer, selectedElevator);
 			if (isAdded) {
-				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);
-				
-				selectedElevator.getInsideCabin().getPassengers()[0] = customer; // FIXTHIS
-				selectedElevator.getInsideCabin()
-						.setNumberOfPassenger(selectedElevator.getInsideCabin().getNumberOfPassenger() + 1);
+				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);;
 			}
 
 		}
@@ -106,7 +102,7 @@ public class CustomerGrid extends Entity {
 		boolean isFull = insideCabin.getCapacity() < (insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
 		if (isFull)
 			return false; // Implement new interface Enterable to check if condition is valid?
-		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin.getPassengers());
+		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin);
 		return true;
 	}
 
