@@ -11,6 +11,9 @@ public class Config {
 
 	public static final double MAX_PATIENCE = 300000;
 	public static final double STANDARD_PATIENCE = 60000;
+	public static final double INFLUANCER_PATIENCE = 60000;
+	public static final double FAT_PATIENCE = 60000;
+	public static final double VIP_PATIENCE = 60000;
 
 	public static final int FIRST_FLOOR = 0;
 	public static final int TOP_FLOOR = 6;
