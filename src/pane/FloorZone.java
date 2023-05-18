@@ -21,7 +21,6 @@ import utils.Config;
 
 public class FloorZone extends GridPane {
 	private CustomerGrid hotel;
-	private VBox hotelPane;
 	private Canvas hotelCanvas;
 	private GraphicsContext gc;
 
@@ -33,20 +32,18 @@ public class FloorZone extends GridPane {
 	}
 
 	public void InitializeFloorPane() {
-
-		this.hotelPane = new VBox();
-		hotelPane.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
-
-		ArrayList<FloorPane> floorsPane = new ArrayList<>();
+		VBox floorPanes = new VBox();
+		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (1.125 * 7)));
+		ArrayList<FloorPane> floorPane = new ArrayList<>();
 		BaseCustomer[][] hotelFloors = hotel.getFloors();
 		for (int i = hotelFloors[0].length - 1; i >= 0; i--) {
 			FloorPane currentFloorPane = new FloorPane(i);
-			floorsPane.add(currentFloorPane);
+			floorPane.add(currentFloorPane);
 		}
 
-		hotelPane.getChildren().addAll(floorsPane);
+		floorPanes.getChildren().addAll(floorPane);
 
-		this.add(hotelPane, 0, 0);
+		this.add(floorPanes, 0, 0);
 	}
 
 	public void initializeFloorZoneStyle() {

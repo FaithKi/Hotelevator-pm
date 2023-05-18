@@ -9,17 +9,16 @@ import utils.Config;
 
 public class FloorPane extends HBox {
 	private int floorNumber;
-	private ArrayList<CustomerPane> customerPanes;
 
 	public FloorPane(int floorNumber) {
 		// TODO Auto-generated constructor stub
-		initializeFloorPaneStyle();
 		this.floorNumber = floorNumber;
-		this.customerPanes = new ArrayList<CustomerPane>();
-		initializeCustomerPane();
+		initializeFloorPaneStyle();
+		initializeCustomerGridGetterPane();
 	}
 
-	public void initializeCustomerPane() {
+	public void initializeCustomerGridGetterPane() {
+		ArrayList<CustomerPane> customerPanes = new ArrayList<>();
 		for (int i = 0; i < Config.MAX_CUSTOMER_PER_FLOOR; i++) {
 			CustomerPane customerPane = new CustomerPane(i, floorNumber);
 			customerPanes.add(customerPane);
