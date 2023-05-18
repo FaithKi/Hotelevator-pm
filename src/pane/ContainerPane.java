@@ -13,9 +13,9 @@ import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 
 public class ContainerPane extends BorderPane {
-	private static SideBarPane sideBarPane;
-	private static HotelPane hotelPane;
-	private static BottomBarPane bottomBarPane;
+	private SideBarPane sideBarPane;
+	private HotelPane hotelPane;
+	private BottomBarPane bottomBarPane;
 
 	public ContainerPane() {
 		// TODO: FILL CODE
@@ -38,35 +38,35 @@ public class ContainerPane extends BorderPane {
 		});
 	}
 
-	public static SideBarPane getSideBarPane() {
+	public SideBarPane getSideBarPane() {
 		return sideBarPane;
 	}
 
-	public static HotelPane getHotelPane() {
+	public HotelPane getHotelPane() {
 		return hotelPane;
 	}
 
-	public static BottomBarPane getBottomBarPane() {
+	public BottomBarPane getBottomBarPane() {
 		return bottomBarPane;
 	}
 
 	public void paintComponent() {
-		if (!GameLogic.isGameOver) {
+		if (!GameLogic.getInstance().isGameOver()) {
 			for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
 				if (entity instanceof Elevator) {
 					Elevator elev = (Elevator) entity;
 					if (elev.isSelected()) {
-						elev.getInsideCabin().draw(ContainerPane.getBottomBarPane().getCustomerManager().getGc());
+						elev.getInsideCabin().draw(this.getBottomBarPane().getCustomerManager().getGc());
 					}
-					elev.draw(ContainerPane.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
+					elev.draw(this.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
 				}
 				if (entity instanceof CustomerGrid) {
 					CustomerGrid hotel = (CustomerGrid) entity;
-					hotel.draw(ContainerPane.getHotelPane().getFloorZone().getGc());
+					hotel.draw(this.getHotelPane().getFloorZone().getGc());
 				}
 				if (entity instanceof TimeGauge) {
 					TimeGauge timeGauge = (TimeGauge) entity;
-					timeGauge.draw(ContainerPane.getSideBarPane().getGc());
+					timeGauge.draw(this.getSideBarPane().getGc());
 				}
 			}
 		} else {
@@ -75,6 +75,9 @@ public class ContainerPane extends BorderPane {
 			this.setCenter(gameOverText);
 			this.setRight(null);
 			this.setBottom(null);
+			this.setOnMouseClicked((e) -> {
+				this.getParent().getScene().setRoot(MainMenu.getInstance());
+			});
 		}
 	}
 }

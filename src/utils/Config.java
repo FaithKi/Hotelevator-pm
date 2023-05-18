@@ -15,7 +15,7 @@ public class Config {
 	public static final int FIRST_FLOOR = 0;
 	public static final int TOP_FLOOR = 6;
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
-	public static final int MAX_TIME_GAUGE = 50000;
+	public static final int MAX_TIME_GAUGE = 200;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;

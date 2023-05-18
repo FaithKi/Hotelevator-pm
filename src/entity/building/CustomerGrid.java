@@ -60,7 +60,8 @@ public class CustomerGrid extends Entity {
 			return;
 		Integer queue = grid[0];
 		Integer floor = grid[1];
-		Elevator selectedElevator = GameLogic.selectedElev;
+		Elevator selectedElevator = GameLogic.getInstance().selectedElev;
+
 
 		if (selectedElevator.getCurrentFloor() == floor) {
 			BaseCustomer customer = getCustomer((int) queue, (int) floor);
@@ -70,7 +71,6 @@ public class CustomerGrid extends Entity {
 			if (isAdded) {
 				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);
 			}
-
 		}
 
 //		return customer;

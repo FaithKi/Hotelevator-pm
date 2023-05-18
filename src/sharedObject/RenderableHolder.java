@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 
 public class RenderableHolder {
-	private static final RenderableHolder instance = new RenderableHolder();
+	private static RenderableHolder instance = new RenderableHolder();
 
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
@@ -39,6 +39,9 @@ public class RenderableHolder {
 
 	public static RenderableHolder getInstance() {
 		return instance;
+	}
+	public static void setInstance() {
+		instance = new RenderableHolder();
 	}
 
 	public static void loadResource() {

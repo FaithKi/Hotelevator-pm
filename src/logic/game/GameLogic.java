@@ -13,9 +13,9 @@ import utils.Config;
 
 public class GameLogic {
 	
-	public static boolean isGameOver = false;
+	private boolean isGameOver = false;
 	public static long startTime;
-	public static Elevator selectedElev;
+	public Elevator selectedElev;
 	private ArrayList<Entity> gameObjectContainer;
 	private TimeGauge timeGauge;
 	private CustomerGrid hotel;
@@ -26,6 +26,7 @@ public class GameLogic {
 	private static GameLogic instance = null;
 
 	private GameLogic() {
+		System.out.println("new instance");
 		startTime = System.nanoTime();
 		this.gameObjectContainer = new ArrayList<>();
 		this.timeGauge = new TimeGauge();
@@ -49,6 +50,11 @@ public class GameLogic {
 		}
 		return instance;
 	}
+	
+	public void resetInstance() {
+		instance = null;
+		RenderableHolder.setInstance();
+	}
 
 	protected void addNewObject(Entity entity) {
 		gameObjectContainer.add(entity);
@@ -57,12 +63,11 @@ public class GameLogic {
 
 	public void logicUpdate() {
 //		System.out.println(Main.getElapsedTimeMilliSeconds());
-		
 		for (Entity entity : this.gameObjectContainer) {
 			entity.update();
 			if(entity instanceof Elevator) {
 				Elevator elev = (Elevator) entity;
-				if(elev.isSelected()) this.selectedElev = elev;
+				if(elev.isSelected()) instance.selectedElev = elev;
 			}
 		}
 	}
@@ -73,6 +78,14 @@ public class GameLogic {
 	
 	public ArrayList<Entity> getGameObjectContainer(){
 		return this.gameObjectContainer;
+	}
+
+	public boolean isGameOver() {
+		return isGameOver;
+	}
+
+	public void setGameOver(boolean isGameOver) {
+		this.isGameOver = isGameOver;
 	}
 
 //    public static GameLogic getInstance(int level) {
