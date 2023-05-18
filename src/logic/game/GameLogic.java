@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import entity.Entity;
 import entity.building.CustomerGrid;
+import entity.cutomer.StandardCustomer;
 import entity.elevator.Elevator;
 import javafx.scene.input.KeyCode;
 import main.Main;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class GameLogic {
 	
@@ -70,6 +72,7 @@ public class GameLogic {
 				if(elev.isSelected()) instance.selectedElev = elev;
 			}
 		}
+		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.getHotel().getCustomersGrid());
 	}
 
 	public CustomerGrid getHotel() {

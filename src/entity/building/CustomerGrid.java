@@ -106,29 +106,12 @@ public class CustomerGrid extends Entity {
 		return true;
 	}
 
+	public BaseCustomer[][] getCustomersGrid() {
+		return customersGrid;
+	}
+
 	private void testCustomer() {
 		// TEST
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
-		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), customersGrid);
 
 	}
 }
