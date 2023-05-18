@@ -9,10 +9,10 @@ import javafx.scene.paint.Color;
 import utils.Config;
 
 public class BottomBarPane extends BorderPane {
-	
+
 	private CustomerManager customerManager;
 	private StackPane menuBtn;
-	
+
 	public BottomBarPane() {
 		this.setPrefSize(Config.UNIT * 16, Config.UNIT * 1.125);
 		this.setBackground(new Background(new BackgroundFill(Color.SALMON, null, null)));
@@ -20,11 +20,11 @@ public class BottomBarPane extends BorderPane {
 		this.setCenter(customerManager);
 		initializeMenuBtn();
 	}
-	
+
 	public void initializeMenuBtn() {
 		this.menuBtn = new StackPane();
-		this.getMenuBtn().setPrefWidth(2*Config.UNIT);
-		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE,null,null)));
+		this.getMenuBtn().setPrefWidth(2 * Config.UNIT);
+		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		this.setRight(this.getMenuBtn());
 		this.getMenuBtn().setOnMouseClicked((e) -> {
 			PausePane pausePane = (PausePane) this.getParent().getParent().getChildrenUnmodifiable().get(2);
@@ -42,4 +42,3 @@ public class BottomBarPane extends BorderPane {
 		return menuBtn;
 	}
 }
- 

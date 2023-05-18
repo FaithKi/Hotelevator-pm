@@ -8,6 +8,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import logic.game.GameLogic;
 import sharedObject.IRenderable;
+import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class TimeGauge extends Entity {
@@ -43,11 +44,11 @@ public class TimeGauge extends Entity {
 		gc.setLineWidth(2);
 		gc.strokeRect(Config.UNIT / 4, Config.UNIT, Config.UNIT / 2, Config.UNIT * 6 * 1.125);
 		gc.setFill(Color.ALICEBLUE);
-		gc.fillRect(0, Config.UNIT*0.3, Config.UNIT, Config.UNIT*0.5);
+		gc.fillRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5);
 		gc.setFill(Color.BLACK);
-		gc.setFont(Font.font("Times New Roman", FontWeight.EXTRA_BOLD, 30));
+		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 14));
 		gc.setTextAlign(TextAlignment.CENTER);
-		gc.fillText(Integer.toString(this.getScore()), Config.UNIT*0.5, Config.UNIT*0.7);
+		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.7, Config.UNIT * 0.9);
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class TimeGauge extends Entity {
 			GameLogic.getInstance().setGameOver(true);
 		}
 		this.height = this.getTimeLeft() * Config.UNIT * 6 * 1.125 / MAX_TIME;
-		this.y = Config.UNIT + (MAX_TIME-this.getTimeLeft()) * Config.UNIT * 6 * 1.125 / MAX_TIME;
+		this.y = Config.UNIT + (MAX_TIME - this.getTimeLeft()) * Config.UNIT * 6 * 1.125 / MAX_TIME;
 	}
 
 	public int getTimeLeft() {
@@ -84,5 +85,5 @@ public class TimeGauge extends Entity {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 }

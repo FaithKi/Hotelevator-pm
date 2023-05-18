@@ -131,7 +131,7 @@ public abstract class BaseCustomer extends Entity {
 
 	public void drawInCabin(GraphicsContext gc) {
 		int currentQueue = getCurrentQueue();
-		drawCleaner(gc, currentQueue, 0, Config.UNIT * (1.5), Config.UNIT * (0.75 + 0.4), 1);
+		drawCleaner(gc, currentQueue, 0, Config.UNIT * (3), Config.UNIT * (0.75 + 1), 1);
 	}
 
 	private void drawCleaner(GraphicsContext gc, int currentQueue, int currentFloor,
