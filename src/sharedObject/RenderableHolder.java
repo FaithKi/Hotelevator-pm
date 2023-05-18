@@ -65,8 +65,8 @@ public class RenderableHolder {
 		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPCustomer_Happy.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 
-		bgSprite = new Image(ClassLoader.getSystemResource("background.png").toString(), (Config.UNIT * 0.75),
-				(Config.UNIT), true, false);
+		bgSprite = new Image(ClassLoader.getSystemResource("bg.gif").toString(), (Config.UNIT * 15),
+				(Config.UNIT*8*1.125), true, false);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 

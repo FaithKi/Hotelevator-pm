@@ -32,6 +32,7 @@ public class HotelPane extends GridPane {
 
 //		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, null, null, null, null)));
 //		this.getChildren().addAll(elevatorZone, floorZone);
+		
 		this.elevs.add(elevatorZone1);
 		this.elevs.add(elevatorZone2);
 		this.elevs.add(elevatorZone3);

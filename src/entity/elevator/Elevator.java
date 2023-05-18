@@ -55,11 +55,11 @@ public class Elevator extends Entity {
 		} else {
 			if (this.moveY > 0) {
 //				this.moveY -= 0.0225 * Config.UNIT;
-				this.y += 0.0225 * Config.UNIT;
+				this.y += Config.ELEV_SPEED;
 			}
 			if (this.moveY < 0) {
 //				this.moveY += 0.0225 * Config.UNIT;
-				this.y -= 0.0225 * Config.UNIT;
+				this.y -= Config.ELEV_SPEED;
 			}
 		}
 	}
