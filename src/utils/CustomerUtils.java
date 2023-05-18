@@ -36,10 +36,10 @@ public class CustomerUtils {
 	public static void addCustomerToFirstEmptyIndex(BaseCustomer customer, BaseCustomer[][] customerGrid,
 			int floorIndex) {
 
-		for (int col = 0; col < customerGrid[floorIndex].length; col++) {
-			if (customerGrid[floorIndex][col] == null) {
-				customer.setCurrentQueue(col);
-				customerGrid[floorIndex][col] = customer;
+		for (int queue = 0; queue < customerGrid.length; queue++) {
+			if (customerGrid[queue][floorIndex] == null) {
+				customer.setCurrentQueue(queue);
+				customerGrid[queue][floorIndex] = customer;
 				break;
 			}
 		}

@@ -43,7 +43,7 @@ public class InputUtility {
 		} else {
 			hotelGridPressed = new Integer[2];
 		}
-		System.out.println("InputUtil Grid P:" + hotelGridPressed[0] + "-" + hotelGridPressed[1]);
+		System.out.println("Clicked queue:" + hotelGridPressed[0] + "-floor:" + hotelGridPressed[1]);
 	}
 
 	public static Integer getPassengerIndexPressed() {
