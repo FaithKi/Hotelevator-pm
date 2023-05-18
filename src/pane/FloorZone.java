@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -28,16 +29,25 @@ public class FloorZone extends GridPane {
 		hotel = GameLogic.getInstance().getHotel(); // getHotelInstance from gameLOgic
 		initializeCanvas();
 		initializeFloorZoneStyle();
-		InitializeFloorPane();
+		initializeFloorPanes();
 	}
 
-	public void InitializeFloorPane() {
+	public void initializeFloorPanes() {
 		VBox floorPanes = new VBox();
 		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (7 * 1.125)));
 
 		for (int i = Config.TOP_FLOOR; i >= 0; i--) {
-			FloorPane currentFloorPane = new FloorPane(i);
-			floorPanes.getChildren().add(currentFloorPane);
+
+			HBox floorPane = new HBox();
+			floorPane.setPrefSize(Config.UNIT * 8.5, Config.UNIT * (1.125));
+			floorPane.setSpacing(Config.UNIT * 0.05);
+			floorPane.setPadding(new Insets(0, 0, 0, Config.UNIT * 0.2));
+
+			for (int j = 0; j < Config.MAX_CUSTOMER_PER_FLOOR; j++) {
+				CustomerPane customerPane = new CustomerPane(j, i);
+				floorPane.getChildren().add(customerPane);
+			}
+			floorPanes.getChildren().add(floorPane);
 		}
 
 		this.add(floorPanes, 0, 0);
