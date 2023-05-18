@@ -18,7 +18,7 @@ import utils.Config;
 import utils.CustomerUtils;
 
 public class GameLogic {
-	
+
 	private boolean isGameOver = false;
 	public static long startTime;
 	public Elevator selectedElev;
@@ -49,12 +49,10 @@ public class GameLogic {
 		addNewObject(elevator1);
 		addNewObject(elevator2);
 		addNewObject(elevator3);
-		
-		this.customerGenerator = new Timeline(
-                new KeyFrame(Duration.seconds(2.5), event -> generateCustomer())
-        );
-        customerGenerator.setCycleCount(Timeline.INDEFINITE);
-        customerGenerator.play();
+
+		this.customerGenerator = new Timeline(new KeyFrame(Duration.seconds(2.5), event -> generateCustomer()));
+		customerGenerator.setCycleCount(Timeline.INDEFINITE);
+		customerGenerator.play();
 	}
 
 	public static GameLogic getInstance() {
@@ -63,7 +61,7 @@ public class GameLogic {
 		}
 		return instance;
 	}
-	
+
 	public void resetInstance() {
 		instance = null;
 		RenderableHolder.setInstance();
@@ -76,16 +74,22 @@ public class GameLogic {
 
 	public void logicUpdate() {
 //		System.out.println(Main.getElapsedTimeMilliSeconds());
-		for (Entity entity : this.gameObjectContainer) {
-			entity.update();
-			if(entity instanceof Elevator) {
-				Elevator elev = (Elevator) entity;
-				if(elev.isSelected()) instance.selectedElev = elev;
+		try {
+			for (Entity entity : this.gameObjectContainer) {
+				entity.update();
+				if (entity instanceof Elevator) {
+					Elevator elev = (Elevator) entity;
+					if (elev.isSelected())
+						instance.selectedElev = elev;
+				}
 			}
+		} catch (Exception e) {
+			System.out.println(e);
 		}
+
 //		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.getHotel().getCustomersGrid());
 	}
-	
+
 	private void generateCustomer() {
 		CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
 	}
@@ -93,14 +97,12 @@ public class GameLogic {
 	public CustomerGrid getHotel() {
 		return hotel;
 	}
-	
-	
-	
+
 	public TimeGauge getTimeGauge() {
 		return timeGauge;
 	}
 
-	public ArrayList<Entity> getGameObjectContainer(){
+	public ArrayList<Entity> getGameObjectContainer() {
 		return this.gameObjectContainer;
 	}
 

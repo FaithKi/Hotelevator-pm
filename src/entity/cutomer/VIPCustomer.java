@@ -13,7 +13,7 @@ public class VIPCustomer extends BaseCustomer {
 		this.reward = 10;
 		this.punishment = 10;
 		this.occupiedSpace = 1;
-		setImage(RenderableHolder.fatCustomerHappy);
+		setImage(RenderableHolder.vipCustomerHappy);
 	}
 
 	@Override
@@ -30,8 +30,13 @@ public class VIPCustomer extends BaseCustomer {
 
 	@Override
 	public boolean canEnterCabin(InsideCabin insideCabin) {
-
-		return false;
+		int cabinCapacity = insideCabin.getCapacity();
+		int currentSpace = insideCabin.getNumberOfPassenger();
+		int spaceNeeded = this.getOccupiedSpace();
+		if (cabinCapacity < currentSpace + spaceNeeded) {
+			return false;
+		}
+		return true;
 	}
 
 }

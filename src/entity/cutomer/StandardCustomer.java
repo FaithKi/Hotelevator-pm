@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.CustomerUtils;
 
 public class StandardCustomer extends BaseCustomer {
 
@@ -44,6 +45,8 @@ public class StandardCustomer extends BaseCustomer {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
 		int spaceNeeded = this.getOccupiedSpace();
+		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
+			return false;
 		if (cabinCapacity < currentSpace + spaceNeeded) {
 			return false;
 		}
