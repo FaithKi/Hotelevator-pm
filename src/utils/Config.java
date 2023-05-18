@@ -19,6 +19,7 @@ public class Config {
 	public static final int FIRST_FLOOR = 0;
 	public static final int TOP_FLOOR = 6;
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
+	public static final int MAX_CUSTOMER_PER_CABIN = 5;
 	public static final int MAX_TIME_GAUGE = 10000;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;

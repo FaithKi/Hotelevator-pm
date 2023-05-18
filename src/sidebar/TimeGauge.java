@@ -48,7 +48,7 @@ public class TimeGauge extends Entity {
 		gc.setFill(Color.BLACK);
 		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 14));
 		gc.setTextAlign(TextAlignment.CENTER);
-		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.7, Config.UNIT*0.9);
+		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.7, Config.UNIT * 0.9);
 	}
 
 	@Override

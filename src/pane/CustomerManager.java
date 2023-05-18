@@ -27,7 +27,7 @@ public class CustomerManager extends StackPane {
 
 	private final GameLogic logic = GameLogic.getInstance();
 
-	public CustomerManager() {//ArrayList<BaseCustomer> passengers
+	public CustomerManager() {// ArrayList<BaseCustomer> passengers
 
 		initializeCustomerManagerStyle();
 		initializeCanvas();
@@ -38,12 +38,12 @@ public class CustomerManager extends StackPane {
 	public void InitializeCabinPane() {
 		HBox cabinPaneHolder = new HBox();
 		cabinPaneHolder.setPrefSize(Config.UNIT * (14), Config.UNIT * (1.125));
-		cabinPaneHolder.setPadding(new Insets(0, 0, 0, Config.UNIT * 1.5));
-		cabinPaneHolder.setSpacing(Config.UNIT * 0.4);
+		cabinPaneHolder.setPadding(new Insets(0, 0, 0, Config.UNIT * 3));
+		cabinPaneHolder.setSpacing(Config.UNIT);
 
 		ArrayList<PassengerPane> passengerPanes = new ArrayList<>();
 
-		for (int i = 0; i < Config.MAX_CUSTOMER_PER_FLOOR; i++) {
+		for (int i = 0; i < Config.MAX_CUSTOMER_PER_CABIN; i++) {
 			PassengerPane passengerPane = new PassengerPane(i);
 			passengerPanes.add(passengerPane);
 		}
