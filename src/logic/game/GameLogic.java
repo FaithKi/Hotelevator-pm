@@ -94,6 +94,12 @@ public class GameLogic {
 		return hotel;
 	}
 	
+	
+	
+	public TimeGauge getTimeGauge() {
+		return timeGauge;
+	}
+
 	public ArrayList<Entity> getGameObjectContainer(){
 		return this.gameObjectContainer;
 	}

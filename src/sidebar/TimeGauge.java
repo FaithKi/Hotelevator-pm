@@ -44,20 +44,22 @@ public class TimeGauge extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		if (this.getTimeLeft() != 0) {
+		if (this.getTimeLeft() > 0) {
 			this.setTimeLeft(this.getTimeLeft() - 1);
-			this.y += Config.UNIT * 6 * 1.125 / MAX_TIME;
-			this.height -= Config.UNIT * 6 * 1.125 / MAX_TIME;
+//			this.y += Config.UNIT * 6 * 1.125 / MAX_TIME;
+//			this.height -= Config.UNIT * 6 * 1.125 / MAX_TIME;
 		} else {
 			GameLogic.getInstance().setGameOver(true);
 		}
+		this.height = this.getTimeLeft() * Config.UNIT * 6 * 1.125 / MAX_TIME;
+		this.y = Config.UNIT + (MAX_TIME-this.getTimeLeft()) * Config.UNIT * 6 * 1.125 / MAX_TIME;
 	}
 
 	public int getTimeLeft() {
 		return timeLeft;
 	}
 
-	public void setTimeLeft(int timeLeft) {
-		this.timeLeft = timeLeft;
+	public void setTimeLeft(int d) {
+		this.timeLeft = d;
 	}
 }

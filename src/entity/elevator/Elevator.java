@@ -96,6 +96,12 @@ public class Elevator extends Entity {
 				return;
 			customer.setCurrentFloor(currentFloor);
 			// perform effect then remove TODO
+			if(customer.getCurrentFloor() == customer.getDestinationFloor()) {
+				GameLogic.getInstance().getTimeGauge().setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE*0.025));
+			} else {
+				GameLogic.getInstance().getTimeGauge().setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE*0.05));
+			}
+			
 			customer.performEffect();
 			// remove passenger from cabin
 
