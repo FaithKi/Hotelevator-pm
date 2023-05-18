@@ -34,8 +34,14 @@ public class VIPCustomer extends BaseCustomer {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
 		int spaceNeeded = this.getOccupiedSpace();
-		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
-			return false;
+		BaseCustomer[] passengers = insideCabin.getPassengers();
+
+		for (int i = 0; i < passengers.length; i++) {
+			if (!(passengers[i] == null)) {
+				if (!(passengers[i] instanceof VIPCustomer))
+					return false;
+			}
+		}
 		if (cabinCapacity < currentSpace + spaceNeeded) {
 			return false;
 		}
