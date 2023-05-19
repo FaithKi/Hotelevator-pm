@@ -1,6 +1,7 @@
 package utils;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 public class Config {
 //	public static final double SCREEN_WIDTH = 1440;
@@ -24,8 +25,9 @@ public class Config {
 	public static final int TOP_FLOOR = 6;
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
 	public static final int MAX_CUSTOMER_PER_CABIN = 5;
-	public static final int MAX_TIME_GAUGE = 2500;
+	public static final int MAX_TIME_GAUGE = 4000;
 
+	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_HIGH_P = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_MEDIUM_P = Color.ORANGE;
 	public static final Color PATIENCE_GAUGE_LOW_P = Color.RED;
