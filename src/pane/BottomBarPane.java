@@ -6,6 +6,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import logic.game.GameLogic;
 import utils.Config;
 
 public class BottomBarPane extends BorderPane {
@@ -27,6 +28,7 @@ public class BottomBarPane extends BorderPane {
 		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		this.setRight(this.getMenuBtn());
 		this.getMenuBtn().setOnMouseClicked((e) -> {
+			GameLogic.getInstance().getCustomerGenerator().stop();
 			PausePane pausePane = (PausePane) this.getParent().getParent().getChildrenUnmodifiable().get(2);
 			pausePane.setVisible(true);
 			pausePane.requestFocus();

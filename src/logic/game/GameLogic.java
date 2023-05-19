@@ -132,6 +132,10 @@ public class GameLogic {
 		this.isGameOver = isGameOver;
 	}
 
+	public Timeline getCustomerGenerator() {
+		return customerGenerator;
+	}
+
 //    public static GameLogic getInstance(int level) {
 //        if(instance == null) {
 //            instance = new GameLogic(level);

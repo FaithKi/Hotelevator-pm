@@ -40,13 +40,15 @@ public class MainMenu extends HBox {
 				public void handle(long arg0) {
 					// TODO Auto-generated method stub
 					// timer from GPT
-					gameScreen.getContainerPane().paintComponent();
-					logic.logicUpdate();
-					if (logic.isGameOver()) {
+					if(!gameScreen.getPausePane().isVisible()) {
 						gameScreen.getContainerPane().paintComponent();
 						logic.logicUpdate();
-						logic.resetInstance();
-						this.stop();
+						if (logic.isGameOver()) {
+							gameScreen.getContainerPane().paintComponent();
+							logic.logicUpdate();
+							logic.resetInstance();
+							this.stop();
+						}
 					}
 				}
 
