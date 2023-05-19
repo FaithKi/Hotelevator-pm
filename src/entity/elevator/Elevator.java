@@ -34,7 +34,6 @@ public class Elevator extends Entity {
 		this.downKey = downKey;
 		this.selectKey = selectKey;
 		this.moveY = 0;
-
 	}
 
 	public int moveUp() {
@@ -65,7 +64,9 @@ public class Elevator extends Entity {
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.elevatorRailSprite, 0, 0);
+		for(int i = 0; i < 32*20; i += 32) {			
+			gc.drawImage(RenderableHolder.shaftBg, 0, i);
+		}
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);
 		gc.setStroke(Color.rgb(57, 57, 79));
 		gc.setLineWidth(5);
