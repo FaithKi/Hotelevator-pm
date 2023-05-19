@@ -18,6 +18,7 @@ public class FatCustomer extends BaseCustomer {
 
 	public FatCustomer(PatienceLevel patienceLevel) {
 		super();
+		this.occupiedSpace = 2;
 		setCustomerPatienceType(patienceLevel);
 	}
 

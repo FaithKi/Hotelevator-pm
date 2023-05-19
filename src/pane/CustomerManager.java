@@ -15,7 +15,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import utils.Config;
 
-public class CustomerManager extends StackPane {
+public class CustomerManager extends GridPane {
 	private Canvas customerManagerCanvas;
 
 	public CustomerManager() {
@@ -31,7 +31,7 @@ public class CustomerManager extends StackPane {
 
 	private void initializeCanvas() {
 		customerManagerCanvas = new Canvas(Config.UNIT * 14, Config.UNIT * 1.125);
-		getChildren().add(customerManagerCanvas);
+		this.add(customerManagerCanvas, 0, 0);
 	}
 
 	private void initializeCabinPane() {
@@ -45,7 +45,7 @@ public class CustomerManager extends StackPane {
 			cabinPaneHolder.getChildren().add(passengerGridPane);
 		}
 
-		getChildren().add(cabinPaneHolder);
+		this.add(cabinPaneHolder, 0, 0);
 	}
 
 	private GridPane createPassengerPane(int queue) {
