@@ -1,5 +1,6 @@
 package pane;
 
+import javafx.scene.Cursor;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -7,7 +8,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import logic.game.GameLogic;
+import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.SoundUtils;
 
 public class BottomBarPane extends BorderPane {
 
@@ -24,16 +27,27 @@ public class BottomBarPane extends BorderPane {
 
 	public void initializeMenuBtn() {
 		this.menuBtn = new StackPane();
-		this.getMenuBtn().setPrefWidth(2 * Config.UNIT);
+//		this.getMenuBtn().setPrefWidth(2 * Config.UNIT);
+		this.getMenuBtn().setPrefSize(2 * Config.UNIT, 1.125 * Config.UNIT);
 		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		this.setRight(this.getMenuBtn());
 		this.getMenuBtn().setOnMouseClicked((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);
 			GameLogic.getInstance().getCustomerGenerator().stop();
 			PausePane pausePane = (PausePane) this.getParent().getParent().getChildrenUnmodifiable().get(2);
 			pausePane.setVisible(true);
 			pausePane.requestFocus();
 			System.out.println("menu clicked!");
 		});
+		this.getMenuBtn().setOnMouseEntered(e -> {
+			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
+			this.getMenuBtn().setCursor(Cursor.HAND);
+		});
+
+		this.getMenuBtn().setOnMouseExited(e -> {
+			this.getMenuBtn().setCursor(Cursor.DEFAULT);
+		});
+
 	}
 
 	public CustomerManager getCustomerManager() {
