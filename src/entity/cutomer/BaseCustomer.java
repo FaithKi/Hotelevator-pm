@@ -120,13 +120,13 @@ public abstract class BaseCustomer extends Entity {
 		double yFirstFloor = floorHeight * totalFloor;
 		double XPos = currentQueue * customerWidthIncludePaneSpacing;
 		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
-		double oneEightUnit = (Config.UNIT * 1 / 8);
+		double oneTwelvthUnit = (Config.UNIT * 1 / 12);
 		gc.setFill(Config.PATIENCE_GAUGE);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
 		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight)); // image draws from top left ->
 																						// // down right
-		gc.strokeRect(leftPaddingOfTheClickingPane + XPos, YPos - oneEightUnit, allowedWidth, oneEightUnit); // (startx,starty,width,height)
-		gc.fillRect(leftPaddingOfTheClickingPane + XPos, YPos - oneEightUnit, currentPatienceWidth, oneEightUnit);
+		gc.strokeRect(leftPaddingOfTheClickingPane + XPos, YPos - oneTwelvthUnit, allowedWidth, oneTwelvthUnit); // (startx,starty,width,height)
+		gc.fillRect(leftPaddingOfTheClickingPane + XPos, YPos - oneTwelvthUnit, currentPatienceWidth, oneTwelvthUnit);
 
 		gc.setFont(RenderableHolder.pixelStyleFont);
 

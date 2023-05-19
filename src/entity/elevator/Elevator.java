@@ -5,6 +5,7 @@ import entity.cutomer.BaseCustomer;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
@@ -65,6 +66,9 @@ public class Elevator extends Entity {
 	public void draw(GraphicsContext gc) {
 		gc.drawImage(RenderableHolder.elevatorRailSprite, 0, 0);
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);
+		gc.setStroke(Color.rgb(57, 57, 79));
+		gc.setLineWidth(5);
+		gc.strokeRoundRect(x, y, Config.UNIT*1.5, Config.UNIT*1.125, Config.UNIT*0.1, Config.UNIT*0.1);
 	}
 
 	@Override

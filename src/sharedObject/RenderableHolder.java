@@ -18,13 +18,15 @@ public class RenderableHolder {
 	private Comparator<IRenderable> comparator;
 	public static Image hotelSprite;
 	public static Image elevatorRailSprite;
-	public static Image cabinSprite;
+	public static Image scifiTile;
 	public static Image sideBarSprite;
 	public static Image bottomBarSprite;
 	public static Image hotelFloorSprite;
 	public static Image standardCustomerHappy, fatCustomerHappy, vipCustomerHappy;
 	public static Image bgSprite;
 	public static Image wallpapers;
+	public static WritableImage wallpaper;
+	public static WritableImage cabinSprite;
 	public static Font pixelStyleFont;
 
 	static {
@@ -53,8 +55,9 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125 * 7), true, false);
 		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(),
 				(Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
-		cabinSprite = new Image(ClassLoader.getSystemResource("cabin.png").toString(), (Config.UNIT * 1.5),
-				(Config.UNIT * 1.125), true, false);
+		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491),
+				(717), false, false);
+		cabinSprite = new WritableImage(scifiTile.getPixelReader(),370,0,120,90);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
 		hotelFloorSprite = new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5),
@@ -68,8 +71,9 @@ public class RenderableHolder {
 
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
 				(Config.UNIT*8*1.125), true, false);
-		wallpapers = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
-				(Config.UNIT*8*1.125), true, false);
+		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16),
+				(1115), true, false);
+		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10,258,68,90);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
