@@ -4,12 +4,18 @@ import java.util.ArrayList;
 
 import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
+import input.InputUtility;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -34,21 +40,44 @@ public class FloorZone extends GridPane {
 		VBox floorPanes = new VBox();
 		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (7 * 1.125)));
 
-		for (int i = Config.TOP_FLOOR; i >= 0; i--) {
+		for (int floor = Config.TOP_FLOOR; floor >= 0; floor--) {
 
 			HBox floorPane = new HBox();
 			floorPane.setPrefSize(Config.UNIT * 8.5, Config.UNIT * (1.125));
 			floorPane.setSpacing(Config.UNIT * 0.05);
 			floorPane.setPadding(new Insets(0, 0, 0, Config.UNIT * 0.2));
 
-			for (int j = 0; j < Config.MAX_CUSTOMER_PER_FLOOR; j++) {
-				CustomerPane customerPane = new CustomerPane(j, i);
-				floorPane.getChildren().add(customerPane);
+			for (int queue = 0; queue < Config.MAX_CUSTOMER_PER_FLOOR; queue++) {
+				GridPane customerGridPane = createCustomerPane(queue, floor);
+				floorPane.getChildren().add(customerGridPane);
 			}
 			floorPanes.getChildren().add(floorPane);
 		}
 
 		this.add(floorPanes, 0, 0);
+	}
+
+	private GridPane createCustomerPane(int queue, int floor) {
+		GridPane customerGridPane = new GridPane();
+
+		customerGridPane.setPrefSize(Config.UNIT * 0.75, Config.UNIT * 1.125);
+		customerGridPane.setBorder(new Border(
+				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)), null, null));
+
+		customerGridPane.setOnMouseClicked((e) -> {
+			Integer[] pos = { queue, floor };
+			InputUtility.setHotelGridPressed(pos, true);
+		});
+
+		customerGridPane.setOnMouseEntered(event -> {
+			customerGridPane.setCursor(Cursor.HAND);
+		});
+
+		customerGridPane.setOnMouseExited(event -> {
+			customerGridPane.setCursor(Cursor.DEFAULT);
+		});
+
+		return customerGridPane;
 	}
 
 	public void initializeFloorZoneStyle() {
