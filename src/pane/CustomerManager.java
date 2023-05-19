@@ -1,66 +1,45 @@
 package pane;
 
-import java.util.ArrayList;
-
-import entity.cutomer.BaseCustomer;
-import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import logic.game.GameLogic;
-import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class CustomerManager extends StackPane {
 	private Canvas customerManagerCanvas;
-	private GraphicsContext gc;
-	private ArrayList<BaseCustomer> passengers;
 
-	private final GameLogic logic = GameLogic.getInstance();
-
-	public CustomerManager() {// ArrayList<BaseCustomer> passengers
-
-		initializeCustomerManagerStyle();
+	public CustomerManager() {
+		initializeCustomerManager();
+		initializeCabinPane();
 		initializeCanvas();
-		InitializeCabinPane();
-
 	}
 
-	public void InitializeCabinPane() {
+	private void initializeCustomerManager() {
+		setPrefSize(Config.UNIT * 14, Config.UNIT * 1.125);
+	}
+
+	private void initializeCabinPane() {
 		HBox cabinPaneHolder = new HBox();
-		cabinPaneHolder.setPrefSize(Config.UNIT * (14), Config.UNIT * (1.125));
+		cabinPaneHolder.setPrefSize(Config.UNIT * 14, Config.UNIT * 1.125);
 		cabinPaneHolder.setPadding(new Insets(0, 0, 0, Config.UNIT * 3));
 		cabinPaneHolder.setSpacing(Config.UNIT);
 
-		ArrayList<GridPane> passengerPanes = new ArrayList<>();
-
 		for (int i = 0; i < Config.MAX_CUSTOMER_PER_CABIN; i++) {
-//			PassengerPane passengerPane = new PassengerPane(i);
 			GridPane passengerGridPane = createPassengerPane(i);
-			passengerPanes.add(passengerGridPane);
+			cabinPaneHolder.getChildren().add(passengerGridPane);
 		}
-		cabinPaneHolder.getChildren().addAll(passengerPanes);
-		this.getChildren().add(cabinPaneHolder);
 
-	}
-
-	public void initializeCustomerManagerStyle() {
-		this.setPrefSize((Config.UNIT * 14), (Config.UNIT * (1.125)));
+		getChildren().add(cabinPaneHolder);
 	}
 
 	private GridPane createPassengerPane(int queue) {
@@ -69,34 +48,31 @@ public class CustomerManager extends StackPane {
 		passengerGridPane.setBorder(new Border(
 				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)), null, null));
 
-		passengerGridPane.setOnMouseClicked((e) -> {
-//			System.out.println(getPos().toString());
-			InputUtility.setPassengerIndexPressed((Integer) queue, true);
-		});
+		passengerGridPane.setOnMouseClicked(e -> handlePassengerPaneClicked(queue));
+		passengerGridPane.setOnMouseEntered(event -> setCursorToHand(passengerGridPane));
+		passengerGridPane.setOnMouseExited(event -> setCursorToDefault(passengerGridPane));
 
-		// Event handler for mouse enter event
-		passengerGridPane.setOnMouseEntered(event -> {
-			passengerGridPane.setCursor(Cursor.HAND);
-		});
-
-		// Event handler for mouse exit event
-		passengerGridPane.setOnMouseExited(event -> {
-			passengerGridPane.setCursor(Cursor.DEFAULT);
-		});
 		return passengerGridPane;
 	}
 
-	public void initializeCanvas() {
-		this.customerManagerCanvas = new Canvas(Config.UNIT * (14), Config.UNIT * (1.125));
-		this.gc = customerManagerCanvas.getGraphicsContext2D();
+	private void handlePassengerPaneClicked(int queue) {
+		InputUtility.setPassengerIndexPressed(queue, true);
+	}
 
-		this.getChildren().add(customerManagerCanvas);
-		gc.setFill(Color.ALICEBLUE);
-		gc.fillRect(0, 0, (Config.UNIT * 14), (Config.UNIT * (1.125)));
+	private void setCursorToHand(GridPane passengerGridPane) {
+		passengerGridPane.setCursor(Cursor.HAND);
+	}
+
+	private void setCursorToDefault(GridPane passengerGridPane) {
+		passengerGridPane.setCursor(Cursor.DEFAULT);
+	}
+
+	private void initializeCanvas() {
+		customerManagerCanvas = new Canvas(Config.UNIT * 14, Config.UNIT * 1.125);
+		getChildren().add(customerManagerCanvas);
 	}
 
 	public GraphicsContext getGc() {
-		return gc;
+		return customerManagerCanvas.getGraphicsContext2D();
 	}
-
 }
