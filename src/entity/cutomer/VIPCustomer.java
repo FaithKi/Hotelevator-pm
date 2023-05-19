@@ -1,6 +1,7 @@
 package entity.cutomer;
 
 import entity.elevator.InsideCabin;
+import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;
 import utils.CustomerUtils;
@@ -33,5 +34,12 @@ public class VIPCustomer extends BaseCustomer {
 		}
 		return true;
 	}
+
+	@Override
+	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

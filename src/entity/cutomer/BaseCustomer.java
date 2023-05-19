@@ -37,6 +37,8 @@ public abstract class BaseCustomer extends Entity {
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
 
+	public abstract void setCustomerPatienceType(PatienceLevel patienceLevel);
+
 	public int getCurrentFloor() {
 		return currentFloor;
 	}

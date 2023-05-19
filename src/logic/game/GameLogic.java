@@ -95,9 +95,11 @@ public class GameLogic {
 
 	private void generateCustomer() {
 		int cType = Randomizer.getRandomInt(0, 2);
-		switch(cType) {
+		PatienceLevel pType = PatienceLevel.getRandomPatienceLevel();
+		System.out.println(pType);
+		switch (0) {
 		case 0:
-			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
+			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(pType), this.hotel.getCustomersGrid());
 			break;
 		case 1:
 			CustomerUtils.addCustomerToFloorFromGenerator(new FatCustomer(), this.hotel.getCustomersGrid());
@@ -105,7 +107,7 @@ public class GameLogic {
 		case 2:
 			CustomerUtils.addCustomerToFloorFromGenerator(new VIPCustomer(), this.hotel.getCustomersGrid());
 			break;
-		default :
+		default:
 			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(), this.hotel.getCustomersGrid());
 		}
 	}

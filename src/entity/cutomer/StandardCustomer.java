@@ -26,6 +26,11 @@ public class StandardCustomer extends BaseCustomer {
 		setImage(RenderableHolder.standardCustomerHappy);
 	}
 
+	public StandardCustomer(PatienceLevel patienceLevel) {
+		super();
+		setCustomerPatienceType(patienceLevel);
+	}
+
 	@Override
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
@@ -37,6 +42,35 @@ public class StandardCustomer extends BaseCustomer {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
+		switch (patienceLevel) {
+		case LOW: {
+			this.maxPatience = Config.MAX_LOW_PATIENCE;
+			this.setImage(RenderableHolder.standardCustomerLow);
+			System.out.println("Enter: LOW");
+			break;
+		}
+
+		case MEDIUM: {
+			this.maxPatience = Config.MAX_MEDIUM_PATIENCE;
+			this.setImage(RenderableHolder.standardCustomerMedium);
+			System.out.println("Enter: ME");
+			break;
+		}
+
+		case HIGH: {
+			this.maxPatience = Config.MAX_HIGH_PATIENCE;
+			this.setImage(RenderableHolder.standardCustomerHigh);
+			System.out.println("Enter: HI");
+			break;
+		}
+
+		}
+		this.setPatienceLeft(maxPatience);
+
 	}
 
 }

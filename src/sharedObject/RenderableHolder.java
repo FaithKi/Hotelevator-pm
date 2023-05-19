@@ -27,6 +27,8 @@ public class RenderableHolder {
 	public static Image wallpapers;
 	public static Font pixelStyleFont;
 
+	public static Image standardCustomerHigh, standardCustomerMedium, standardCustomerLow;
+
 	static {
 		loadResource();
 	}
@@ -61,15 +63,23 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125), true, false);
 		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+		standardCustomerHigh = new Image(ClassLoader.getSystemResource("StandardCustomer_High.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		standardCustomerMedium = new Image(ClassLoader.getSystemResource("StandardCustomer_Medium.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		standardCustomerLow = new Image(ClassLoader.getSystemResource("StandardCustomer_Low.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
 		fatCustomerHappy = new Image(ClassLoader.getSystemResource("FatCustomer_Happy.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPCustomer_Happy.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
-				(Config.UNIT*8*1.125), true, false);
+				(Config.UNIT * 8 * 1.125), true, false);
 		wallpapers = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
-				(Config.UNIT*8*1.125), true, false);
+				(Config.UNIT * 8 * 1.125), true, false);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
