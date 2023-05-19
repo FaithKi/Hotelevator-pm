@@ -20,12 +20,18 @@ public class CustomerManager extends StackPane {
 
 	public CustomerManager() {
 		initializeCustomerManager();
-		initializeCabinPane();
 		initializeCanvas();
+		initializeCabinPane();
+
 	}
 
 	private void initializeCustomerManager() {
 		setPrefSize(Config.UNIT * 14, Config.UNIT * 1.125);
+	}
+
+	private void initializeCanvas() {
+		customerManagerCanvas = new Canvas(Config.UNIT * 14, Config.UNIT * 1.125);
+		getChildren().add(customerManagerCanvas);
 	}
 
 	private void initializeCabinPane() {
@@ -65,11 +71,6 @@ public class CustomerManager extends StackPane {
 
 	private void setCursorToDefault(GridPane passengerGridPane) {
 		passengerGridPane.setCursor(Cursor.DEFAULT);
-	}
-
-	private void initializeCanvas() {
-		customerManagerCanvas = new Canvas(Config.UNIT * 14, Config.UNIT * 1.125);
-		getChildren().add(customerManagerCanvas);
 	}
 
 	public GraphicsContext getGc() {
