@@ -7,6 +7,7 @@ import entity.elevator.InsideCabin;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
+import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
 
@@ -38,8 +39,8 @@ public class CustomerGrid extends Entity {
 					customer.update();
 					if (customer.getPatienceLeft() == 0) {
 						CustomerUtils.removeCustomerFromFloor(customer, customersGrid, row, column);
-						GameLogic.getInstance().getTimeGauge()
-								.setTimeLeft((int) Math.round(Config.MAX_TIME_GAUGE * 0.95));
+						TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
+						timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.04));
 					}
 				}
 			}
