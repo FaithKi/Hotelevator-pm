@@ -42,10 +42,10 @@ public class GameLogic {
 		this.timeGauge = new TimeGauge();
 		this.hotel = new CustomerGrid();
 
-		this.elevator1 = new Elevator(0, 0, 6.75 * Config.UNIT, KeyCode.Q, KeyCode.A);
+		this.elevator1 = new Elevator(1, 0, 6.75 * Config.UNIT, KeyCode.Q, KeyCode.A, KeyCode.DIGIT1);
 		this.elevator1.setSelected(true);
-		this.elevator2 = new Elevator(1, 0, 6.75 * Config.UNIT, KeyCode.W, KeyCode.S);
-		this.elevator3 = new Elevator(2, 0, 6.75 * Config.UNIT, KeyCode.E, KeyCode.D);
+		this.elevator2 = new Elevator(2, 0, 6.75 * Config.UNIT, KeyCode.W, KeyCode.S, KeyCode.DIGIT2);
+		this.elevator3 = new Elevator(3, 0, 6.75 * Config.UNIT, KeyCode.E, KeyCode.D, KeyCode.DIGIT3);
 
 		addNewObject(timeGauge);
 		addNewObject(hotel);
@@ -135,6 +135,11 @@ public class GameLogic {
 	public Timeline getCustomerGenerator() {
 		return customerGenerator;
 	}
+
+	public Elevator getSelectedElev() {
+		return selectedElev;
+	}
+	
 
 //    public static GameLogic getInstance(int level) {
 //        if(instance == null) {

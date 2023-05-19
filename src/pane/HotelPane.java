@@ -15,9 +15,9 @@ public class HotelPane extends GridPane {
 
 	public HotelPane() {
 		this.elevs = new ArrayList<>();
-		this.elevatorZone1 = new ElevatorZone(0);
-		this.elevatorZone2 = new ElevatorZone(1);
-		this.elevatorZone3 = new ElevatorZone(2);
+		this.elevatorZone1 = new ElevatorZone(1);
+		this.elevatorZone2 = new ElevatorZone(2);
+		this.elevatorZone3 = new ElevatorZone(3);
 		this.floorZone = new FloorZone();
 
 		this.setPadding(new Insets(0, Config.UNIT, 0, Config.UNIT));

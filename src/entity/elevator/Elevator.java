@@ -18,11 +18,11 @@ public class Elevator extends Entity {
 	private InsideCabin insideCabin;
 	private int currentFloor;
 	private int id;
-	private KeyCode upKey, downKey;
+	private KeyCode upKey, downKey, selectKey;
 	private double moveY;
 	private double x, y;
 
-	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
+	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey, KeyCode selectKey) {
 		this.id = id;
 		this.isSelected = false;
 		this.currentFloor = 0;
@@ -32,6 +32,7 @@ public class Elevator extends Entity {
 		this.z = 100;
 		this.upKey = upKey;
 		this.downKey = downKey;
+		this.selectKey = selectKey;
 		this.moveY = 0;
 
 	}
@@ -83,6 +84,11 @@ public class Elevator extends Entity {
 	}
 
 	private void handleKeyPressedUpdate() {
+		if (InputUtility.getKeyPressed(selectKey)) {
+			GameLogic.getInstance().getSelectedElev().setSelected(false);
+			this.setSelected(true);
+			
+		}
 		if (y == ((6 - currentFloor) * 1.125 * Config.UNIT)) {
 			if (InputUtility.getKeyPressed(upKey) && currentFloor != 6) {
 				moveUp();
