@@ -24,6 +24,7 @@ public class RenderableHolder {
 	public static Image hotelFloorSprite;
 	public static Image standardCustomerHappy, fatCustomerHappy, vipCustomerHappy;
 	public static Image bgSprite;
+	public static Image wallpapers;
 	public static Font pixelStyleFont;
 
 	static {
@@ -65,7 +66,9 @@ public class RenderableHolder {
 		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPCustomer_Happy.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 
-		bgSprite = new Image(ClassLoader.getSystemResource("bg.gif").toString(), (Config.UNIT * 15),
+		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
+				(Config.UNIT*8*1.125), true, false);
+		wallpapers = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
 				(Config.UNIT*8*1.125), true, false);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}

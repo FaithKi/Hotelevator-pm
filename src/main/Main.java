@@ -39,7 +39,7 @@ public class Main extends Application {
 //		GameLogic logic = GameLogic.getInstance();
 
 		stage.setScene(scene);
-		stage.setTitle("Elevator TheGame");
+		stage.setTitle("Hotelevator");
 		stage.setResizable(false);
 		stage.show();
 //		AnimationTimer animation = new AnimationTimer() {

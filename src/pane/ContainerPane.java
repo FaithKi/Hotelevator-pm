@@ -5,6 +5,7 @@ import entity.elevator.Elevator;
 import input.InputUtility;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.game.GameLogic;
@@ -71,7 +72,10 @@ public class ContainerPane extends BorderPane {
 			}
 		} else {
 			Text gameOverText = new Text("GameOver!");
-			gameOverText.setFont(new Font(100));
+			gameOverText.setStroke(Color.rgb(14, 33, 54));
+			gameOverText.setStrokeWidth(5);
+			gameOverText.setFill(Color.rgb(183, 110, 121));
+			gameOverText.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(),80));
 			this.setCenter(gameOverText);
 			this.setRight(null);
 			this.setBottom(null);
