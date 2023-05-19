@@ -32,6 +32,11 @@ public class StandardCustomer extends BaseCustomer {
 	}
 
 	@Override
+	public String toString() {
+		return "StandardCustomer";
+	}
+
+	@Override
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();

@@ -24,6 +24,7 @@ public class InsideCabin extends Entity {
 		this.numberOfPassenger = 0;
 		this.passengers = new BaseCustomer[Config.MAX_CUSTOMER_PER_FLOOR];
 		this.elevator = elevator;
+
 	}
 
 	@Override
@@ -46,6 +47,7 @@ public class InsideCabin extends Entity {
 				BaseCustomer customer = passengers[i];
 				customer.update();
 				if (customer.getPatienceLeft() == 0) {
+					
 					CustomerUtils.removeCustomerFromCabin(customer, this, i);
 					GameLogic.getInstance().getTimeGauge()
 							.setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft()

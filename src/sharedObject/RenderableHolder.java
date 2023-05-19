@@ -9,6 +9,8 @@ import java.util.List;
 import entity.building.CustomerGrid;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 
 public class RenderableHolder {
@@ -40,6 +42,12 @@ public class RenderableHolder {
 	public static Image standardCustomerHigh, standardCustomerMedium, standardCustomerLow;
 	public static Image fatCustomerHigh, fatCustomerMedium, fatCustomerLow;
 	public static Image vipCustomerHigh, vipCustomerMedium, vipCustomerLow;
+
+	public static MediaPlayer gameSoundTrack, buttonClickTrack, selectCabinTrack, moveElevatorTrack,
+			addPassengerSucceedTrack, addPassengerFailedTrack, sendPassengerFailedTrack, sendPassengerFailedHumanTrack,
+			standardCustomerSpawn, fatCustomerSpawn, vipCustomerSpawn;
+
+	public static MediaPlayer[] sendPassengerSucceedTrack;
 
 	static {
 		loadResource();
@@ -75,9 +83,8 @@ public class RenderableHolder {
 		healthContainer = new WritableImage(healthBar.getPixelReader(),0,0, 54,80*6);
 		shaftBg = new Image(ClassLoader.getSystemResource("shaftbg.png").toString(),
 				(Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
-		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491),
-				(717), false, false);
-		cabinSprite = new WritableImage(scifiTile.getPixelReader(),370,0,120,90);
+		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491), (717), false, false);
+		cabinSprite = new WritableImage(scifiTile.getPixelReader(), 370, 0, 120, 90);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
 		hotelFloorSprite = new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5),
@@ -85,11 +92,13 @@ public class RenderableHolder {
 
 		loadCustomer();
 
+		loadSound();
+
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
-				(Config.UNIT*8*1.125), true, false);
-		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16),
-				(1115), true, false);
-		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10,258,68,90);
+				(Config.UNIT * 8 * 1.125), true, false);
+		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16), (1115),
+				true, false);
+		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10, 258, 68, 90);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
@@ -140,6 +149,54 @@ public class RenderableHolder {
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 		vipCustomerLow = new Image(ClassLoader.getSystemResource("VIPCustomer_Low.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+	}
+
+	private static void loadSound() {
+		gameSoundTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/gameSoundTrack.wav").toString()));
+		gameSoundTrack.setCycleCount(MediaPlayer.INDEFINITE);
+		gameSoundTrack.setVolume(0.03);
+
+		buttonClickTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/buttonClickTrack.wav").toString()));
+
+		selectCabinTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/selectCabinTrack.wav").toString()));
+
+		moveElevatorTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/moveElevatorTrack.wav").toString()));
+
+		addPassengerSucceedTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/addPassengerSucceedTrack.wav").toString()));
+
+		addPassengerFailedTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/addPassengerFailedTrack.wav").toString()));
+		sendPassengerFailedTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerFailedTrack.wav").toString()));
+		sendPassengerFailedHumanTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerFailedHumanTrack.wav").toString()));
+
+		standardCustomerSpawn = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/standardCustomerSpawn.wav").toString()));
+		fatCustomerSpawn = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/fatCustomerSpawn.wav").toString()));
+		vipCustomerSpawn = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/vipCustomerSpawn.wav").toString()));
+
+		MediaPlayer sendPassengerSucceedTrack1 = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack1.wav").toString()));
+		MediaPlayer sendPassengerSucceedTrack2 = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack2.wav").toString()));
+		MediaPlayer sendPassengerSucceedTrack3 = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack3.wav").toString()));
+		MediaPlayer sendPassengerSucceedTrack4 = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack4.wav").toString()));
+		MediaPlayer sendPassengerSucceedTrack5 = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack5.wav").toString()));
+		MediaPlayer[] mediaPlayerArray = { sendPassengerSucceedTrack1, sendPassengerSucceedTrack2,
+				sendPassengerSucceedTrack3, sendPassengerSucceedTrack4, sendPassengerSucceedTrack5 };
+		sendPassengerSucceedTrack = mediaPlayerArray;
 
 	}
 }
