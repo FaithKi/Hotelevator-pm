@@ -39,7 +39,8 @@ public class CustomerGrid extends Entity {
 					if (customer.getPatienceLeft() == 0) {
 						CustomerUtils.removeCustomerFromFloor(customer, customersGrid, row, column);
 						GameLogic.getInstance().getTimeGauge()
-								.setTimeLeft((int) Math.round(Config.MAX_TIME_GAUGE * 0.95));
+						.setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft()
+								- (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
 					}
 				}
 			}

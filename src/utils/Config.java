@@ -31,6 +31,6 @@ public class Config {
 	public static final Color TEXT_FILL = Color.WHITE;
 	public static final Color TEXT_STROKE = Color.BLACK;
 
-	public static final double ELEV_SPEED = UNIT * 0.01125;
+	public static final double ELEV_SPEED = UNIT * 0.0225;
 
 }
