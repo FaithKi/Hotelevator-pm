@@ -45,22 +45,22 @@ public class VIPCustomer extends BaseCustomer {
 		switch (patienceLevel) {
 		case LOW: {
 			this.maxPatience = Config.MAX_LOW_PATIENCE;
+			this.gaugeColor = Config.PATIENCE_GAUGE_LOW_P;
 			this.setImage(RenderableHolder.vipCustomerLow);
-			System.out.println("Enter: LOW");
 			break;
 		}
 
 		case MEDIUM: {
 			this.maxPatience = Config.MAX_MEDIUM_PATIENCE;
+			this.gaugeColor = Config.PATIENCE_GAUGE_MEDIUM_P;
 			this.setImage(RenderableHolder.vipCustomerMedium);
-			System.out.println("Enter: ME");
 			break;
 		}
 
 		case HIGH: {
 			this.maxPatience = Config.MAX_HIGH_PATIENCE;
+			this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
 			this.setImage(RenderableHolder.vipCustomerHigh);
-			System.out.println("Enter: HI");
 			break;
 		}
 

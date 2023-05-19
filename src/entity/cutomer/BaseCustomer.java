@@ -23,6 +23,7 @@ public abstract class BaseCustomer extends Entity {
 //	protected int punishment;// reduced time
 	protected int z;
 	protected Image image;
+	protected Color gaugeColor;
 
 	public BaseCustomer() {
 		currentFloor = Randomizer.getRandomInt(0, 6);
@@ -32,7 +33,7 @@ public abstract class BaseCustomer extends Entity {
 		this.patienceLeft = Config.MAX_PATIENCE;
 		this.z = 100; // layer of the guy
 		this.occupiedSpace = 1;
-
+		this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
 	}
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
@@ -116,14 +117,17 @@ public abstract class BaseCustomer extends Entity {
 	private void drawCleaner(GraphicsContext gc, int currentQueue, int currentFloor,
 			double leftPaddingOfTheClickingPane, double customerWidthIncludePaneSpacing, int totalFloor) {
 
+		double oneTwelvthUnit = (Config.UNIT * 1 / 12);
 		double allowedWidth = Config.UNIT * (0.75);
+
 		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
 		double floorHeight = Config.UNIT * 1.125;
 		double yFirstFloor = floorHeight * totalFloor;
 		double XPos = currentQueue * customerWidthIncludePaneSpacing;
-		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
-		double oneTwelvthUnit = (Config.UNIT * 1 / 12);
-		gc.setFill(Config.PATIENCE_GAUGE);
+		double YPos = yFirstFloor - (Config.UNIT / 20) - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
+
+		gc.setFill(this.gaugeColor);
+
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
 		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight)); // image draws from top left ->
 																						// // down right
@@ -137,9 +141,9 @@ public abstract class BaseCustomer extends Entity {
 		gc.setStroke(Config.TEXT_STROKE);
 
 		gc.fillText(Integer.toString(getDestinationFloor() + 1),
-				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.8));
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.70));
 		gc.strokeText(Integer.toString(getDestinationFloor() + 1),
-				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.8));
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.70));
 
 	}
 }
