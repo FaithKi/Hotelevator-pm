@@ -29,6 +29,10 @@ public class RenderableHolder {
 	public static WritableImage cabinSprite;
 	public static Font pixelStyleFont;
 
+	public static Image standardCustomerHigh, standardCustomerMedium, standardCustomerLow;
+	public static Image fatCustomerHigh, fatCustomerMedium, fatCustomerLow;
+	public static Image vipCustomerHigh, vipCustomerMedium, vipCustomerLow;
+
 	static {
 		loadResource();
 	}
@@ -62,12 +66,8 @@ public class RenderableHolder {
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
 		hotelFloorSprite = new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125), true, false);
-		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		fatCustomerHappy = new Image(ClassLoader.getSystemResource("FatCustomer_Happy.png").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPCustomer_Happy.png").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+		loadCustomer();
 
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
 				(Config.UNIT*8*1.125), true, false);
@@ -94,5 +94,36 @@ public class RenderableHolder {
 
 	public List<IRenderable> getEntities() {
 		return entities;
+	}
+
+	private static void loadCustomer() {
+		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		fatCustomerHappy = new Image(ClassLoader.getSystemResource("FatCustomer_Happy.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPCustomer_Happy.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+		standardCustomerHigh = new Image(ClassLoader.getSystemResource("StandardCustomer_High.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		standardCustomerMedium = new Image(ClassLoader.getSystemResource("StandardCustomer_Medium.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		standardCustomerLow = new Image(ClassLoader.getSystemResource("StandardCustomer_Low.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+		fatCustomerHigh = new Image(ClassLoader.getSystemResource("FatCustomer_High.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		fatCustomerMedium = new Image(ClassLoader.getSystemResource("FatCustomer_Medium.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		fatCustomerLow = new Image(ClassLoader.getSystemResource("FatCustomer_Low.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+		vipCustomerHigh = new Image(ClassLoader.getSystemResource("VIPCustomer_High.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		vipCustomerMedium = new Image(ClassLoader.getSystemResource("VIPCustomer_Medium.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		vipCustomerLow = new Image(ClassLoader.getSystemResource("VIPCustomer_Low.png").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
 	}
 }
