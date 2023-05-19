@@ -21,18 +21,16 @@ import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class FloorZone extends GridPane {
-	private CustomerGrid hotel;
 	private Canvas hotelCanvas;
 	private GraphicsContext gc;
 
 	public FloorZone() {
-		hotel = GameLogic.getInstance().getHotel(); // getHotelInstance from gameLOgic
 		initializeCanvas();
 		initializeFloorZoneStyle();
-		initializeFloorPanes();
+		initializeClickableGridGetterPanes();
 	}
 
-	public void initializeFloorPanes() {
+	public void initializeClickableGridGetterPanes() {
 		VBox floorPanes = new VBox();
 		floorPanes.setPrefSize((Config.UNIT * 8.5), (Config.UNIT * (7 * 1.125)));
 
@@ -65,8 +63,6 @@ public class FloorZone extends GridPane {
 		this.gc = hotelCanvas.getGraphicsContext2D();
 
 		this.add(hotelCanvas, 0, 0);
-		gc.setFill(Color.BLACK);
-		gc.strokeRect(0, 20, 0.2 * Config.UNIT, 5);
 	}
 
 	public GraphicsContext getGc() {
