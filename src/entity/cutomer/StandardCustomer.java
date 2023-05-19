@@ -51,7 +51,6 @@ public class StandardCustomer extends BaseCustomer {
 			this.maxPatience = Config.MAX_LOW_PATIENCE;
 			this.gaugeColor = Config.PATIENCE_GAUGE_LOW_P;
 			this.setImage(RenderableHolder.standardCustomerLow);
-			System.out.println("Enter: LOW");
 			break;
 		}
 
@@ -59,7 +58,6 @@ public class StandardCustomer extends BaseCustomer {
 			this.maxPatience = Config.MAX_MEDIUM_PATIENCE;
 			this.gaugeColor = Config.PATIENCE_GAUGE_MEDIUM_P;
 			this.setImage(RenderableHolder.standardCustomerMedium);
-			System.out.println("Enter: ME");
 			break;
 		}
 
@@ -67,7 +65,6 @@ public class StandardCustomer extends BaseCustomer {
 			this.maxPatience = Config.MAX_HIGH_PATIENCE;
 			this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
 			this.setImage(RenderableHolder.standardCustomerHigh);
-			System.out.println("Enter: HI");
 			break;
 		}
 
