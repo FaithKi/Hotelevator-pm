@@ -20,13 +20,13 @@ public class Config {
 	public static final int TOP_FLOOR = 6;
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
 	public static final int MAX_CUSTOMER_PER_CABIN = 5;
-	public static final int MAX_TIME_GAUGE = 250;
+	public static final int MAX_TIME_GAUGE = 2500;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
 	public static final Color TEXT_FILL = Color.WHITE;
 	public static final Color TEXT_STROKE = Color.BLACK;
-	
+
 	public static final double ELEV_SPEED = UNIT * 0.01125;
 
 }
