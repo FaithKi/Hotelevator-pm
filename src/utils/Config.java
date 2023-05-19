@@ -26,8 +26,12 @@ public class Config {
 	public static final int MAX_CUSTOMER_PER_CABIN = 5;
 	public static final int MAX_TIME_GAUGE = 2500;
 
-	public static final Color PATIENCE_GAUGE = Color.GREEN;
+	public static final Color PATIENCE_GAUGE_HIGH_P = Color.GREEN;
+	public static final Color PATIENCE_GAUGE_MEDIUM_P = Color.ORANGE;
+	public static final Color PATIENCE_GAUGE_LOW_P = Color.RED;
+
 	public static final Color PATIENCE_GAUGE_BORDER = Color.BLACK;
+
 	public static final Color TEXT_FILL = Color.WHITE;
 	public static final Color TEXT_STROKE = Color.BLACK;
 

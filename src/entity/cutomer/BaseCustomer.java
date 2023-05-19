@@ -23,6 +23,7 @@ public abstract class BaseCustomer extends Entity {
 //	protected int punishment;// reduced time
 	protected int z;
 	protected Image image;
+	protected Color gaugeColor;
 
 	public BaseCustomer() {
 		currentFloor = Randomizer.getRandomInt(0, 6);
@@ -32,7 +33,7 @@ public abstract class BaseCustomer extends Entity {
 		this.patienceLeft = Config.MAX_PATIENCE;
 		this.z = 100; // layer of the guy
 		this.occupiedSpace = 1;
-
+		this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
 	}
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
@@ -123,7 +124,7 @@ public abstract class BaseCustomer extends Entity {
 		double XPos = currentQueue * customerWidthIncludePaneSpacing;
 		double YPos = yFirstFloor - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
 		double oneEightUnit = (Config.UNIT * 1 / 8);
-		gc.setFill(Config.PATIENCE_GAUGE);
+		gc.setFill(this.gaugeColor);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
 		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight)); // image draws from top left ->
 																						// // down right
