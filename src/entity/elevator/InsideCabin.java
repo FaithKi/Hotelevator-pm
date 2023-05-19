@@ -24,6 +24,7 @@ public class InsideCabin extends Entity {
 		this.numberOfPassenger = 0;
 		this.passengers = new BaseCustomer[Config.MAX_CUSTOMER_PER_FLOOR];
 		this.elevator = elevator;
+
 	}
 
 	@Override

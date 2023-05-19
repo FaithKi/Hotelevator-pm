@@ -22,6 +22,11 @@ public class Elevator extends Entity {
 	private double moveY;
 	private double x, y;
 
+	private String lastDeliver;
+	private int lastDeliverFloor;
+	private boolean hasMoved;
+	private int comboCount; // 1-5 note in d minor scale
+
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
 		this.isSelected = false;
@@ -33,16 +38,21 @@ public class Elevator extends Entity {
 		this.upKey = upKey;
 		this.downKey = downKey;
 		this.moveY = 0;
-
+		this.lastDeliver = null;
+		this.comboCount = 1;
+		this.lastDeliverFloor = 0;
+		hasMoved = false;
 	}
 
 	public int moveUp() {
 		this.setCurrentFloor(this.getCurrentFloor() + 1);
+		this.hasMoved = true;
 		return this.currentFloor;
 	}
 
 	public int moveDown() {
 		this.setCurrentFloor(this.getCurrentFloor() - 1);
+		this.hasMoved = true;
 		return this.currentFloor;
 	}
 
@@ -68,7 +78,7 @@ public class Elevator extends Entity {
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);
 		gc.setStroke(Color.rgb(57, 57, 79));
 		gc.setLineWidth(5);
-		gc.strokeRoundRect(x, y, Config.UNIT*1.5, Config.UNIT*1.125, Config.UNIT*0.1, Config.UNIT*0.1);
+		gc.strokeRoundRect(x, y, Config.UNIT * 1.5, Config.UNIT * 1.125, Config.UNIT * 0.1, Config.UNIT * 0.1);
 	}
 
 	@Override
@@ -87,6 +97,7 @@ public class Elevator extends Entity {
 			if (InputUtility.getKeyPressed(upKey) && currentFloor != 6) {
 				moveUp();
 				moveY = -1.125 * Config.UNIT;
+
 			}
 			if (InputUtility.getKeyPressed(downKey) && currentFloor != 0) {
 				moveDown();
@@ -103,6 +114,7 @@ public class Elevator extends Entity {
 		if (!(customer == null)) {
 			TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
 			performDestinationCheck(customer, timeGauge);
+			setLastDeliver(customer.toString());
 			CustomerUtils.removeCustomerFromCabin(customer, insideCabin, queue);
 		}
 	}
@@ -114,18 +126,41 @@ public class Elevator extends Entity {
 
 	private void performDestinationCheck(BaseCustomer customer, TimeGauge timeGauge) {
 		customer.setCurrentFloor(currentFloor);
-
 		if (customer.getCurrentFloor() == customer.getDestinationFloor()) {
 			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE * 0.025));
-			timeGauge.setScore(timeGauge.getScore() + 100);
+
+			int scoreGain = 100;
+			if (!hasMoved) {
+				setComboCount(getComboCount() + customer.getOccupiedSpace());
+				if (customer.toString().equals(lastDeliver)) {
+					scoreGain = (int) (scoreGain * (customer.getRewardMultiplier() * comboCount));
+				}
+				scoreGain = (int) (scoreGain * comboCount);
+			} else {
+				setComboCount(1);
+			}
+
+			System.out.println(
+					hasMoved + " " + lastDeliver + " " + customer.toString() + " " + comboCount + " SCORE" + scoreGain);
+			this.lastDeliverFloor = currentFloor;
+			this.setLastDeliver(customer.toString());
+			timeGauge.setScore(timeGauge.getScore() + scoreGain);
 		} else {
 			timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
 		}
-
+		hasMoved = false;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public int getLastDeliverFloor() {
+		return lastDeliverFloor;
+	}
+
+	public void setLastDeliverFloor(int lastDeliverFloor) {
+		this.lastDeliverFloor = lastDeliverFloor;
 	}
 
 	public int getCurrentFloor() {
@@ -146,6 +181,22 @@ public class Elevator extends Entity {
 
 	public InsideCabin getInsideCabin() {
 		return insideCabin;
+	}
+
+	public String getLastDeliver() {
+		return lastDeliver;
+	}
+
+	public void setLastDeliver(String lastDeliver) {
+		this.lastDeliver = lastDeliver;
+	}
+
+	public int getComboCount() {
+		return comboCount;
+	}
+
+	public void setComboCount(int comboCount) {
+		this.comboCount = comboCount;
 	}
 
 }

@@ -19,8 +19,7 @@ public abstract class BaseCustomer extends Entity {
 	protected int occupiedSpace;
 	protected double maxPatience;
 	protected double patienceLeft;
-//	protected int reward;// extra time
-//	protected int punishment;// reduced time
+	protected double rewardMultiplier;// extra time
 	protected int z;
 	protected Image image;
 	protected Color gaugeColor;
@@ -34,14 +33,23 @@ public abstract class BaseCustomer extends Entity {
 		this.z = 100; // layer of the guy
 		this.occupiedSpace = 1;
 		this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
+		this.rewardMultiplier = 1;
 	}
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
 
 	public abstract void setCustomerPatienceType(PatienceLevel patienceLevel);
 
+	public String toString() {
+		return "BaseCustomer";
+	}
+
 	public int getCurrentFloor() {
 		return currentFloor;
+	}
+
+	public double getRewardMultiplier() {
+		return rewardMultiplier;
 	}
 
 	public void setCurrentFloor(int currentFloor) {

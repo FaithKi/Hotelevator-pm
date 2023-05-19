@@ -13,12 +13,19 @@ public class VIPCustomer extends BaseCustomer {
 		this.maxPatience = setStartingPatience(Config.VIP_PATIENCE);
 		this.patienceLeft = maxPatience;
 		this.occupiedSpace = 1;
+		this.rewardMultiplier = 1.5;
 		setImage(RenderableHolder.vipCustomerHappy);
 	}
 
 	public VIPCustomer(PatienceLevel patienceLevel) {
 		super();
+		this.rewardMultiplier = 1.5;
 		setCustomerPatienceType(patienceLevel);
+	}
+
+	@Override
+	public String toString() {
+		return "VIPCustomer";
 	}
 
 	@Override

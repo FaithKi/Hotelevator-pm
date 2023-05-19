@@ -9,6 +9,7 @@ import java.util.List;
 import entity.building.CustomerGrid;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 
 public class RenderableHolder {
@@ -32,6 +33,10 @@ public class RenderableHolder {
 	public static Image standardCustomerHigh, standardCustomerMedium, standardCustomerLow;
 	public static Image fatCustomerHigh, fatCustomerMedium, fatCustomerLow;
 	public static Image vipCustomerHigh, vipCustomerMedium, vipCustomerLow;
+
+	public static MediaPlayer gameSoundTrack, buttonClickTrack, PauseSoundTrack, SelectCabinTrack, moveElevatorTrack,
+			addPassengerSucceedTrack, addPassengerFailedTrack, sendPassengerTrack, standardCustomerSpawn,
+			standardCustomerDespawn, fatCustomerSpawn, fatCustomerDespawn, vipCustomerSpawn, vipCustomerDespawn;
 
 	static {
 		loadResource();
@@ -59,9 +64,8 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125 * 7), true, false);
 		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(),
 				(Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
-		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491),
-				(717), false, false);
-		cabinSprite = new WritableImage(scifiTile.getPixelReader(),370,0,120,90);
+		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491), (717), false, false);
+		cabinSprite = new WritableImage(scifiTile.getPixelReader(), 370, 0, 120, 90);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
 		hotelFloorSprite = new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5),
@@ -69,11 +73,13 @@ public class RenderableHolder {
 
 		loadCustomer();
 
+		loadSound();
+
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
-				(Config.UNIT*8*1.125), true, false);
-		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16),
-				(1115), true, false);
-		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10,258,68,90);
+				(Config.UNIT * 8 * 1.125), true, false);
+		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16), (1115),
+				true, false);
+		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10, 258, 68, 90);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
@@ -124,6 +130,10 @@ public class RenderableHolder {
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 		vipCustomerLow = new Image(ClassLoader.getSystemResource("VIPCustomer_Low.png").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+	}
+
+	private static void loadSound() {
 
 	}
 }

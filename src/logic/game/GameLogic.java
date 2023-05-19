@@ -53,7 +53,7 @@ public class GameLogic {
 		addNewObject(elevator2);
 		addNewObject(elevator3);
 
-		this.customerGenerator = new Timeline(new KeyFrame(Duration.seconds(2.5), event -> generateCustomer()));
+		this.customerGenerator = new Timeline(new KeyFrame(Duration.seconds(1), event -> generateCustomer()));
 		customerGenerator.setCycleCount(Timeline.INDEFINITE);
 		customerGenerator.play();
 	}
