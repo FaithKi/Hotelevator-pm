@@ -5,24 +5,18 @@ import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class FloorZone extends GridPane {
 	private Canvas hotelCanvas;
-	private GraphicsContext gc;
 
 	public FloorZone() {
 		initializeCanvas();
@@ -30,7 +24,7 @@ public class FloorZone extends GridPane {
 		initializeClickableGridGetterPanes();
 	}
 
-	public void initializeClickableGridGetterPanes() {
+	private void initializeClickableGridGetterPanes() {
 		VBox floorPanes = new VBox();
 		floorPanes.setPrefSize(Config.UNIT * 8.5, Config.UNIT * (7 * 1.125));
 
@@ -81,22 +75,18 @@ public class FloorZone extends GridPane {
 		customerGridPane.setCursor(Cursor.DEFAULT);
 	}
 
-	public void initializeFloorZoneStyle() {
+	private void initializeFloorZoneStyle() {
 		this.setPrefSize(Config.UNIT * 8.5, Config.UNIT * (1.125 * 7));
-//		this.setBackground(new Background(new BackgroundImage(RenderableHolder.hotelSprite, BackgroundRepeat.NO_REPEAT,
-//				BackgroundRepeat.NO_REPEAT, null, null)));
 
 	}
 
 	public void initializeCanvas() {
 		this.hotelCanvas = new Canvas(Config.UNIT * (8.5), Config.UNIT * (7 * 1.125));
-		this.gc = hotelCanvas.getGraphicsContext2D();
-
 		this.add(hotelCanvas, 0, 0);
 	}
 
 	public GraphicsContext getGc() {
-		return gc;
+		return this.hotelCanvas.getGraphicsContext2D();
 	}
 
 }
