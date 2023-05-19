@@ -5,10 +5,7 @@ import entity.cutomer.BaseCustomer;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
-import pane.CustomerManager;
 import logic.game.GameLogic;
-import logic.game.GameLogic;
-import pane.CustomerManager;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 import utils.Config;
@@ -22,7 +19,7 @@ public class Elevator extends Entity {
 	private int id;
 	private KeyCode upKey, downKey;
 	private double moveY;
-//	private CustomerManager customerManager;
+	private double x, y;
 
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
 		this.id = id;
@@ -35,7 +32,7 @@ public class Elevator extends Entity {
 		this.upKey = upKey;
 		this.downKey = downKey;
 		this.moveY = 0;
-//		customerManager = new CustomerManager(passengers);
+
 	}
 
 	public int moveUp() {
@@ -66,53 +63,61 @@ public class Elevator extends Entity {
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.elevatorRailSprite, 0, 0);
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		move();
-		if (this.y == ((6 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) {
-			if (InputUtility.getKeyPressed(this.upKey) && this.currentFloor != 6) {
+		insideCabin.update();
+		handleKeyPressedUpdate();
+		if (isSelected) {
+			handleSelectedCabinInteraction();
+		}
+
+	}
+
+	private void handleKeyPressedUpdate() {
+		if (y == ((6 - currentFloor) * 1.125 * Config.UNIT)) {
+			if (InputUtility.getKeyPressed(upKey) && currentFloor != 6) {
 				moveUp();
-				this.moveY = -1.125 * Config.UNIT;
+				moveY = -1.125 * Config.UNIT;
 			}
-			if (InputUtility.getKeyPressed(this.downKey) && this.currentFloor != 0) {
+			if (InputUtility.getKeyPressed(downKey) && currentFloor != 0) {
 				moveDown();
-				this.moveY = 1.125 * Config.UNIT;
+				moveY = 1.125 * Config.UNIT;
 			}
 		}
+	}
 
-		getInsideCabin().update();
-		if (this.isSelected) {
-			Integer queue = InputUtility.getPassengerIndexPressed();
-			if (queue == null)
-				return;
+	private void handleSelectedCabinInteraction() {
 
-			BaseCustomer customer = this.getInsideCabin().getPassengers()[queue];
-			if (customer == null)
-				return;
-			customer.setCurrentFloor(currentFloor);
-			// perform effect then remove TODO
+		Integer queue = InputUtility.getPassengerIndexPressed();
+		BaseCustomer customer = getCustomerFromQueuePressed(queue);
+
+		if (!(customer == null)) {
 			TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
-			if(customer.getCurrentFloor() == customer.getDestinationFloor()) {
-				timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE*0.025));
-				timeGauge.setScore(timeGauge.getScore() + 100);
-			} else {
-				timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE*0.05));
-			}
-			
-			customer.performEffect();
-			// remove passenger from cabin
-
-			CustomerUtils.removeCustomerFromCabin(customer, getInsideCabin(), queue);
-
-//			BaseCustomer customer = this.getInsideCabin().getPassengers()[index]; // TODO
-
+			performDestinationCheck(customer, timeGauge);
+			CustomerUtils.removeCustomerFromCabin(customer, insideCabin, queue);
 		}
+	}
+
+	private BaseCustomer getCustomerFromQueuePressed(Integer queue) {
+		return (queue == null) ? null : insideCabin.getPassengers()[queue]; // return Customer if present otherwise
+																			// return null
+	}
+
+	private void performDestinationCheck(BaseCustomer customer, TimeGauge timeGauge) {
+		customer.setCurrentFloor(currentFloor);
+
+		if (customer.getCurrentFloor() == customer.getDestinationFloor()) {
+			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE * 0.025));
+			timeGauge.setScore(timeGauge.getScore() + 100);
+		} else {
+			timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
+		}
+
 	}
 
 	public int getId() {

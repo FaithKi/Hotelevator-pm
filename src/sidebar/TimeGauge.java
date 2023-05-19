@@ -17,6 +17,7 @@ public class TimeGauge extends Entity {
 	private int timeLeft;
 	private double height;
 	private int score;
+	private double y;
 
 	public TimeGauge() {
 		timeLeft = MAX_TIME;

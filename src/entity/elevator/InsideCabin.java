@@ -31,7 +31,6 @@ public class InsideCabin extends Entity {
 		// TODO Auto-generated method stub
 		gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		gc.setFill(Color.BLACK);
-//		gc.setFont(Font.font("Times New Roman", FontWeight.EXTRA_BOLD,80));
 		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 80));
 		gc.fillText(Integer.toString(this.getElevator().getId()), 0.2 * Config.UNIT, Config.UNIT);
 		for (int i = 0; i < passengers.length - 1; i++) {

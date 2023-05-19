@@ -23,21 +23,7 @@ public class StandardCustomer extends BaseCustomer {
 		super();
 		this.maxPatience = setStartingPatience(Config.STANDARD_PATIENCE);
 		this.patienceLeft = maxPatience;
-		this.reward = 1;
-		this.punishment = 10;
 		setImage(RenderableHolder.standardCustomerHappy);
-	}
-
-	@Override
-	public void successAction() {
-		// TODO Auto-generated method stub
-		System.out.println("successAction for StandartCustomer");
-	}
-
-	@Override
-	public void failedAction() {
-		// TODO Auto-generated method stub
-		System.out.println("failedAction for StandartCustomer");
 	}
 
 	@Override
@@ -50,12 +36,6 @@ public class StandardCustomer extends BaseCustomer {
 		if (cabinCapacity < currentSpace + spaceNeeded) {
 			return false;
 		}
-		return true;
-	}
-
-	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
