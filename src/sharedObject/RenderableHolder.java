@@ -43,7 +43,7 @@ public class RenderableHolder {
 	public static Image fatCustomerHigh, fatCustomerMedium, fatCustomerLow;
 	public static Image vipCustomerHigh, vipCustomerMedium, vipCustomerLow;
 
-	public static MediaPlayer gameSoundTrack, buttonClickTrack, selectCabinTrack, moveElevatorTrack,
+	public static MediaPlayer gameSoundTrack, buttonClickTrack, buttonHoverTrack, selectCabinTrack, moveElevatorTrack,
 			addPassengerSucceedTrack, addPassengerFailedTrack, sendPassengerFailedTrack, sendPassengerFailedHumanTrack,
 			standardCustomerSpawn, fatCustomerSpawn, vipCustomerSpawn;
 
@@ -160,6 +160,9 @@ public class RenderableHolder {
 
 		buttonClickTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/buttonClickTrack.wav").toString()));
+
+		buttonHoverTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/buttonHoverTrack.wav").toString()));
 
 		selectCabinTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/selectCabinTrack.wav").toString()));

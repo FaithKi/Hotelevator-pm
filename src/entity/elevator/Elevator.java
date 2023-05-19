@@ -99,6 +99,7 @@ public class Elevator extends Entity {
 	private void handleKeyPressedUpdate() {
 		if (InputUtility.getKeyPressed(selectKey)) {
 			GameLogic.getInstance().getSelectedElev().setSelected(false);
+			SoundUtils.playTrack(RenderableHolder.selectCabinTrack, 0.2);
 			this.setSelected(true);
 
 		}

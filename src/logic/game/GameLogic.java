@@ -139,7 +139,6 @@ public class GameLogic {
 	public Elevator getSelectedElev() {
 		return selectedElev;
 	}
-	
 
 //    public static GameLogic getInstance(int level) {
 //        if(instance == null) {
