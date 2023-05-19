@@ -16,12 +16,11 @@ public abstract class BaseCustomer extends Entity {
 	private int currentFloor;
 	private int currentQueue;
 	private int destinationFloor;
-//	protected PatienceLevel patienceLevel;
-	protected int occupiedSpace; // final?
+	protected int occupiedSpace;
 	protected double maxPatience;
 	protected double patienceLeft;
-	protected int reward;// extra time
-	protected int punishment;// reduced time
+//	protected int reward;// extra time
+//	protected int punishment;// reduced time
 	protected int z;
 	protected Image image;
 
@@ -31,24 +30,10 @@ public abstract class BaseCustomer extends Entity {
 			destinationFloor = Randomizer.getRandomInt(0, 6);
 		} while (destinationFloor == currentFloor);
 		this.patienceLeft = Config.MAX_PATIENCE;
-		this.reward = 0;
-		this.punishment = 0;
 		this.z = 100; // layer of the guy
 		this.occupiedSpace = 1;
 
 	}
-
-	public void performEffect() {
-		if (this.currentFloor == this.destinationFloor) {
-			this.successAction();
-			return;
-		}
-		this.failedAction();
-	}
-
-	public abstract void successAction();
-
-	public abstract void failedAction();
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
 
@@ -74,14 +59,6 @@ public abstract class BaseCustomer extends Entity {
 		if (patienceLeft <= 0)
 			patienceLeft = 0;
 		this.patienceLeft = patienceLeft;
-	}
-
-	public int getReward() {
-		return reward;
-	}
-
-	public int getPunishment() {
-		return punishment;
 	}
 
 	public int getZ() {

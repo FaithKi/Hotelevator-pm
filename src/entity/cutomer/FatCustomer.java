@@ -11,8 +11,6 @@ public class FatCustomer extends BaseCustomer {
 		super();
 		this.maxPatience = setStartingPatience(Config.INFLUANCER_PATIENCE);
 		this.patienceLeft = maxPatience;
-		this.reward = 10;
-		this.punishment = 10;
 		this.occupiedSpace = 2;
 		setImage(RenderableHolder.fatCustomerHappy);
 	}
@@ -31,15 +29,4 @@ public class FatCustomer extends BaseCustomer {
 
 	}
 
-	@Override
-	public void successAction() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void failedAction() {
-		// TODO Auto-generated method stub
-
-	}
 }

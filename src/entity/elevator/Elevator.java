@@ -22,6 +22,7 @@ public class Elevator extends Entity {
 	private int id;
 	private KeyCode upKey, downKey;
 	private double moveY;
+	private double x, y;
 //	private CustomerManager customerManager;
 
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey) {
@@ -98,14 +99,13 @@ public class Elevator extends Entity {
 			customer.setCurrentFloor(currentFloor);
 			// perform effect then remove TODO
 			TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
-			if(customer.getCurrentFloor() == customer.getDestinationFloor()) {
-				timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE*0.025));
+			if (customer.getCurrentFloor() == customer.getDestinationFloor()) {
+				timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE * 0.025));
 				timeGauge.setScore(timeGauge.getScore() + 100);
 			} else {
-				timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE*0.05));
+				timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
 			}
-			
-			customer.performEffect();
+
 			// remove passenger from cabin
 
 			CustomerUtils.removeCustomerFromCabin(customer, getInsideCabin(), queue);

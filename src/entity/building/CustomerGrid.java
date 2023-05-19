@@ -16,7 +16,6 @@ public class CustomerGrid extends Entity {
 	public CustomerGrid() {
 		customersGrid = new BaseCustomer[Config.MAX_CUSTOMER_PER_FLOOR][Config.TOP_FLOOR + 1];
 		z = 100;
-		visible = true;
 	}
 
 	@Override

@@ -11,22 +11,8 @@ public class VIPCustomer extends BaseCustomer {
 		super();
 		this.maxPatience = setStartingPatience(Config.VIP_PATIENCE);
 		this.patienceLeft = maxPatience;
-		this.reward = 10;
-		this.punishment = 10;
 		this.occupiedSpace = 1;
 		setImage(RenderableHolder.vipCustomerHappy);
-	}
-
-	@Override
-	public void successAction() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void failedAction() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
