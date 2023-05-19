@@ -11,6 +11,7 @@ import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
+import utils.SoundUtils;
 
 public class Elevator extends Entity {
 
@@ -23,7 +24,6 @@ public class Elevator extends Entity {
 	private double x, y;
 
 	private String lastDeliver;
-	private int lastDeliverFloor;
 	private boolean hasMoved;
 	private int comboCount; // 1-5 note in d minor scale
 
@@ -41,17 +41,18 @@ public class Elevator extends Entity {
 		this.moveY = 0;
 		this.lastDeliver = null;
 		this.comboCount = 1;
-		this.lastDeliverFloor = 0;
 		hasMoved = false;
 	}
 
 	public int moveUp() {
+		SoundUtils.playTrack(RenderableHolder.moveElevatorTrack, 0.5);
 		this.setCurrentFloor(this.getCurrentFloor() + 1);
 		this.hasMoved = true;
 		return this.currentFloor;
 	}
 
 	public int moveDown() {
+		SoundUtils.playTrack(RenderableHolder.moveElevatorTrack, 0.4);
 		this.setCurrentFloor(this.getCurrentFloor() - 1);
 		this.hasMoved = true;
 		return this.currentFloor;
@@ -134,24 +135,27 @@ public class Elevator extends Entity {
 		customer.setCurrentFloor(currentFloor);
 		if (customer.getCurrentFloor() == customer.getDestinationFloor()) {
 			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE * 0.025));
-
 			int scoreGain = 100;
 			if (!hasMoved) {
 				setComboCount(getComboCount() + customer.getOccupiedSpace());
+				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[(Math.min((comboCount - 1), 4))]);
 				if (customer.toString().equals(lastDeliver)) {
 					scoreGain = (int) (scoreGain * (customer.getRewardMultiplier() * comboCount));
 				}
 				scoreGain = (int) (scoreGain * comboCount);
 			} else {
 				setComboCount(1);
+				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[comboCount - 1]);
 			}
 
 			System.out.println(
 					hasMoved + " " + lastDeliver + " " + customer.toString() + " " + comboCount + " SCORE" + scoreGain);
-			this.lastDeliverFloor = currentFloor;
+
 			this.setLastDeliver(customer.toString());
 			timeGauge.setScore(timeGauge.getScore() + scoreGain);
 		} else {
+			SoundUtils.playTrack(RenderableHolder.sendPassengerFailedTrack, 0.8);
+			SoundUtils.playTrack(RenderableHolder.sendPassengerFailedHumanTrack, 0.7);
 			timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
 		}
 		hasMoved = false;
@@ -159,14 +163,6 @@ public class Elevator extends Entity {
 
 	public int getId() {
 		return id;
-	}
-
-	public int getLastDeliverFloor() {
-		return lastDeliverFloor;
-	}
-
-	public void setLastDeliverFloor(int lastDeliverFloor) {
-		this.lastDeliverFloor = lastDeliverFloor;
 	}
 
 	public int getCurrentFloor() {
@@ -202,6 +198,10 @@ public class Elevator extends Entity {
 	}
 
 	public void setComboCount(int comboCount) {
+		if (comboCount > 5)
+			comboCount = 5;
+		if (comboCount < 1)
+			comboCount = 1;
 		this.comboCount = comboCount;
 	}
 

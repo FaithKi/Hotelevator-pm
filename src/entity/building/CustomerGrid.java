@@ -6,10 +6,14 @@ import entity.elevator.Elevator;
 import entity.elevator.InsideCabin;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import logic.game.GameLogic;
+import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
+import utils.SoundUtils;
 
 public class CustomerGrid extends Entity {
 	private final BaseCustomer[][] customersGrid;
@@ -37,7 +41,8 @@ public class CustomerGrid extends Entity {
 				BaseCustomer customer = customersGrid[row][column];
 				if (customer != null) {
 					customer.update();
-					if (customer.getPatienceLeft() == 0) {
+					if (customer.getPatienceLeft() <= 0) {
+
 						CustomerUtils.removeCustomerFromFloor(customer, customersGrid, row, column);
 
 						TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
@@ -78,8 +83,11 @@ public class CustomerGrid extends Entity {
 
 	public static boolean addCustomerToCabin(BaseCustomer customer, Elevator elevator) {
 		InsideCabin insideCabin = elevator.getInsideCabin();
-		if (!customer.canEnter(insideCabin))
+		if (!customer.canEnter(insideCabin)) {
+			SoundUtils.playTrack(RenderableHolder.addPassengerFailedTrack, 0.5);
 			return false;
+		}
+		SoundUtils.playTrack(RenderableHolder.addPassengerSucceedTrack, 0.2);
 		CustomerUtils.addPassengerToFirstToFirstEmptyQueueOfCabin(customer, insideCabin);
 		return true;
 	}

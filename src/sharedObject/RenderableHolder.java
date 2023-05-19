@@ -44,8 +44,7 @@ public class RenderableHolder {
 			addPassengerSucceedTrack, addPassengerFailedTrack, sendPassengerFailedTrack, sendPassengerFailedHumanTrack,
 			standardCustomerSpawn, fatCustomerSpawn, vipCustomerSpawn;
 
-	public static MediaPlayer sendPassengerSucceedTrack1, sendPassengerSucceedTrack2, sendPassengerSucceedTrack3,
-			sendPassengerSucceedTrack4, sendPassengerSucceedTrack5;
+	public static MediaPlayer[] sendPassengerSucceedTrack;
 
 	static {
 		loadResource();
@@ -179,16 +178,19 @@ public class RenderableHolder {
 		vipCustomerSpawn = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/vipCustomerSpawn.wav").toString()));
 
-		sendPassengerSucceedTrack1 = new MediaPlayer(
+		MediaPlayer sendPassengerSucceedTrack1 = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack1.wav").toString()));
-		sendPassengerSucceedTrack2 = new MediaPlayer(
+		MediaPlayer sendPassengerSucceedTrack2 = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack2.wav").toString()));
-		sendPassengerSucceedTrack3 = new MediaPlayer(
+		MediaPlayer sendPassengerSucceedTrack3 = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack3.wav").toString()));
-		sendPassengerSucceedTrack4 = new MediaPlayer(
+		MediaPlayer sendPassengerSucceedTrack4 = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack4.wav").toString()));
-		sendPassengerSucceedTrack5 = new MediaPlayer(
+		MediaPlayer sendPassengerSucceedTrack5 = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/sendPassengerSucceedTrack5.wav").toString()));
+		MediaPlayer[] mediaPlayerArray = { sendPassengerSucceedTrack1, sendPassengerSucceedTrack2,
+				sendPassengerSucceedTrack3, sendPassengerSucceedTrack4, sendPassengerSucceedTrack5 };
+		sendPassengerSucceedTrack = mediaPlayerArray;
 
 	}
 }
