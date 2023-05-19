@@ -16,6 +16,11 @@ public class FatCustomer extends BaseCustomer {
 		setImage(RenderableHolder.fatCustomerHappy);
 	}
 
+	public FatCustomer(PatienceLevel patienceLevel) {
+		super();
+		setCustomerPatienceType(patienceLevel);
+	}
+
 	@Override
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
@@ -32,9 +37,31 @@ public class FatCustomer extends BaseCustomer {
 
 	@Override
 	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
-		// TODO Auto-generated method stub
-		
-	}
+		switch (patienceLevel) {
+		case LOW: {
+			this.maxPatience = Config.MAX_LOW_PATIENCE;
+			this.setImage(RenderableHolder.fatCustomerLow);
+			System.out.println("Enter: LOW");
+			break;
+		}
 
+		case MEDIUM: {
+			this.maxPatience = Config.MAX_MEDIUM_PATIENCE;
+			this.setImage(RenderableHolder.fatCustomerMedium);
+			System.out.println("Enter: ME");
+			break;
+		}
+
+		case HIGH: {
+			this.maxPatience = Config.MAX_HIGH_PATIENCE;
+			this.setImage(RenderableHolder.fatCustomerHigh);
+			System.out.println("Enter: HI");
+			break;
+		}
+
+		}
+		this.setPatienceLeft(maxPatience);
+
+	}
 
 }

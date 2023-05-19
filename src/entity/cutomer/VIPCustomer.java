@@ -16,6 +16,11 @@ public class VIPCustomer extends BaseCustomer {
 		setImage(RenderableHolder.vipCustomerHappy);
 	}
 
+	public VIPCustomer(PatienceLevel patienceLevel) {
+		super();
+		setCustomerPatienceType(patienceLevel);
+	}
+
 	@Override
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
@@ -37,9 +42,31 @@ public class VIPCustomer extends BaseCustomer {
 
 	@Override
 	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
-		// TODO Auto-generated method stub
-		
-	}
+		switch (patienceLevel) {
+		case LOW: {
+			this.maxPatience = Config.MAX_LOW_PATIENCE;
+			this.setImage(RenderableHolder.vipCustomerLow);
+			System.out.println("Enter: LOW");
+			break;
+		}
 
+		case MEDIUM: {
+			this.maxPatience = Config.MAX_MEDIUM_PATIENCE;
+			this.setImage(RenderableHolder.vipCustomerMedium);
+			System.out.println("Enter: ME");
+			break;
+		}
+
+		case HIGH: {
+			this.maxPatience = Config.MAX_HIGH_PATIENCE;
+			this.setImage(RenderableHolder.vipCustomerHigh);
+			System.out.println("Enter: HI");
+			break;
+		}
+
+		}
+		this.setPatienceLeft(maxPatience);
+
+	}
 
 }
