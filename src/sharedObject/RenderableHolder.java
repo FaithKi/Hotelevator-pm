@@ -25,8 +25,13 @@ public class RenderableHolder {
 	public static Image standardCustomerHappy, fatCustomerHappy, vipCustomerHappy;
 	public static Image bgSprite;
 	public static Image wallpapers;
+	public static Image gameName;
+	public static Image startBg;
+	public static Image instBg;
+	public static Image exitBg;
 	public static WritableImage wallpaper;
 	public static WritableImage cabinSprite;
+	public static WritableImage insBg;
 	public static Font pixelStyleFont;
 
 	public static Image standardCustomerHigh, standardCustomerMedium, standardCustomerLow;
@@ -55,6 +60,11 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
+		startBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 240, 68, false, false);
+		instBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 246, 36, false, false);
+		exitBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 106, 36, false, false);
+		gameName = new Image(ClassLoader.getSystemResource("game-name.png").toString(), (Config.UNIT * 10),
+				(Config.UNIT * 1.125 * 7), true, false);
 		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125 * 7), true, false);
 		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(),
