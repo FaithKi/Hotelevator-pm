@@ -1,17 +1,15 @@
 package logic.game;
 
+import java.util.Random;
+
+import utils.Randomizer;
+
 public enum PatienceLevel {
-	HIGH(10),
-	MEDIUM(8),
-	LOW(6);
-	
-	private final int time;
-	
-	PatienceLevel(int time) {
-		this.time = time;
-	}
-	
-	public int getTime() {
-		return this.time;
+	HIGH, MEDIUM, LOW;
+
+	public static PatienceLevel getRandomPatienceLevel() {
+		PatienceLevel[] levels = PatienceLevel.values();
+		int index = Randomizer.getRandomInt(0, levels.length - 1);
+		return levels[index];
 	}
 }

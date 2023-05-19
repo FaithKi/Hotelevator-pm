@@ -11,6 +11,10 @@ public class Config {
 
 	public static final int DECREASE_RATE = 20;
 	public static final double MAX_PATIENCE = 30000;
+	public static final double MAX_LOW_PATIENCE = MAX_PATIENCE * 0.5;
+	public static final double MAX_MEDIUM_PATIENCE = MAX_PATIENCE;
+	public static final double MAX_HIGH_PATIENCE = MAX_PATIENCE * 1.3;
+
 	public static final double STANDARD_PATIENCE = 120000;
 	public static final double INFLUANCER_PATIENCE = 120000;
 	public static final double FAT_PATIENCE = 120000;
