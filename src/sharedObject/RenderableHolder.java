@@ -19,7 +19,7 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image hotelSprite;
-	public static Image elevatorRailSprite;
+	public static Image shaftBg;
 	public static Image scifiTile;
 	public static Image sideBarSprite;
 	public static Image bottomBarSprite;
@@ -31,7 +31,10 @@ public class RenderableHolder {
 	public static Image startBg;
 	public static Image instBg;
 	public static Image exitBg;
+	public static Image healthBar;
 	public static WritableImage wallpaper;
+	public static WritableImage health;
+	public static WritableImage healthContainer;
 	public static WritableImage cabinSprite;
 	public static WritableImage insBg;
 	public static Font pixelStyleFont;
@@ -75,7 +78,10 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125 * 7), true, false);
 		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125 * 7), true, false);
-		elevatorRailSprite = new Image(ClassLoader.getSystemResource("elevatorshaft.png").toString(),
+		healthBar = new Image(ClassLoader.getSystemResource("healthbar.png").toString(), 23*6, 80*6, false, false);
+		health = new WritableImage(healthBar.getPixelReader(),84,48,54,384);
+		healthContainer = new WritableImage(healthBar.getPixelReader(),0,0, 54,80*6);
+		shaftBg = new Image(ClassLoader.getSystemResource("shaftbg.png").toString(),
 				(Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
 		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491), (717), false, false);
 		cabinSprite = new WritableImage(scifiTile.getPixelReader(), 370, 0, 120, 90);
