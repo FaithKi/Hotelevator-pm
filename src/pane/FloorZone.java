@@ -62,8 +62,8 @@ public class FloorZone extends GridPane {
 		GridPane customerGridPane = new GridPane();
 
 		customerGridPane.setPrefSize(Config.UNIT * 0.75, Config.UNIT * 1.125);
-		customerGridPane.setBorder(new Border(
-				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)), null, null));
+//		customerGridPane.setBorder(new Border(
+//				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)), null, null));
 
 		customerGridPane.setOnMouseClicked(e -> handleCustomerPaneClicked(queue, floor));
 		customerGridPane.setOnMouseEntered(event -> setCursorToHand(customerGridPane));

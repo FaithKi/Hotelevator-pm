@@ -59,7 +59,7 @@ public class ContainerPane extends BorderPane {
 					if (elev.isSelected()) {
 						elev.getInsideCabin().draw(this.getBottomBarPane().getCustomerManager().getGc());
 					}
-					elev.draw(this.getHotelPane().getElevs().get(elev.getId()).getGraphicsContext2D());
+					elev.draw(this.getHotelPane().getElevs().get(elev.getId()-1).getGraphicsContext2D());
 				}
 				if (entity instanceof CustomerGrid) {
 					CustomerGrid hotel = (CustomerGrid) entity;

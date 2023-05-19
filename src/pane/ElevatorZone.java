@@ -19,15 +19,14 @@ public class ElevatorZone extends Canvas{
 	private void addListener() {
 		GameLogic logic = GameLogic.getInstance();
 		this.setOnMouseClicked((e) -> {
+			System.out.println("unselect elev " + GameLogic.getInstance().getSelectedElev().getId());
+			GameLogic.getInstance().getSelectedElev().setSelected(false);
 			for(Entity entity: logic.getGameObjectContainer()) {
 				if(entity instanceof Elevator) {
 					Elevator elev = (Elevator) entity;
 					if(elev.getId() == this.id) {
 						elev.setSelected(true);
 						System.out.println("select elev " + elev.getId());
-					} else {
-						elev.setSelected(false);
-						System.out.println("unselect elev " + elev.getId());
 					}
 				}
 			}

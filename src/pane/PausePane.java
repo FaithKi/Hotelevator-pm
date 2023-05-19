@@ -27,6 +27,7 @@ public class PausePane extends VBox{
 		this.getResumeBtn().setFont(new Font("Arial",30));
 		this.getChildren().add(this.getResumeBtn());
 		this.getResumeBtn().setOnMouseClicked((e) -> {
+			GameLogic.getInstance().getCustomerGenerator().play();
 			this.getParent().getChildrenUnmodifiable().get(1).requestFocus();
 			this.setVisible(false);
 		});
@@ -37,6 +38,7 @@ public class PausePane extends VBox{
 		this.getMainMenuBtn().setFont(new Font("Arial",30));
 		this.getMainMenuBtn().setOnAction((e) -> {
 			GameLogic.getInstance().setGameOver(true);
+			this.setVisible(false);
 			this.getParent().getScene().setRoot(MainMenu.getInstance());
 		});
 		this.getChildren().add(mainMenuBtn);
