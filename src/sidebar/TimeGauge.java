@@ -48,17 +48,17 @@ public class TimeGauge extends Entity {
 //		gc.setStroke(Color.BLACK);
 //		gc.setLineWidth(2);
 //		gc.strokeRect(Config.UNIT / 4, Config.UNIT, Config.UNIT / 2, Config.UNIT * 6 * 1.125);
-		gc.setStroke(Color.rgb(23, 22, 36));
+
 		gc.setFill(Color.rgb(59, 70, 99));
-		gc.setLineWidth(10);
+		gc.fillRoundRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5, 10, 10);
+		gc.setStroke(Color.rgb(23, 22, 36));
+		gc.setLineWidth(5);
+		gc.strokeRoundRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5, 10, 10);
+		gc.setFill(Color.WHITE);
+		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 20));
 
-		gc.fillRoundRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5, 5, 5);
-		gc.strokeRoundRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5, 5, 5);
-
-		gc.setFill(Color.BLACK);
-		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 14));
 		gc.setTextAlign(TextAlignment.CENTER);
-		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.7, Config.UNIT * 0.9);
+		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.65, Config.UNIT * 0.9);
 
 		gc.drawImage(RenderableHolder.healthContainer, Config.UNIT / 10, Config.UNIT * 1.5);
 		gc.drawImage(RenderableHolder.health, Config.UNIT / 10, this.y, 54, this.height);

@@ -79,28 +79,29 @@ public class ContainerPane extends BorderPane {
 			}
 		} else {
 			SoundUtils.playTrack(RenderableHolder.gameOverTrack, 0.4);
-			String Score = Integer.toString(GameLogic.getInstance().getTimeGauge().getScore());
+			int scoreInt = GameLogic.getInstance().getTimeGauge().getScore();
+			String score = Integer.toString(scoreInt);
 
 			Text gameScoreText = new Text("Your Score:");
-			gameScoreText.setStroke(Color.rgb(14, 33, 54));
+			gameScoreText.setStroke(Color.rgb(13, 30, 38));
 			gameScoreText.setStrokeWidth(5);
-			gameScoreText.setFill(Color.rgb(231, 140, 156));
+			gameScoreText.setFill(Color.rgb(189, 115, 137));
 			gameScoreText.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 80));
 			gameScoreText.setWrappingWidth(13 * Config.UNIT);
 			gameScoreText.setTextAlignment(TextAlignment.CENTER);
 
 			Text gameOverText = new Text("GameOver!");
-			gameOverText.setStroke(Color.rgb(14, 33, 54));
+			gameOverText.setStroke(Color.rgb(13, 30, 38));
 			gameOverText.setStrokeWidth(5);
-			gameOverText.setFill(Color.rgb(231, 140, 156));
+			gameOverText.setFill(Color.rgb(189, 115, 137));
 			gameOverText.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 80));
 			gameOverText.setWrappingWidth(13 * Config.UNIT);
 			gameOverText.setTextAlignment(TextAlignment.CENTER);
 
-			Text scoreText = new Text(Score);
-			scoreText.setStroke(Color.rgb(14, 33, 54));
+			Text scoreText = new Text(score);
+			scoreText.setStroke(Color.rgb(13, 30, 38));
 			scoreText.setStrokeWidth(5);
-			scoreText.setFill(Color.rgb(231, 140, 156));
+			scoreText.setFill(Color.rgb(189, 115, 137));
 			scoreText.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 80));
 			scoreText.setWrappingWidth(13 * Config.UNIT);
 			scoreText.setTextAlignment(TextAlignment.CENTER);
