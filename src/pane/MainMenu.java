@@ -168,6 +168,7 @@ public class MainMenu extends StackPane {
 			this.instructionBtn.setTextFill(Color.rgb(94, 106, 111));
 		});
 		this.instructionBtn.setOnAction((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);
 			this.instructionPane.setVisible(true);
 		});
 	}
@@ -191,6 +192,7 @@ public class MainMenu extends StackPane {
 		setAlignment(closeBtn, Pos.BOTTOM_CENTER);
 		setMargin(closeBtn, new Insets(0, 0, Config.UNIT / 4, 0));
 		closeBtn.setOnAction((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);
 			this.instructionPane.setVisible(false);
 		});
 	}
