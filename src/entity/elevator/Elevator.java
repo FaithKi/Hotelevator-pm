@@ -140,7 +140,7 @@ public class Elevator extends Entity {
 			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE * 0.025));
 			int scoreGain = 100;
 			if (!hasMoved) {
-				setComboCount(getComboCount() + customer.getOccupiedSpace());
+				setComboCount(getComboCount() + customer.getSpaceNeeded());
 				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[(Math.min((comboCount - 1), 4))]);
 				if (customer.toString().equals(lastDeliver)) {
 					scoreGain = (int) (scoreGain * (customer.getRewardMultiplier() * comboCount));

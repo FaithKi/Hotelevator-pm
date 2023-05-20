@@ -68,7 +68,7 @@ public class CustomerUtils {
 			if (passengers[queue] == null) {
 				customer.setCurrentQueue(queue);
 				passengers[queue] = customer;
-				insideCabin.setNumberOfPassenger(insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
+				insideCabin.setNumberOfPassenger(insideCabin.getNumberOfPassenger() + customer.getSpaceNeeded());
 				;
 				return true;
 			}
@@ -91,7 +91,7 @@ public class CustomerUtils {
 				nullIndex++;
 			}
 		}
-		insideCabin.setNumberOfPassenger((insideCabin.getNumberOfPassenger() - customer.getOccupiedSpace()));
+		insideCabin.setNumberOfPassenger((insideCabin.getNumberOfPassenger() - customer.getSpaceNeeded()));
 	}
 
 	public static boolean containVIP(BaseCustomer[] passengers) {

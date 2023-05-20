@@ -19,12 +19,12 @@ public class StandardCustomer extends BaseCustomer {
 //	protected int z; --SETTED
 //	protected Image image;
 
-	public StandardCustomer() {
-		super();
-		this.maxPatience = setStartingPatience(Config.STANDARD_PATIENCE);
-		this.patienceLeft = maxPatience;
-		setImage(RenderableHolder.standardCustomerHappy);
-	}
+//	public StandardCustomer() {
+//		super();
+//		this.maxPatience = setStartingPatience(Config.STANDARD_PATIENCE);
+//		this.patienceLeft = maxPatience;
+//		setImage(RenderableHolder.standardCustomerHappy);
+//	}
 
 	public StandardCustomer(PatienceLevel patienceLevel) {
 		super();
@@ -40,7 +40,7 @@ public class StandardCustomer extends BaseCustomer {
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
-		int spaceNeeded = this.getOccupiedSpace();
+		int spaceNeeded = this.getSpaceNeeded();
 		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
 			return false;
 		if (cabinCapacity < currentSpace + spaceNeeded) {

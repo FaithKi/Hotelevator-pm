@@ -8,14 +8,14 @@ import utils.CustomerUtils;
 
 public class VIPCustomer extends BaseCustomer {
 
-	public VIPCustomer() {
-		super();
-		this.maxPatience = setStartingPatience(Config.VIP_PATIENCE);
-		this.patienceLeft = maxPatience;
-		this.occupiedSpace = 1;
-		this.rewardMultiplier = 1.5;
-		setImage(RenderableHolder.vipCustomerHappy);
-	}
+//	public VIPCustomer() {
+//		super();
+//		this.maxPatience = setStartingPatience(Config.VIP_PATIENCE);
+//		this.patienceLeft = maxPatience;
+//		this.occupiedSpace = 1;
+//		this.rewardMultiplier = 1.5;
+//		setImage(RenderableHolder.vipCustomerHappy);
+//	}
 
 	public VIPCustomer(PatienceLevel patienceLevel) {
 		super();
@@ -32,7 +32,7 @@ public class VIPCustomer extends BaseCustomer {
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
-		int spaceNeeded = this.getOccupiedSpace();
+		int spaceNeeded = this.getSpaceNeeded();
 		BaseCustomer[] passengers = insideCabin.getPassengers();
 
 		for (int i = 0; i < passengers.length; i++) {
