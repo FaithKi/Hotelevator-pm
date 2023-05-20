@@ -1,6 +1,7 @@
 package main;
 
 import utils.Config;
+import utils.SoundUtils;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -28,7 +29,7 @@ public class Main extends Application {
 		stage.setResizable(false);
 		stage.show();
 
-		RenderableHolder.gameSoundTrack.play();
+		SoundUtils.playTrack(RenderableHolder.gameSoundTrack, 0.03);
 
 	}
 

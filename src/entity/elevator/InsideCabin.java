@@ -48,7 +48,7 @@ public class InsideCabin extends Entity {
 				customer.update();
 				if (customer.getPatienceLeft() == 0) {
 					
-					CustomerUtils.removeCustomerFromCabin(customer, this, i);
+					CustomerUtils.removePassengerFromCabin(customer, this, i);
 					GameLogic.getInstance().getTimeGauge()
 							.setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft()
 									- (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));

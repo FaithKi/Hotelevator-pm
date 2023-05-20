@@ -89,14 +89,14 @@ public class Elevator extends Entity {
 	public void update() {
 		move();
 		insideCabin.update();
-		handleKeyPressedUpdate();
+		handleElevatorMovementUpdate();
 		if (isSelected) {
 			handleSelectedCabinInteraction();
 		}
 
 	}
 
-	private void handleKeyPressedUpdate() {
+	private void handleElevatorMovementUpdate() {
 		if (InputUtility.getKeyPressed(selectKey)) {
 			GameLogic.getInstance().getSelectedElev().setSelected(false);
 			SoundUtils.playTrack(RenderableHolder.selectCabinTrack, 0.2);
@@ -125,7 +125,7 @@ public class Elevator extends Entity {
 			TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
 			performDestinationCheck(customer, timeGauge);
 			setLastDeliver(customer.toString());
-			CustomerUtils.removeCustomerFromCabin(customer, insideCabin, queue);
+			CustomerUtils.removePassengerFromCabin(customer, insideCabin, queue);
 		}
 	}
 

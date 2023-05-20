@@ -16,18 +16,19 @@ import utils.CustomerUtils;
 import utils.SoundUtils;
 
 public class CustomerGrid extends Entity {
-	private final BaseCustomer[][] customersGrid;
+	private final BaseCustomer[][] customerGrid;
 
 	public CustomerGrid() {
-		customersGrid = new BaseCustomer[Config.MAX_CUSTOMER_PER_FLOOR][Config.TOP_FLOOR + 1];
-		z = 100;
+		super(100);
+		customerGrid = new BaseCustomer[Config.MAX_CUSTOMER_PER_FLOOR][Config.TOTAL_FLOOR];
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-		for (BaseCustomer[] row : customersGrid) {
-			for (BaseCustomer customer : row) {
+
+		for (BaseCustomer[] queue : customerGrid) {
+			for (BaseCustomer customer : queue) {
 				if (customer != null)
 					customer.draw(gc);
 			}
@@ -36,53 +37,64 @@ public class CustomerGrid extends Entity {
 
 	@Override
 	public void update() {
-		for (int row = 0; row < customersGrid.length; row++) {
-			for (int column = 0; column < customersGrid[0].length; column++) {
-				BaseCustomer customer = customersGrid[row][column];
+
+		handleCustomerUpdates();
+		handleAddPassengerToCabin();
+
+	}
+
+	private void handleCustomerUpdates() {
+		for (int queue = 0; queue < customerGrid.length; queue++) {
+			for (int floor = 0; floor < customerGrid[0].length; floor++) {
+
+				BaseCustomer customer = customerGrid[queue][floor];
 				if (customer != null) {
 					customer.update();
 					if (customer.getPatienceLeft() <= 0) {
-
-						CustomerUtils.removeCustomerFromFloor(customer, customersGrid, row, column);
+						CustomerUtils.removeCustomerFromFloor(customer, customerGrid, queue, floor);
 
 						TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
-						timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.04));
+						int timeDeducted = (int) Math.round(Config.MAX_TIME_GAUGE * Config.TIME_GAUGE_DECREASE_PERCENT);
+						timeGauge.setTimeLeft(timeGauge.getTimeLeft() - timeDeducted);
 					}
 				}
+
 			}
 		}
+	}
+
+	private void handleAddPassengerToCabin() {
 
 		Integer[] grid = InputUtility.getHotelGridPressed();
 		if (grid[0] == null)
 			return;
 
-		Integer queue = grid[0];
-		Integer floor = grid[1];
+		Integer queue = grid[0], floor = grid[1];
 		Elevator selectedElevator = GameLogic.getInstance().selectedElev;
 
 		if (selectedElevator.getCurrentFloor() == floor) {
 			BaseCustomer customer = getCustomer(queue, floor);
 			if (customer == null)
 				return;
-			boolean isAdded = addCustomerToCabin(customer, selectedElevator);
+			boolean isAdded = addCustomerToCabin(customer, selectedElevator.getInsideCabin());
 			if (isAdded) {
-				CustomerUtils.removeCustomerFromFloor(customer, customersGrid, queue, floor);
+				CustomerUtils.removeCustomerFromFloor(customer, customerGrid, queue, floor);
 			}
 		}
+
 	}
 
 	public BaseCustomer[][] getFloors() {
-		return customersGrid;
+		return customerGrid;
 	}
 
 	public BaseCustomer getCustomer(int x, int y) {
-		if (x < 0 || x >= customersGrid.length || y < 0 || y >= customersGrid[0].length)
+		if (x < 0 || x >= customerGrid.length || y < 0 || y >= customerGrid[0].length)
 			return null;
-		return customersGrid[x][y];
+		return customerGrid[x][y];
 	}
 
-	public static boolean addCustomerToCabin(BaseCustomer customer, Elevator elevator) {
-		InsideCabin insideCabin = elevator.getInsideCabin();
+	public static boolean addCustomerToCabin(BaseCustomer customer, InsideCabin insideCabin) {
 		if (!customer.canEnter(insideCabin)) {
 			SoundUtils.playTrack(RenderableHolder.addPassengerFailedTrack, 0.5);
 			return false;
@@ -93,6 +105,6 @@ public class CustomerGrid extends Entity {
 	}
 
 	public BaseCustomer[][] getCustomersGrid() {
-		return customersGrid;
+		return customerGrid;
 	}
 }

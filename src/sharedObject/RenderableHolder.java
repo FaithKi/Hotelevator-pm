@@ -157,7 +157,7 @@ public class RenderableHolder {
 		gameSoundTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/gameSoundTrack.wav").toString()));
 		gameSoundTrack.setCycleCount(MediaPlayer.INDEFINITE);
-		gameSoundTrack.setVolume(0.03);
+
 
 		gameStartTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/gameStartTrack.wav").toString()));

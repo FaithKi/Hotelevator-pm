@@ -1,9 +1,7 @@
 package utils;
 
-import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.VIPCustomer;
-import entity.elevator.Elevator;
 import entity.elevator.InsideCabin;
 
 public class CustomerUtils {
@@ -79,7 +77,7 @@ public class CustomerUtils {
 
 	}
 
-	public static void removeCustomerFromCabin(BaseCustomer customer, InsideCabin insideCabin, int queueIndex) {
+	public static void removePassengerFromCabin(BaseCustomer customer, InsideCabin insideCabin, int queueIndex) {
 		BaseCustomer[] passengers = insideCabin.getPassengers();
 		passengers[queueIndex] = null;
 		// Perform the rearrangement

@@ -21,11 +21,15 @@ public class Config {
 	public static final double FAT_PATIENCE = 120000;
 	public static final double VIP_PATIENCE = 120000;
 
+	public static final int TOTAL_FLOOR = 7;
 	public static final int FIRST_FLOOR = 0;
-	public static final int TOP_FLOOR = 6;
+	public static final int TOP_FLOOR = TOTAL_FLOOR - 1;
+
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
 	public static final int MAX_CUSTOMER_PER_CABIN = 5;
+	
 	public static final int MAX_TIME_GAUGE = 8000;
+	public static final double TIME_GAUGE_DECREASE_PERCENT = 0.04;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_HIGH_P = Color.GREEN;
