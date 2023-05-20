@@ -28,7 +28,7 @@ public class TimeGauge extends Entity {
 		// this.z = ;
 //		this.height = Config.UNIT * 6 * 1.125;
 		this.height = 384;
-		this.score = 0;
+		this.score = 999999;
 	}
 
 	@Override

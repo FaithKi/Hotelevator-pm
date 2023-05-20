@@ -1,5 +1,6 @@
 package pane;
 
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -33,16 +34,16 @@ public class BottomBarPane extends BorderPane {
 
 	public void initializeMenuBtn() {
 		this.menuBtn = new StackPane();
-		this.getMenuBtn().setPrefSize(2 * Config.UNIT, Config.FLOOR_HEIGHT);
+		this.menuBtn.setPrefSize(2 * Config.UNIT, Config.FLOOR_HEIGHT);
+		this.menuBtn.setAlignment(Pos.CENTER);
 		Text pauseTxt = new Text("Pause");
-		pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 28));
+		pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 24));
 		this.getMenuBtn().getChildren().add(pauseTxt);
 
 		this.getMenuBtn()
 				.setBackground(new Background(new BackgroundImage(RenderableHolder.pausePaneBackground,
 						BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 						new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
-//		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		this.setRight(this.getMenuBtn());
 		this.getMenuBtn().setOnMouseClicked((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);
@@ -55,10 +56,14 @@ public class BottomBarPane extends BorderPane {
 		this.getMenuBtn().setOnMouseEntered(e -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
 			this.getMenuBtn().setCursor(Cursor.HAND);
+			pauseTxt.setFill(Color.GOLDENROD);
+			pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 28));
 		});
 
 		this.getMenuBtn().setOnMouseExited(e -> {
 			this.getMenuBtn().setCursor(Cursor.DEFAULT);
+			pauseTxt.setFill(Color.BLACK);
+			pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 24));
 		});
 
 	}
