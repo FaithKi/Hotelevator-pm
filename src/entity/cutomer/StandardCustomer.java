@@ -1,6 +1,6 @@
 package entity.cutomer;
 
-import entity.elevator.InsideCabin;
+import entity.building.InsideCabin;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.game.PatienceLevel;

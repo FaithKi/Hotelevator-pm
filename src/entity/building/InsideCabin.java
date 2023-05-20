@@ -1,17 +1,13 @@
-package entity.elevator;
-
-import java.util.ArrayList;
-import java.util.Iterator;
+package entity.building;
 
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
+import entity.sidebar.TimeGauge;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
-import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
 

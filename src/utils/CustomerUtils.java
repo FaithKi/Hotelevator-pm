@@ -1,10 +1,10 @@
 package utils;
 
+import entity.building.InsideCabin;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.VIPCustomer;
-import entity.elevator.InsideCabin;
+import entity.sidebar.TimeGauge;
 import logic.game.GameLogic;
-import sidebar.TimeGauge;
 
 public class CustomerUtils {
 

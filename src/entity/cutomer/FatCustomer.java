@@ -1,6 +1,6 @@
 package entity.cutomer;
 
-import entity.elevator.InsideCabin;
+import entity.building.InsideCabin;
 import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;

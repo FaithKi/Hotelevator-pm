@@ -1,7 +1,7 @@
 package pane;
 
 import entity.Entity;
-import entity.elevator.Elevator;
+import entity.building.Elevator;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;

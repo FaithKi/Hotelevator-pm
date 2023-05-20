@@ -1,7 +1,7 @@
 package entity.cutomer;
 
 import entity.Entity;
-import entity.elevator.InsideCabin;
+import entity.building.InsideCabin;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;

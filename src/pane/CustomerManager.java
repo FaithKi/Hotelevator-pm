@@ -1,6 +1,5 @@
 package pane;
 
-import input.InputUtility;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
@@ -20,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.InputUtility;
 
 public class CustomerManager extends GridPane {
 	private Canvas customerManagerCanvas;

@@ -1,16 +1,16 @@
-package entity.elevator;
+package entity.building;
 
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
-import input.InputUtility;
+import entity.sidebar.TimeGauge;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
-import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
+import utils.InputUtility;
 import utils.SoundUtils;
 
 public class Elevator extends Entity {
