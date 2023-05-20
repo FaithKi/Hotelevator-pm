@@ -3,6 +3,10 @@ package pane;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -29,11 +33,16 @@ public class BottomBarPane extends BorderPane {
 
 	public void initializeMenuBtn() {
 		this.menuBtn = new StackPane();
+		this.getMenuBtn().setPrefSize(2 * Config.UNIT, Config.FLOOR_HEIGHT);
 		Text pauseTxt = new Text("Pause");
 		pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 28));
-		this.menuBtn.getChildren().add(pauseTxt);
-		this.getMenuBtn().setPrefWidth(2 * Config.UNIT);
-		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
+		this.getMenuBtn().getChildren().add(pauseTxt);
+
+		this.getMenuBtn()
+				.setBackground(new Background(new BackgroundImage(RenderableHolder.pausePaneBackground,
+						BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+						new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
+//		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		this.setRight(this.getMenuBtn());
 		this.getMenuBtn().setOnMouseClicked((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);

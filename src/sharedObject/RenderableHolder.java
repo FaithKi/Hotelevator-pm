@@ -34,6 +34,7 @@ public class RenderableHolder {
 	public static Image instBg;
 	public static Image exitBg;
 	public static Image healthBar;
+	public static Image pausePaneBackground;
 	public static WritableImage wallpaper;
 	public static WritableImage health;
 	public static WritableImage healthContainer;
@@ -95,6 +96,8 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125), true, false);
 		insideCabin = new Image(ClassLoader.getSystemResource("insideCabin.png").toString(), (Config.UNIT * 14),
 				(Config.UNIT * 1.125), true, false);
+		pausePaneBackground = new Image(ClassLoader.getSystemResource("pausePaneBackground.png").toString(),
+				(Config.UNIT * 2), (Config.UNIT * 1.125), true, false);
 
 		loadCustomer();
 
