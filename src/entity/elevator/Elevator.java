@@ -52,7 +52,7 @@ public class Elevator extends Entity {
 			gc.drawImage(RenderableHolder.shaftBg, 0, i);
 		}
 		if (this.isSelected()) {
-			outlineColor = Color.rgb(231, 140, 156);
+			outlineColor = Color.rgb(255, 255, 0);
 		}
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);
 		gc.setStroke(outlineColor);
