@@ -76,7 +76,7 @@ public class Elevator extends Entity {
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		for(int i = 0; i < 32*20; i += 32) {			
+		for (int i = 0; i < 32 * 20; i += 32) {
 			gc.drawImage(RenderableHolder.shaftBg, 0, i);
 		}
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);

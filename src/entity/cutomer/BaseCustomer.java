@@ -29,6 +29,13 @@ public abstract class BaseCustomer extends Entity {
 		this.rewardMultiplier = 1;
 	}
 
+	public BaseCustomer(int spaceNeeded, double rewardMultiplier) {
+		super(100);
+		setDestinationFloor();
+		this.spaceNeeded = spaceNeeded;
+		this.rewardMultiplier = rewardMultiplier;
+	}
+
 	private void setDestinationFloor() {
 		currentFloor = Randomizer.getRandomInt(0, 6);
 		do {
