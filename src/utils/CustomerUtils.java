@@ -1,8 +1,8 @@
 package utils;
 
 import entity.building.InsideCabin;
-import entity.cutomer.BaseCustomer;
-import entity.cutomer.VIPCustomer;
+import entity.customer.BaseCustomer;
+import entity.customer.VIPCustomer;
 import entity.sidebar.TimeGauge;
 import logic.game.GameLogic;
 

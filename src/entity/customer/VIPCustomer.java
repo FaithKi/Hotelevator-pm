@@ -1,4 +1,4 @@
-package entity.cutomer;
+package entity.customer;
 
 import entity.building.InsideCabin;
 import logic.game.PatienceLevel;
@@ -38,7 +38,7 @@ public class VIPCustomer extends BaseCustomer {
 	}
 
 	@Override
-	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
+	protected void setCustomerPatienceType(PatienceLevel patienceLevel) {
 		switch (patienceLevel) {
 		case LOW: {
 			this.maxPatience = Config.MAX_LOW_PATIENCE;

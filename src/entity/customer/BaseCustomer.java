@@ -1,4 +1,4 @@
-package entity.cutomer;
+package entity.customer;
 
 import entity.Entity;
 import entity.building.InsideCabin;
@@ -45,7 +45,7 @@ public abstract class BaseCustomer extends Entity {
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
 
-	public abstract void setCustomerPatienceType(PatienceLevel patienceLevel);
+	protected abstract void setCustomerPatienceType(PatienceLevel patienceLevel);
 
 	public String toString() {
 		return "BaseCustomer";

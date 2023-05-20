@@ -1,7 +1,7 @@
 package entity.building;
 
 import entity.Entity;
-import entity.cutomer.BaseCustomer;
+import entity.customer.BaseCustomer;
 import entity.sidebar.TimeGauge;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
