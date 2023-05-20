@@ -35,6 +35,7 @@ public class RenderableHolder {
 	public static Image exitBg;
 	public static Image healthBar;
 	public static Image pausePaneBackground;
+	public static Image instruction;
 	public static WritableImage wallpaper;
 	public static WritableImage health;
 	public static WritableImage healthContainer;
@@ -98,6 +99,9 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125), true, false);
 		pausePaneBackground = new Image(ClassLoader.getSystemResource("pausePaneBackground.png").toString(),
 				(Config.UNIT * 2), (Config.UNIT * 1.125), true, false);
+
+		instruction = new Image(ClassLoader.getSystemResource("instruction.png").toString(),
+				(Config.SCREEN_WIDTH - (Config.UNIT * 2)), (Config.SCREEN_HEIGHT - (Config.UNIT * 2)), true, false);
 
 		loadCustomer();
 

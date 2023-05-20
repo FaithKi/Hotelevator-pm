@@ -48,7 +48,7 @@ public class MainMenu extends StackPane {
 		setMargin(gameTitle, new Insets(Config.UNIT * 2, 0, 0, 0));
 		setAlignment(btnWrapper, Pos.CENTER);
 		setMargin(btnWrapper, new Insets(Config.UNIT * 1.8, 0, 0, 0));
-		
+
 	}
 
 	public static MainMenu getInstance() {
@@ -71,8 +71,10 @@ public class MainMenu extends StackPane {
 //		this.startBtn
 //				.setBackground(new Background(new BackgroundImage(RenderableHolder.startBg, BackgroundRepeat.NO_REPEAT,
 //						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-		this.startBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
-		this.startBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(7)),null, null));
+		this.startBtn
+				.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15), null)));
+		this.startBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID,
+				new CornerRadii(10), new BorderWidths(7)), null, null));
 		this.startBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.startBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
@@ -82,7 +84,7 @@ public class MainMenu extends StackPane {
 		this.startBtn.setOnMouseExited((e) -> {
 			this.startBtn.setCursor(Cursor.DEFAULT);
 			this.startBtn.setTextFill(Color.rgb(94, 106, 111));
-			this.startBtn.setPadding(new Insets(0,0,0,0));
+			this.startBtn.setPadding(new Insets(0, 0, 0, 0));
 			this.startBtn.setPadding(new Insets(12.7, 25.3, 12.7, 25.3));
 		});
 
@@ -122,8 +124,10 @@ public class MainMenu extends StackPane {
 //		this.exitBtn
 //				.setBackground(new Background(new BackgroundImage(RenderableHolder.exitBg, BackgroundRepeat.NO_REPEAT,
 //						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-		this.exitBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
-		this.exitBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(6)),null, null));
+		this.exitBtn
+				.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15), null)));
+		this.exitBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID,
+				new CornerRadii(10), new BorderWidths(6)), null, null));
 		this.exitBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.exitBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
@@ -145,8 +149,10 @@ public class MainMenu extends StackPane {
 //		this.instructionBtn
 //				.setBackground(new Background(new BackgroundImage(RenderableHolder.instBg, BackgroundRepeat.NO_REPEAT,
 //						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-		this.instructionBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
-		this.instructionBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5)),null, null));
+		this.instructionBtn
+				.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15), null)));
+		this.instructionBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID,
+				new CornerRadii(10), new BorderWidths(5)), null, null));
 		this.instructionBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.instructionBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
@@ -161,14 +167,19 @@ public class MainMenu extends StackPane {
 			this.instructionPane.setVisible(true);
 		});
 	}
-	
+
 	private void initializeInstructionPane() {
 		this.instructionPane = new StackPane();
 		this.instructionPane.setPrefSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
-		this.instructionPane.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
-		this.instructionPane.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5)),null, null));
+		this.instructionPane
+				.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15), null)));
+		this.instructionPane.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID,
+				new CornerRadii(10), new BorderWidths(5)), null, null));
+		ImageView instruction = new ImageView(RenderableHolder.instruction);
+		setAlignment(instruction, Pos.TOP_CENTER);
+		this.instructionPane.getChildren().add(instruction);
 		setAlignment(instructionPane, Pos.CENTER);
-		setMargin(instructionPane, new Insets(Config.UNIT,Config.UNIT,Config.UNIT,Config.UNIT));
+		setMargin(instructionPane, new Insets(Config.UNIT, Config.UNIT, Config.UNIT, Config.UNIT));
 		this.getChildren().add(instructionPane);
 		this.instructionPane.setVisible(false);
 		Button closeBtn = new Button("Close");
@@ -178,7 +189,7 @@ public class MainMenu extends StackPane {
 		closeBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(4)),null, null));
 		this.instructionPane.getChildren().add(closeBtn);
 		setAlignment(closeBtn, Pos.BOTTOM_CENTER);
-		setMargin(closeBtn, new Insets(0,0,Config.UNIT/4,0));
+		setMargin(closeBtn, new Insets(0, 0, Config.UNIT / 4, 0));
 		closeBtn.setOnAction((e) -> {
 			this.instructionPane.setVisible(false);
 		});
@@ -193,5 +204,4 @@ public class MainMenu extends StackPane {
 		});
 	}
 
-	
 }

@@ -28,7 +28,7 @@ public class TimeGauge extends Entity {
 		// this.z = ;
 //		this.height = Config.UNIT * 6 * 1.125;
 		this.height = 384;
-		this.score = 999999;
+		this.score = 0;
 	}
 
 	@Override
@@ -54,8 +54,8 @@ public class TimeGauge extends Entity {
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.7, Config.UNIT * 0.9);
 
-		gc.drawImage(RenderableHolder.healthContainer, Config.UNIT/10, Config.UNIT * 1.5);
-		gc.drawImage(RenderableHolder.health, Config.UNIT/10, this.y, 54, this.height);
+		gc.drawImage(RenderableHolder.healthContainer, Config.UNIT / 10, Config.UNIT * 1.5);
+		gc.drawImage(RenderableHolder.health, Config.UNIT / 10, this.y, 54, this.height);
 	}
 
 	@Override
@@ -85,6 +85,8 @@ public class TimeGauge extends Entity {
 	}
 
 	public void setTimeLeft(int d) {
+		if (d > MAX_TIME)
+			d = MAX_TIME;
 		this.timeLeft = d;
 	}
 
