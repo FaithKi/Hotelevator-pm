@@ -24,7 +24,6 @@ import utils.SoundUtils;
 public class GameLogic {
 
 	private boolean isGameOver = false;
-	public static long startTime;
 	public Elevator selectedElev;
 	private ArrayList<Entity> gameObjectContainer;
 	private TimeGauge timeGauge;
@@ -38,7 +37,6 @@ public class GameLogic {
 
 	private GameLogic() {
 		System.out.println("new instance");
-		startTime = System.nanoTime();
 		this.gameObjectContainer = new ArrayList<>();
 		this.timeGauge = new TimeGauge();
 		this.hotel = new CustomerGrid();

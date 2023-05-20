@@ -30,38 +30,38 @@ public class PausePane extends VBox {
 		initializeMainMenuBtn();
 	}
 
-	public void initializeResumeBtn() {
+	private void initializeResumeBtn() {
 		this.resumeBtn = new Button("Resume");
-		this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+		this.resumeBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 		this.resumeBtn
 				.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15), null)));
 		this.resumeBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID,
 				new CornerRadii(10), new BorderWidths(7)), null, null));
 		this.resumeBtn.setTextFill(Color.rgb(94, 106, 111));
-		this.getChildren().add(this.getResumeBtn());
-		this.getResumeBtn().setOnMouseClicked((e) -> {
+		this.getChildren().add(this.resumeBtn);
+		this.resumeBtn.setOnMouseClicked((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);
 			GameLogic.getInstance().getCustomerGenerator().play();
 			this.getParent().getChildrenUnmodifiable().get(1).requestFocus();
 			this.setVisible(false);
 		});
 
-		this.getResumeBtn().setOnMouseEntered((e) -> {
+		this.resumeBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
-			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 36));
+			this.resumeBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 36));
 			this.resumeBtn.setTextFill(Color.rgb(231, 140, 156));
-			this.getResumeBtn().setCursor(Cursor.HAND);
+			this.resumeBtn.setCursor(Cursor.HAND);
 		});
 
-		this.getResumeBtn().setOnMouseExited((e) -> {
-			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+		this.resumeBtn.setOnMouseExited((e) -> {
+			this.resumeBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 			this.resumeBtn.setTextFill(Color.rgb(94, 106, 111));
-			this.getResumeBtn().setCursor(Cursor.DEFAULT);
+			this.resumeBtn.setCursor(Cursor.DEFAULT);
 
 		});
 	}
 
-	public void initializeMainMenuBtn() {
+	private void initializeMainMenuBtn() {
 		this.mainMenuBtn = new Button("Main Menu");
 		this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 		this.mainMenuBtn
