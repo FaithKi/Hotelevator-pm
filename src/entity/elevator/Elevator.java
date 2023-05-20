@@ -25,23 +25,82 @@ public class Elevator extends Entity {
 
 	private String lastDeliver;
 	private boolean hasMoved;
-	private int comboCount; // 1-5 note in d minor scale
+	private int comboCount;
 
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey, KeyCode selectKey) {
+		super(100);
 		this.id = id;
 		this.isSelected = false;
 		this.currentFloor = 0;
 		this.insideCabin = new InsideCabin(this);
 		this.x = x;
 		this.y = y;
-		this.z = 100;
 		this.upKey = upKey;
 		this.downKey = downKey;
 		this.selectKey = selectKey;
 		this.moveY = 0;
 		this.lastDeliver = null;
 		this.comboCount = 1;
-		hasMoved = false;
+		this.hasMoved = false;
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		for (int i = 0; i < 32 * 20; i += 32) {
+			gc.drawImage(RenderableHolder.shaftBg, 0, i);
+		}
+		gc.drawImage(RenderableHolder.cabinSprite, x, y);
+		gc.setStroke(Color.rgb(57, 57, 79));
+		gc.setLineWidth(5);
+		gc.strokeRoundRect(x, y, Config.UNIT * 1.5, Config.FLOOR_HEIGHT, Config.UNIT * 0.1, Config.UNIT * 0.1);
+	}
+
+	@Override
+	public void update() {
+		moveElevatorSprite();
+		insideCabin.update();
+		handleElevatorMovementUpdate();
+		if (isSelected) {
+			handleSelectedCabinInteraction();
+		}
+
+	}
+
+	public void moveElevatorSprite() {
+		if (Math.abs(this.y - (((Config.TOTAL_FLOOR - 1) - this.getCurrentFloor()) * Config.FLOOR_HEIGHT)) < 10e-8) {
+			this.y = (6 - this.getCurrentFloor()) * Config.FLOOR_HEIGHT;
+			this.moveY = 0;
+		} else {
+			if (this.moveY > 0) {
+//				this.moveY -= 0.0225 * Config.UNIT;
+				this.y += Config.ELEV_SPEED;
+			}
+			if (this.moveY < 0) {
+//				this.moveY += 0.0225 * Config.UNIT;
+				this.y -= Config.ELEV_SPEED;
+			}
+		}
+	}
+
+	private void handleElevatorMovementUpdate() {
+
+		if (InputUtility.getKeyPressed(selectKey)) {
+			SoundUtils.playTrack(RenderableHolder.selectCabinTrack, 0.2);
+			GameLogic.getInstance().getSelectedElev().setSelected(false);
+			this.setSelected(true);
+		}
+
+		if (y == (((Config.TOTAL_FLOOR - 1) - currentFloor) * Config.FLOOR_HEIGHT)) {
+			if (InputUtility.getKeyPressed(upKey) && currentFloor != Config.TOP_FLOOR) {
+				moveUp();
+				moveY = -Config.FLOOR_HEIGHT;
+			}
+			if (InputUtility.getKeyPressed(downKey) && currentFloor != Config.FIRST_FLOOR) {
+				moveDown();
+				moveY = Config.FLOOR_HEIGHT;
+			}
+		}
+
 	}
 
 	public int moveUp() {
@@ -56,64 +115,6 @@ public class Elevator extends Entity {
 		this.setCurrentFloor(this.getCurrentFloor() - 1);
 		this.hasMoved = true;
 		return this.currentFloor;
-	}
-
-	public void move() {
-		if (Math.abs(this.y - ((6 - this.getCurrentFloor()) * 1.125 * Config.UNIT)) < 10e-8) {
-			this.y = (6 - this.getCurrentFloor()) * 1.125 * Config.UNIT;
-			this.moveY = 0;
-		} else {
-			if (this.moveY > 0) {
-//				this.moveY -= 0.0225 * Config.UNIT;
-				this.y += Config.ELEV_SPEED;
-			}
-			if (this.moveY < 0) {
-//				this.moveY += 0.0225 * Config.UNIT;
-				this.y -= Config.ELEV_SPEED;
-			}
-		}
-	}
-
-	@Override
-	public void draw(GraphicsContext gc) {
-		for (int i = 0; i < 32 * 20; i += 32) {
-			gc.drawImage(RenderableHolder.shaftBg, 0, i);
-		}
-		gc.drawImage(RenderableHolder.cabinSprite, x, y);
-		gc.setStroke(Color.rgb(57, 57, 79));
-		gc.setLineWidth(5);
-		gc.strokeRoundRect(x, y, Config.UNIT * 1.5, Config.UNIT * 1.125, Config.UNIT * 0.1, Config.UNIT * 0.1);
-	}
-
-	@Override
-	public void update() {
-		move();
-		insideCabin.update();
-		handleElevatorMovementUpdate();
-		if (isSelected) {
-			handleSelectedCabinInteraction();
-		}
-
-	}
-
-	private void handleElevatorMovementUpdate() {
-		if (InputUtility.getKeyPressed(selectKey)) {
-			GameLogic.getInstance().getSelectedElev().setSelected(false);
-			SoundUtils.playTrack(RenderableHolder.selectCabinTrack, 0.2);
-			this.setSelected(true);
-
-		}
-		if (y == ((6 - currentFloor) * 1.125 * Config.UNIT)) {
-			if (InputUtility.getKeyPressed(upKey) && currentFloor != 6) {
-				moveUp();
-				moveY = -1.125 * Config.UNIT;
-
-			}
-			if (InputUtility.getKeyPressed(downKey) && currentFloor != 0) {
-				moveDown();
-				moveY = 1.125 * Config.UNIT;
-			}
-		}
 	}
 
 	private void handleSelectedCabinInteraction() {
@@ -173,7 +174,7 @@ public class Elevator extends Entity {
 	}
 
 	public void setCurrentFloor(int currentFloor) {
-		this.currentFloor = currentFloor;
+		this.currentFloor = Math.max(Config.FIRST_FLOOR, Math.min(Config.TOP_FLOOR, currentFloor));
 	}
 
 	public boolean isSelected() {

@@ -126,12 +126,12 @@ public abstract class BaseCustomer extends Entity {
 		double allowedImageWidth = Config.UNIT * (0.75);
 
 		double currentPatienceLeft = allowedImageWidth * (getPatienceLeft() / getMaxPatience());
-		double floorHeight = Config.UNIT * 1.125;
-		double yFirstFloor = floorHeight * totalFloor;
+		double yFirstFloor = Config.FLOOR_HEIGHT * totalFloor;
 		double XPos = currentQueue * customerWidthIncludePaneSpacing;
-		double YPos = yFirstFloor - (Config.UNIT / 20) - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
+		double YPos = yFirstFloor - (Config.UNIT / 20) - ((currentFloor) * Config.FLOOR_HEIGHT); // +5 = space for
+																									// patienceGauge
 
-		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight));
+		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (Config.FLOOR_HEIGHT));
 
 		gc.setFill(this.gaugeColor);
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
@@ -142,9 +142,9 @@ public abstract class BaseCustomer extends Entity {
 		gc.setFill(Config.TEXT_FILL);
 		gc.setStroke(Config.TEXT_STROKE);
 		gc.fillText(Integer.toString(getDestinationFloor() + 1),
-				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.70));
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (Config.FLOOR_HEIGHT * 0.70));
 		gc.strokeText(Integer.toString(getDestinationFloor() + 1),
-				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.70));
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (Config.FLOOR_HEIGHT * 0.70));
 
 	}
 

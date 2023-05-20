@@ -63,17 +63,21 @@ public class CustomerGrid extends Entity {
 
 		int selectedQueue = grid[0];
 		int selectedFloor = grid[1];
+		BaseCustomer customer = getCustomer(selectedQueue, selectedFloor);
+
+		if (customer == null) {
+			return;
+		}
+
 		Elevator selectedElevator = GameLogic.getInstance().selectedElev;
 
 		if (selectedElevator.getCurrentFloor() == selectedFloor) {
-			BaseCustomer customer = getCustomer(selectedQueue, selectedFloor);
-			if (customer == null) {
-				return;
-			}
 			boolean isAdded = addCustomerToCabin(customer, selectedElevator.getInsideCabin());
 			if (isAdded) {
 				removeCustomerFromFloor(selectedQueue, selectedFloor);
 			}
+		} else {
+			SoundUtils.playTrack(RenderableHolder.addPassengerFailedTrack, 0.5);
 		}
 	}
 
