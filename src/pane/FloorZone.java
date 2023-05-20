@@ -1,6 +1,5 @@
 package pane;
 
-import input.InputUtility;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
@@ -22,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.InputUtility;
 
 public class FloorZone extends GridPane {
 	private Canvas hotelCanvas;

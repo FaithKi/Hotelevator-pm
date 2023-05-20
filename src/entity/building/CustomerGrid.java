@@ -2,15 +2,13 @@ package entity.building;
 
 import entity.Entity;
 import entity.cutomer.BaseCustomer;
-import entity.elevator.Elevator;
-import entity.elevator.InsideCabin;
-import input.InputUtility;
+import entity.sidebar.TimeGauge;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
-import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
+import utils.InputUtility;
 import utils.SoundUtils;
 
 public class CustomerGrid extends Entity {

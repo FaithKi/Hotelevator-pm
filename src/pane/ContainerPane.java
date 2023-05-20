@@ -1,8 +1,8 @@
 package pane;
 
 import entity.building.CustomerGrid;
-import entity.elevator.Elevator;
-import input.InputUtility;
+import entity.building.Elevator;
+import entity.sidebar.TimeGauge;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
@@ -16,8 +16,8 @@ import javafx.scene.text.TextAlignment;
 import logic.game.GameLogic;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
-import sidebar.TimeGauge;
 import utils.Config;
+import utils.InputUtility;
 import utils.SoundUtils;
 
 public class ContainerPane extends BorderPane {

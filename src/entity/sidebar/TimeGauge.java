@@ -1,4 +1,4 @@
-package sidebar;
+package entity.sidebar;
 
 import entity.Entity;
 import javafx.scene.canvas.GraphicsContext;
