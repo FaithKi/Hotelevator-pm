@@ -54,8 +54,8 @@ public class TimeGauge extends Entity {
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.fillText(Integer.toString(this.getScore()), Config.UNIT * 0.5, Config.UNIT * 0.7, Config.UNIT * 0.9);
 
-		gc.drawImage(RenderableHolder.healthContainer, 0, Config.UNIT * 1.5);
-		gc.drawImage(RenderableHolder.health, 0, this.y, 54, this.height);
+		gc.drawImage(RenderableHolder.healthContainer, Config.UNIT/10, Config.UNIT * 1.5);
+		gc.drawImage(RenderableHolder.health, Config.UNIT/10, this.y, 54, this.height);
 	}
 
 	@Override
