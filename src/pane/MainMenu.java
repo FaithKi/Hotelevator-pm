@@ -187,24 +187,11 @@ public class MainMenu extends StackPane {
 		this.getChildren().add(instructionPane);
 		this.instructionPane.setVisible(false);
 		Button closeBtn = new Button("Close");
-		closeBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(),20));
-		closeBtn.setTextFill(Color.rgb(94, 106, 111));
-		closeBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
-		closeBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(4)),null, null));
 		this.instructionPane.getChildren().add(closeBtn);
 		setAlignment(closeBtn, Pos.BOTTOM_CENTER);
 		setMargin(closeBtn, new Insets(0, 0, Config.UNIT / 4, 0));
 		closeBtn.setOnAction((e) -> {
 			this.instructionPane.setVisible(false);
-		});
-		closeBtn.setOnMouseEntered((e) -> {
-			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
-			closeBtn.setCursor(Cursor.HAND);
-			closeBtn.setTextFill(Color.rgb(231, 140, 156));
-		});
-		closeBtn.setOnMouseExited((e) -> {
-			closeBtn.setCursor(Cursor.DEFAULT);
-			closeBtn.setTextFill(Color.rgb(94, 106, 111));
 		});
 	}
 
