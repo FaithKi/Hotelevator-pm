@@ -92,7 +92,7 @@ public class CustomerGrid extends Entity {
 		return customerGrid[queue][floor];
 	}
 
-	public static boolean addCustomerToCabin(BaseCustomer customer, InsideCabin insideCabin) {
+	private boolean addCustomerToCabin(BaseCustomer customer, InsideCabin insideCabin) {
 		if (!customer.canEnter(insideCabin)) {
 			SoundUtils.playTrack(RenderableHolder.addPassengerFailedTrack, 0.5);
 			return false;
