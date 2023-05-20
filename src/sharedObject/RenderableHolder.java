@@ -106,10 +106,6 @@ public class RenderableHolder {
 		Collections.sort(entities, comparator);
 	}
 
-	public void update() {
-
-	}
-
 	public List<IRenderable> getEntities() {
 		return entities;
 	}
