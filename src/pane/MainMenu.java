@@ -37,7 +37,6 @@ public class MainMenu extends StackPane {
 	private ImageView gameTitle;
 	private StackPane instructionPane;
 	private static MainMenu instance = new MainMenu();
-	public static int highScore;
 	
 
 	public MainMenu() {
@@ -45,7 +44,7 @@ public class MainMenu extends StackPane {
 		this.gameTitle = new ImageView(RenderableHolder.gameName);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.bgSprite, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-		initializebtnWrapper();
+		initializeBtnWrapper();
 		this.getChildren().add(gameTitle);
 		initializeInstructionPane();
 		setAlignment(gameTitle, Pos.TOP_CENTER);
@@ -59,7 +58,7 @@ public class MainMenu extends StackPane {
 		return instance;
 	}
 
-	private void initializebtnWrapper() {
+	private void initializeBtnWrapper() {
 		this.btnWrapper = new VBox(Config.UNIT / 2);
 		this.btnWrapper.setAlignment(Pos.CENTER);
 		initializeStart();

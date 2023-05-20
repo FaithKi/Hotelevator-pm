@@ -107,14 +107,14 @@ public class Elevator extends Entity {
 
 	}
 
-	public int moveUp() {
+	private int moveUp() {
 		SoundUtils.playTrack(RenderableHolder.moveElevatorTrack, 0.5);
 		this.setCurrentFloor(this.getCurrentFloor() + 1);
 		this.hasMoved = true;
 		return this.currentFloor;
 	}
 
-	public int moveDown() {
+	private int moveDown() {
 		SoundUtils.playTrack(RenderableHolder.moveElevatorTrack, 0.4);
 		this.setCurrentFloor(this.getCurrentFloor() - 1);
 		this.hasMoved = true;
