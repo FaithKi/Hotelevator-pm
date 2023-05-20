@@ -5,6 +5,11 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -28,6 +33,9 @@ public class PausePane extends VBox {
 	public void initializeResumeBtn() {
 		this.resumeBtn = new Button("Resume");
 		this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+		this.resumeBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
+		this.resumeBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(7)),null, null));
+		this.resumeBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.getChildren().add(this.getResumeBtn());
 		this.getResumeBtn().setOnMouseClicked((e) -> {
 			RenderableHolder.gameSoundTrack.setVolume(0.03);
@@ -39,11 +47,13 @@ public class PausePane extends VBox {
 		this.getResumeBtn().setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
 			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 36));
+			this.resumeBtn.setTextFill(Color.rgb(231, 140, 156));
 			this.getResumeBtn().setCursor(Cursor.HAND);
 		});
 
 		this.getResumeBtn().setOnMouseExited((e) -> {
 			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+			this.resumeBtn.setTextFill(Color.rgb(94, 106, 111));
 			this.getResumeBtn().setCursor(Cursor.DEFAULT);
 
 		});
@@ -52,6 +62,9 @@ public class PausePane extends VBox {
 	public void initializeMainMenuBtn() {
 		this.mainMenuBtn = new Button("Main Menu");
 		this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+		this.mainMenuBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
+		this.mainMenuBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(7)),null, null));
+		this.mainMenuBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.getMainMenuBtn().setOnAction((e) -> {
 			RenderableHolder.gameSoundTrack.setVolume(0.03);
 			GameLogic.getInstance().setGameOver(true);
@@ -62,11 +75,13 @@ public class PausePane extends VBox {
 		this.getMainMenuBtn().setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
 			this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 36));
+			this.mainMenuBtn.setTextFill(Color.rgb(231, 140, 156));
 			this.getMainMenuBtn().setCursor(Cursor.HAND);
 		});
 
 		this.getMainMenuBtn().setOnMouseExited((e) -> {
 			this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+			this.mainMenuBtn.setTextFill(Color.rgb(94, 106, 111));
 			this.getMainMenuBtn().setCursor(Cursor.DEFAULT);
 		});
 

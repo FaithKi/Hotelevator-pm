@@ -8,10 +8,16 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -59,9 +65,11 @@ public class MainMenu extends StackPane {
 	private void initializeStart() {
 		this.startBtn = new Button("Start");
 		this.startBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 38));
-		this.startBtn
-				.setBackground(new Background(new BackgroundImage(RenderableHolder.startBg, BackgroundRepeat.NO_REPEAT,
-						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+//		this.startBtn
+//				.setBackground(new Background(new BackgroundImage(RenderableHolder.startBg, BackgroundRepeat.NO_REPEAT,
+//						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		this.startBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
+		this.startBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(7)),null, null));
 		this.startBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.startBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
@@ -71,6 +79,8 @@ public class MainMenu extends StackPane {
 		this.startBtn.setOnMouseExited((e) -> {
 			this.startBtn.setCursor(Cursor.DEFAULT);
 			this.startBtn.setTextFill(Color.rgb(94, 106, 111));
+			this.startBtn.setPadding(new Insets(0,0,0,0));
+			this.startBtn.setPadding(new Insets(12.7, 25.3, 12.7, 25.3));
 		});
 
 		this.startBtn.setOnAction((e) -> {
@@ -106,9 +116,11 @@ public class MainMenu extends StackPane {
 	private void initializeExit() {
 		this.exitBtn = new Button("Exit");
 		this.exitBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 20));
-		this.exitBtn
-				.setBackground(new Background(new BackgroundImage(RenderableHolder.exitBg, BackgroundRepeat.NO_REPEAT,
-						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+//		this.exitBtn
+//				.setBackground(new Background(new BackgroundImage(RenderableHolder.exitBg, BackgroundRepeat.NO_REPEAT,
+//						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		this.exitBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
+		this.exitBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(6)),null, null));
 		this.exitBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.exitBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
@@ -127,9 +139,11 @@ public class MainMenu extends StackPane {
 	private void initializeInstruction() {
 		this.instructionBtn = new Button("Instruction");
 		this.instructionBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 20));
-		this.instructionBtn
-				.setBackground(new Background(new BackgroundImage(RenderableHolder.instBg, BackgroundRepeat.NO_REPEAT,
-						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+//		this.instructionBtn
+//				.setBackground(new Background(new BackgroundImage(RenderableHolder.instBg, BackgroundRepeat.NO_REPEAT,
+//						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		this.instructionBtn.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
+		this.instructionBtn.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5)),null, null));
 		this.instructionBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.instructionBtn.setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
