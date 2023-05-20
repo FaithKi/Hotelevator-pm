@@ -3,16 +3,23 @@ package pane;
 import entity.Entity;
 import entity.elevator.Elevator;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import logic.game.GameLogic;
+import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class ElevatorZone extends Canvas {
 
 	private int id;
+	private GraphicsContext gc;
 
 	public ElevatorZone(int id) {
 		super((Config.UNIT * 1.5), (Config.UNIT * (1.125 * 7)));
 		this.id = id;
+		this.gc = this.getGraphicsContext2D();
 		addListener();
 	}
 
@@ -31,5 +38,9 @@ public class ElevatorZone extends Canvas {
 				}
 			}
 		});
+	}
+	
+	public GraphicsContext getGc() {
+		return this.gc;
 	}
 }

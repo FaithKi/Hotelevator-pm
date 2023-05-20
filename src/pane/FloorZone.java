@@ -19,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import sharedObject.RenderableHolder;
 import utils.Config;
 
@@ -41,6 +42,7 @@ public class FloorZone extends GridPane {
 				GridPane customerGridPane = createCustomerPane(queue, floor);
 				floorPane.getChildren().add(customerGridPane);
 			}
+//			floorPane.getChildren().add(new Text(Integer.toString(floor)));
 			floorPanes.getChildren().add(floorPane);
 		}
 

@@ -22,30 +22,30 @@ import utils.SoundUtils;
 public class BottomBarPane extends BorderPane {
 
 	private CustomerManager customerManager;
-	private StackPane menuBtn;
+	private StackPane pauseBtn;
 
 	public BottomBarPane() {
 		this.setPrefSize(Config.UNIT * 16, Config.UNIT * 1.125);
 //		this.setBackground(new Background(new BackgroundFill(Color.SALMON, null, null)));
 		this.customerManager = new CustomerManager();
 		this.setCenter(customerManager);
-		initializeMenuBtn();
+		initializePauseBtn();
 	}
 
-	public void initializeMenuBtn() {
-		this.menuBtn = new StackPane();
-		this.menuBtn.setPrefSize(2 * Config.UNIT, Config.FLOOR_HEIGHT);
-		this.menuBtn.setAlignment(Pos.CENTER);
+	public void initializePauseBtn() {
+		this.pauseBtn = new StackPane();
+		this.pauseBtn.setPrefSize(2 * Config.UNIT, Config.FLOOR_HEIGHT);
+		this.pauseBtn.setAlignment(Pos.CENTER);
 		Text pauseTxt = new Text("Pause");
 		pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 24));
-		this.getMenuBtn().getChildren().add(pauseTxt);
+		this.getPauseBtn().getChildren().add(pauseTxt);
 
-		this.getMenuBtn()
+		this.getPauseBtn()
 				.setBackground(new Background(new BackgroundImage(RenderableHolder.pausePaneBackground,
 						BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 						new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
-		this.setRight(this.getMenuBtn());
-		this.getMenuBtn().setOnMouseClicked((e) -> {
+		this.setRight(this.getPauseBtn());
+		this.getPauseBtn().setOnMouseClicked((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonClickTrack);
 			GameLogic.getInstance().getCustomerGenerator().stop();
 			PausePane pausePane = (PausePane) this.getParent().getParent().getChildrenUnmodifiable().get(2);
@@ -53,15 +53,15 @@ public class BottomBarPane extends BorderPane {
 			pausePane.requestFocus();
 			System.out.println("menu clicked!");
 		});
-		this.getMenuBtn().setOnMouseEntered(e -> {
+		this.getPauseBtn().setOnMouseEntered(e -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
-			this.getMenuBtn().setCursor(Cursor.HAND);
+			this.getPauseBtn().setCursor(Cursor.HAND);
 			pauseTxt.setFill(Color.GOLDENROD);
-			pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 28));
+			pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 26));
 		});
 
-		this.getMenuBtn().setOnMouseExited(e -> {
-			this.getMenuBtn().setCursor(Cursor.DEFAULT);
+		this.getPauseBtn().setOnMouseExited(e -> {
+			this.getPauseBtn().setCursor(Cursor.DEFAULT);
 			pauseTxt.setFill(Color.BLACK);
 			pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 24));
 		});
@@ -72,7 +72,7 @@ public class BottomBarPane extends BorderPane {
 		return customerManager;
 	}
 
-	public StackPane getMenuBtn() {
-		return menuBtn;
+	public StackPane getPauseBtn() {
+		return pauseBtn;
 	}
 }
