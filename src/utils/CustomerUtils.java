@@ -3,6 +3,8 @@ package utils;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.VIPCustomer;
 import entity.elevator.InsideCabin;
+import logic.game.GameLogic;
+import sidebar.TimeGauge;
 
 public class CustomerUtils {
 
@@ -102,4 +104,6 @@ public class CustomerUtils {
 		}
 		return false;
 	}
+
+	
 }

@@ -25,6 +25,7 @@ public class Elevator extends Entity {
 
 	private String lastCustomerType;
 	private boolean hasMoved;
+
 	private int comboCount;
 
 	public Elevator(int id, double x, double y, KeyCode upKey, KeyCode downKey, KeyCode selectKey) {
@@ -143,22 +144,24 @@ public class Elevator extends Entity {
 			int scoreGain = Config.BASE_SCORE_GAIN;
 			if (!hasMoved) {
 				setComboCount(getComboCount() + customer.getSpaceNeeded());
-				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[(Math.min((comboCount - 1), 4))]);
+				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[(Math.min((getComboCount() - 1), 4))]);
 
 				if (customer.toString().equals(lastCustomerType)) {
-					scoreGain = (int) (scoreGain * (customer.getRewardMultiplier() * comboCount));
+					scoreGain = (int) (scoreGain * (customer.getRewardMultiplier() * getComboCount()));
 				} else {
-					scoreGain = (int) (scoreGain * comboCount);
+					scoreGain = (int) (scoreGain * getComboCount());
 				}
 
 			} else {
-				setComboCount(1);
-				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[comboCount - 1]);
+				setComboCount(customer.getSpaceNeeded());
+				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[getComboCount() - 1]);
 			}
 			int bonusTimeFromCombo = (int) (scoreGain / Config.BASE_SCORE_GAIN);
-			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.TIME_GAIN + bonusTimeFromCombo));
-			System.out.println(hasMoved + " " + lastCustomerType + " " + customer.toString() + " " + comboCount
-					+ " SCORE" + scoreGain);
+			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.TIME_GAIN * bonusTimeFromCombo));
+			System.out.println("On the same floor: " + !hasMoved + " lastCustomerType:" + lastCustomerType
+					+ " CurrentCustomerType:" + customer.toString() + " comboCount:" + getComboCount() + " SCORE"
+					+ scoreGain + " timeGain"
+					+ Integer.toString((int) Math.round(Config.TIME_GAIN * bonusTimeFromCombo)));
 
 			setLastCustomerType(customer.toString());
 			timeGauge.setScore(timeGauge.getScore() + scoreGain);
