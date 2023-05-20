@@ -23,7 +23,7 @@ public class Elevator extends Entity {
 	private double moveY;
 	private double x, y;
 
-	private String lastDeliver;
+	private String lastCustomerType;
 	private boolean hasMoved;
 	private int comboCount;
 
@@ -39,7 +39,7 @@ public class Elevator extends Entity {
 		this.downKey = downKey;
 		this.selectKey = selectKey;
 		this.moveY = 0;
-		this.lastDeliver = null;
+		this.lastCustomerType = null;
 		this.comboCount = 1;
 		this.hasMoved = false;
 	}
@@ -122,10 +122,12 @@ public class Elevator extends Entity {
 		Integer queue = InputUtility.getPassengerIndexPressed();
 		BaseCustomer customer = getCustomerFromQueuePressed(queue);
 
-		if (!(customer == null)) {
+		if (customer != null) {
 			TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
+			customer.setCurrentFloor(currentFloor);
+
 			performDestinationCheck(customer, timeGauge);
-			setLastDeliver(customer.toString());
+			setLastCustomerType(customer.toString());
 			CustomerUtils.removePassengerFromCabin(customer, insideCabin, queue);
 		}
 	}
@@ -136,26 +138,29 @@ public class Elevator extends Entity {
 	}
 
 	private void performDestinationCheck(BaseCustomer customer, TimeGauge timeGauge) {
-		customer.setCurrentFloor(currentFloor);
-		if (customer.getCurrentFloor() == customer.getDestinationFloor()) {
-			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.MAX_TIME_GAUGE * 0.025));
-			int scoreGain = 100;
+		boolean isOnSameFloor = customer.getCurrentFloor() == customer.getDestinationFloor();
+		if (isOnSameFloor) {
+			int scoreGain = Config.BASE_SCORE_GAIN;
 			if (!hasMoved) {
 				setComboCount(getComboCount() + customer.getSpaceNeeded());
 				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[(Math.min((comboCount - 1), 4))]);
-				if (customer.toString().equals(lastDeliver)) {
+
+				if (customer.toString().equals(lastCustomerType)) {
 					scoreGain = (int) (scoreGain * (customer.getRewardMultiplier() * comboCount));
+				} else {
+					scoreGain = (int) (scoreGain * comboCount);
 				}
-				scoreGain = (int) (scoreGain * comboCount);
+
 			} else {
 				setComboCount(1);
 				SoundUtils.playTrack(RenderableHolder.sendPassengerSucceedTrack[comboCount - 1]);
 			}
+			int bonusTimeFromCombo = (int) (scoreGain / Config.BASE_SCORE_GAIN);
+			timeGauge.setTimeLeft(timeGauge.getTimeLeft() + (int) Math.round(Config.TIME_GAIN + bonusTimeFromCombo));
+			System.out.println(hasMoved + " " + lastCustomerType + " " + customer.toString() + " " + comboCount
+					+ " SCORE" + scoreGain);
 
-			System.out.println(
-					hasMoved + " " + lastDeliver + " " + customer.toString() + " " + comboCount + " SCORE" + scoreGain);
-
-			this.setLastDeliver(customer.toString());
+			setLastCustomerType(customer.toString());
 			timeGauge.setScore(timeGauge.getScore() + scoreGain);
 		} else {
 			SoundUtils.playTrack(RenderableHolder.sendPassengerFailedTrack, 0.8);
@@ -189,12 +194,12 @@ public class Elevator extends Entity {
 		return insideCabin;
 	}
 
-	public String getLastDeliver() {
-		return lastDeliver;
+	public String getLastCustomerType() {
+		return lastCustomerType;
 	}
 
-	public void setLastDeliver(String lastDeliver) {
-		this.lastDeliver = lastDeliver;
+	public void setLastCustomerType(String recentPassengerType) {
+		this.lastCustomerType = recentPassengerType;
 	}
 
 	public int getComboCount() {

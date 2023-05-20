@@ -30,6 +30,9 @@ public class Config {
 	public static final int MAX_CUSTOMER_PER_CABIN = 5;
 
 	public static final int MAX_TIME_GAUGE = 8000;
+	public static final int BASE_SCORE_GAIN = 100;
+	public static final double TIME_GAIN = MAX_TIME_GAUGE * 0.025;
+	public static final double TIME_LOSS = MAX_TIME_GAUGE * 0.05;
 	public static final double TIME_GAUGE_DECREASE_PERCENT = 0.04;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
