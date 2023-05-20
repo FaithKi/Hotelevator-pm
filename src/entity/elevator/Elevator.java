@@ -47,11 +47,15 @@ public class Elevator extends Entity {
 
 	@Override
 	public void draw(GraphicsContext gc) {
+		Color outlineColor = Color.rgb(57, 57, 79);
 		for (int i = 0; i < 32 * 20; i += 32) {
 			gc.drawImage(RenderableHolder.shaftBg, 0, i);
 		}
+		if (this.isSelected()) {
+			outlineColor = Color.rgb(255, 255, 0);
+		}
 		gc.drawImage(RenderableHolder.cabinSprite, x, y);
-		gc.setStroke(Color.rgb(57, 57, 79));
+		gc.setStroke(outlineColor);
 		gc.setLineWidth(5);
 		gc.strokeRoundRect(x, y, Config.UNIT * 1.5, Config.FLOOR_HEIGHT, Config.UNIT * 0.1, Config.UNIT * 0.1);
 	}

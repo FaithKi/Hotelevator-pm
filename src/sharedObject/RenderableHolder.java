@@ -28,7 +28,7 @@ public class RenderableHolder {
 	public static Image hotelFloorSprite;
 	public static Image standardCustomerHappy, fatCustomerHappy, vipCustomerHappy;
 	public static Image bgSprite;
-	public static Image wallpapers;
+//	public static Image wallpapers;
 	public static Image gameName;
 	public static Image startBg;
 	public static Image instBg;
@@ -87,6 +87,7 @@ public class RenderableHolder {
 		shaftBg = new Image(ClassLoader.getSystemResource("shaftbg.png").toString(), (Config.UNIT * 1.5),
 				(Config.UNIT * 1.125 * 7), true, false);
 		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491), (717), false, false);
+		wallpaper = new WritableImage(scifiTile.getPixelReader(), 370, 132, 68, 90);
 		cabinSprite = new WritableImage(scifiTile.getPixelReader(), 370, 0, 120, 90);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
 		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
@@ -101,9 +102,9 @@ public class RenderableHolder {
 
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
 				(Config.UNIT * 8 * 1.125), true, false);
-		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16), (1115),
-				true, false);
-		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10, 258, 68, 90);
+//		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16), (1115),
+//				true, false);
+//		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10, 258, 68, 90);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
