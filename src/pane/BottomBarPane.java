@@ -31,7 +31,7 @@ public class BottomBarPane extends BorderPane {
 		initializePauseBtn();
 	}
 
-	public void initializePauseBtn() {
+	private void initializePauseBtn() {
 		this.pauseBtn = new StackPane();
 		this.pauseBtn.setPrefSize(2 * Config.UNIT, Config.FLOOR_HEIGHT);
 		this.pauseBtn.setAlignment(Pos.CENTER);

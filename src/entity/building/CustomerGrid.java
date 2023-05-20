@@ -1,7 +1,7 @@
 package entity.building;
 
 import entity.Entity;
-import entity.cutomer.BaseCustomer;
+import entity.customer.BaseCustomer;
 import entity.sidebar.TimeGauge;
 import javafx.scene.canvas.GraphicsContext;
 import logic.game.GameLogic;
@@ -90,7 +90,7 @@ public class CustomerGrid extends Entity {
 		return customerGrid[queue][floor];
 	}
 
-	public static boolean addCustomerToCabin(BaseCustomer customer, InsideCabin insideCabin) {
+	private boolean addCustomerToCabin(BaseCustomer customer, InsideCabin insideCabin) {
 		if (!customer.canEnter(insideCabin)) {
 			SoundUtils.playTrack(RenderableHolder.addPassengerFailedTrack, 0.5);
 			return false;

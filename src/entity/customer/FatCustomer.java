@@ -1,23 +1,16 @@
-package entity.cutomer;
+package entity.customer;
 
 import entity.building.InsideCabin;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;
 import utils.CustomerUtils;
 
-public class StandardCustomer extends BaseCustomer {
+public class FatCustomer extends BaseCustomer {
 
-	public StandardCustomer(PatienceLevel patienceLevel) {
-		super();
+	public FatCustomer(PatienceLevel patienceLevel) {
+		super(2, 1.5);
 		setCustomerPatienceType(patienceLevel);
-	}
-
-	@Override
-	public String toString() {
-		return "StandardCustomer";
 	}
 
 	@Override
@@ -25,35 +18,37 @@ public class StandardCustomer extends BaseCustomer {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
 		int spaceNeeded = this.getSpaceNeeded();
+
 		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
 			return false;
 		if (cabinCapacity < currentSpace + spaceNeeded) {
 			return false;
 		}
 		return true;
+
 	}
 
 	@Override
-	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
+	protected void setCustomerPatienceType(PatienceLevel patienceLevel) {
 		switch (patienceLevel) {
 		case LOW: {
 			this.maxPatience = Config.MAX_LOW_PATIENCE;
 			this.gaugeColor = Config.PATIENCE_GAUGE_LOW_P;
-			this.setImage(RenderableHolder.standardCustomerLow);
+			this.setImage(RenderableHolder.fatCustomerLow);
 			break;
 		}
 
 		case MEDIUM: {
 			this.maxPatience = Config.MAX_MEDIUM_PATIENCE;
 			this.gaugeColor = Config.PATIENCE_GAUGE_MEDIUM_P;
-			this.setImage(RenderableHolder.standardCustomerMedium);
+			this.setImage(RenderableHolder.fatCustomerMedium);
 			break;
 		}
 
 		case HIGH: {
 			this.maxPatience = Config.MAX_HIGH_PATIENCE;
 			this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
-			this.setImage(RenderableHolder.standardCustomerHigh);
+			this.setImage(RenderableHolder.fatCustomerHigh);
 			break;
 		}
 
@@ -62,4 +57,8 @@ public class StandardCustomer extends BaseCustomer {
 
 	}
 
+	@Override
+	public String toString() {
+		return "FatCustomer";
+	}
 }
