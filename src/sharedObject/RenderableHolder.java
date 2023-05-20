@@ -79,8 +79,6 @@ public class RenderableHolder {
 		exitBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 106, 36, false, false);
 		gameName = new Image(ClassLoader.getSystemResource("game-name.png").toString(), (Config.UNIT * 10),
 				(Config.UNIT * 1.125 * 7), true, false);
-		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
-				(Config.UNIT * 1.125 * 7), true, false);
 		healthBar = new Image(ClassLoader.getSystemResource("healthbar.png").toString(), 23 * 6, 80 * 6, false, false);
 		health = new WritableImage(healthBar.getPixelReader(), 84, 48, 54, 384);
 		healthContainer = new WritableImage(healthBar.getPixelReader(), 0, 0, 54, 80 * 6);
@@ -89,10 +87,6 @@ public class RenderableHolder {
 		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491), (717), false, false);
 		wallpaper = new WritableImage(scifiTile.getPixelReader(), 370, 132, 68, 90);
 		cabinSprite = new WritableImage(scifiTile.getPixelReader(), 370, 0, 120, 90);
-		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
-		bottomBarSprite = new Image(ClassLoader.getSystemResource("bottombar.png").toString(), 120, 120, true, false);
-		hotelFloorSprite = new Image(ClassLoader.getSystemResource("floor.png").toString(), (Config.UNIT * 8.5),
-				(Config.UNIT * 1.125), true, false);
 		insideCabin = new Image(ClassLoader.getSystemResource("insideCabin.png").toString(), (Config.UNIT * 14),
 				(Config.UNIT * 1.125), true, false);
 		pausePaneBackground = new Image(ClassLoader.getSystemResource("pausePaneBackground.png").toString(),
