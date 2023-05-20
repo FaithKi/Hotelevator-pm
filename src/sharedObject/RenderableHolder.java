@@ -123,32 +123,32 @@ public class RenderableHolder {
 	}
 
 	private static void loadCustomer() {
-		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardCustomer_Happy.png").toString(),
+		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardMc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		fatCustomerHappy = new Image(ClassLoader.getSystemResource("FatCustomer_Happy.png").toString(),
+		fatCustomerHappy = new Image(ClassLoader.getSystemResource("FatMc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPCustomer_Happy.png").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-
-		standardCustomerHigh = new Image(ClassLoader.getSystemResource("StandardCustomer_High.png").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		standardCustomerMedium = new Image(ClassLoader.getSystemResource("StandardCustomer_Medium.png").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		standardCustomerLow = new Image(ClassLoader.getSystemResource("StandardCustomer_Low.png").toString(),
+		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPMc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 
-		fatCustomerHigh = new Image(ClassLoader.getSystemResource("FatCustomer_High.png").toString(),
+		standardCustomerHigh = new Image(ClassLoader.getSystemResource("StandardHc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		fatCustomerMedium = new Image(ClassLoader.getSystemResource("FatCustomer_Medium.png").toString(),
+		standardCustomerMedium = new Image(ClassLoader.getSystemResource("StandardMc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		fatCustomerLow = new Image(ClassLoader.getSystemResource("FatCustomer_Low.png").toString(),
+		standardCustomerLow = new Image(ClassLoader.getSystemResource("StandardLc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 
-		vipCustomerHigh = new Image(ClassLoader.getSystemResource("VIPCustomer_High.png").toString(),
+		fatCustomerHigh = new Image(ClassLoader.getSystemResource("FatHc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		vipCustomerMedium = new Image(ClassLoader.getSystemResource("VIPCustomer_Medium.png").toString(),
+		fatCustomerMedium = new Image(ClassLoader.getSystemResource("FatMc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		vipCustomerLow = new Image(ClassLoader.getSystemResource("VIPCustomer_Low.png").toString(),
+		fatCustomerLow = new Image(ClassLoader.getSystemResource("FatLc.gif").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+
+		vipCustomerHigh = new Image(ClassLoader.getSystemResource("VIPHc.gif").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		vipCustomerMedium = new Image(ClassLoader.getSystemResource("VIPMc.gif").toString(),
+				(Config.UNIT * 0.75), (Config.UNIT), true, false);
+		vipCustomerLow = new Image(ClassLoader.getSystemResource("VIPLc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 
 	}
