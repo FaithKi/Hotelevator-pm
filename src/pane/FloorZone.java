@@ -45,9 +45,12 @@ public class FloorZone extends GridPane {
 		}
 
 		this.add(floorPanes, 0, 0);
-		
-		this.setBorder(new Border(new BorderStroke(Color.rgb(57, 57, 79), BorderStrokeStyle.SOLID, null, new BorderWidths(3)), null, null));
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.wallpaper,BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT,BackgroundPosition.CENTER,BackgroundSize.DEFAULT)));
+
+		this.setBorder(
+				new Border(new BorderStroke(Color.rgb(57, 57, 79), BorderStrokeStyle.SOLID, null, new BorderWidths(3)),
+						null, null));
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.wallpaper, BackgroundRepeat.REPEAT,
+				BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 	}
 
 	private HBox createFloorPane() {

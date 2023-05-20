@@ -19,6 +19,7 @@ import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
 import utils.Randomizer;
+import utils.SoundUtils;
 
 public class GameLogic {
 
@@ -96,18 +97,37 @@ public class GameLogic {
 	private void generateCustomer() {
 		int cType = Randomizer.getRandomInt(0, 2);
 		PatienceLevel pType = PatienceLevel.getRandomPatienceLevel();
+		boolean isAdded;
 		switch (cType) {
-		case 0:
-			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(pType), this.hotel.getCustomersGrid());
+		case 0: {
+			isAdded = CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(pType),
+					this.hotel.getCustomersGrid());
+			if (isAdded)
+				SoundUtils.playTrack(RenderableHolder.standardCustomerSpawn, 0.05);
 			break;
-		case 1:
-			CustomerUtils.addCustomerToFloorFromGenerator(new FatCustomer(pType), this.hotel.getCustomersGrid());
+		}
+
+		case 1: {
+			isAdded = CustomerUtils.addCustomerToFloorFromGenerator(new FatCustomer(pType),
+					this.hotel.getCustomersGrid());
+			if (isAdded)
+				SoundUtils.playTrack(RenderableHolder.fatCustomerSpawn, 0.15);
 			break;
-		case 2:
-			CustomerUtils.addCustomerToFloorFromGenerator(new VIPCustomer(pType), this.hotel.getCustomersGrid());
+		}
+
+		case 2: {
+			isAdded = CustomerUtils.addCustomerToFloorFromGenerator(new VIPCustomer(pType),
+					this.hotel.getCustomersGrid());
+			if (isAdded)
+				SoundUtils.playTrack(RenderableHolder.vipCustomerSpawn, 0.2);
 			break;
+		}
+
 		default:
-			CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(pType), this.hotel.getCustomersGrid());
+			isAdded = CustomerUtils.addCustomerToFloorFromGenerator(new StandardCustomer(pType),
+					this.hotel.getCustomersGrid());
+			if (isAdded)
+				SoundUtils.playTrack(RenderableHolder.standardCustomerSpawn, 0.05);
 		}
 	}
 

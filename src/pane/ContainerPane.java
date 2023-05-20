@@ -12,6 +12,7 @@ import logic.game.GameLogic;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import sidebar.TimeGauge;
+import utils.SoundUtils;
 
 public class ContainerPane extends BorderPane {
 	private SideBarPane sideBarPane;
@@ -59,7 +60,7 @@ public class ContainerPane extends BorderPane {
 					if (elev.isSelected()) {
 						elev.getInsideCabin().draw(this.getBottomBarPane().getCustomerManager().getGc());
 					}
-					elev.draw(this.getHotelPane().getElevs().get(elev.getId()-1).getGraphicsContext2D());
+					elev.draw(this.getHotelPane().getElevs().get(elev.getId() - 1).getGraphicsContext2D());
 				}
 				if (entity instanceof CustomerGrid) {
 					CustomerGrid hotel = (CustomerGrid) entity;
@@ -71,11 +72,12 @@ public class ContainerPane extends BorderPane {
 				}
 			}
 		} else {
+			SoundUtils.playTrack(RenderableHolder.gameOverTrack, 0.4);
 			Text gameOverText = new Text("GameOver!");
 			gameOverText.setStroke(Color.rgb(14, 33, 54));
 			gameOverText.setStrokeWidth(5);
 			gameOverText.setFill(Color.rgb(183, 110, 121));
-			gameOverText.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(),80));
+			gameOverText.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 80));
 			this.setCenter(gameOverText);
 			this.setRight(null);
 			this.setBottom(null);

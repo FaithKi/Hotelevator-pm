@@ -12,6 +12,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 
 public class RenderableHolder {
 	private static RenderableHolder instance = new RenderableHolder();
@@ -43,8 +44,8 @@ public class RenderableHolder {
 	public static Image fatCustomerHigh, fatCustomerMedium, fatCustomerLow;
 	public static Image vipCustomerHigh, vipCustomerMedium, vipCustomerLow;
 
-	public static MediaPlayer gameSoundTrack, gameStartTrack, gameOverTrack, buttonClickTrack, buttonHoverTrack,
-			selectCabinTrack, moveElevatorTrack, addPassengerSucceedTrack, addPassengerFailedTrack,
+	public static MediaPlayer gameSoundTrack, gameStartTrack, gameOverTrack, tickTockTrack, buttonClickTrack,
+			buttonHoverTrack, selectCabinTrack, moveElevatorTrack, addPassengerSucceedTrack, addPassengerFailedTrack,
 			sendPassengerFailedTrack, sendPassengerFailedHumanTrack, standardCustomerSpawn, fatCustomerSpawn,
 			vipCustomerSpawn;
 
@@ -158,10 +159,15 @@ public class RenderableHolder {
 				new Media(ClassLoader.getSystemResource("music/gameSoundTrack.wav").toString()));
 		gameSoundTrack.setCycleCount(MediaPlayer.INDEFINITE);
 
-
 		gameStartTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/gameStartTrack.wav").toString()));
 		gameOverTrack = new MediaPlayer(new Media(ClassLoader.getSystemResource("music/gameOverTrack.wav").toString()));
+
+		tickTockTrack = new MediaPlayer(new Media(ClassLoader.getSystemResource("music/tickTockTrack.wav").toString()));
+		tickTockTrack.setOnEndOfMedia(() -> {
+			tickTockTrack.stop();
+			tickTockTrack.seek(Duration.ZERO);
+		});
 
 		buttonClickTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/buttonClickTrack.wav").toString()));
