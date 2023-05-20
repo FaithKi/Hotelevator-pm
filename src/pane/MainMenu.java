@@ -1,5 +1,6 @@
 package pane;
 
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -23,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
 import utils.Config;
@@ -35,6 +37,8 @@ public class MainMenu extends StackPane {
 	private ImageView gameTitle;
 	private StackPane instructionPane;
 	private static MainMenu instance = new MainMenu();
+	public static int highScore;
+	
 
 	public MainMenu() {
 //		this.getChildren().add(image);
@@ -205,3 +209,5 @@ public class MainMenu extends StackPane {
 	}
 
 }
+
+

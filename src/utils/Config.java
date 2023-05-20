@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.InputStream;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
