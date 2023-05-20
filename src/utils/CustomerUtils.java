@@ -19,7 +19,7 @@ public class CustomerUtils {
 		return true;
 	}
 
-	public static boolean customerQueueIsFull(BaseCustomer[][] customerGrid, int floorIndex) {
+	private static boolean customerQueueIsFull(BaseCustomer[][] customerGrid, int floorIndex) {
 
 		for (int row = customerGrid.length - 1; row >= 0; row--) {
 			BaseCustomer customer = customerGrid[row][floorIndex];
@@ -31,7 +31,7 @@ public class CustomerUtils {
 
 	}
 
-	public static boolean addCustomerToFirstEmptyQueueOfFloor(BaseCustomer customer, BaseCustomer[][] customerGrid,
+	private static boolean addCustomerToFirstEmptyQueueOfFloor(BaseCustomer customer, BaseCustomer[][] customerGrid,
 			int floorIndex) {
 
 		for (int queue = 0; queue < customerGrid.length; queue++) {
@@ -105,5 +105,4 @@ public class CustomerUtils {
 		return false;
 	}
 
-	
 }
