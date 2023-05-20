@@ -26,9 +26,7 @@ public class RenderableHolder {
 	public static Image bottomBarSprite;
 	public static Image insideCabin;
 	public static Image hotelFloorSprite;
-	public static Image standardCustomerHappy, fatCustomerHappy, vipCustomerHappy;
 	public static Image bgSprite;
-//	public static Image wallpapers;
 	public static Image gameName;
 	public static Image startBg;
 	public static Image instBg;
@@ -109,21 +107,12 @@ public class RenderableHolder {
 
 		bgSprite = new Image(ClassLoader.getSystemResource("bg-superreduced.gif").toString(), (Config.UNIT * 16),
 				(Config.UNIT * 8 * 1.125), true, false);
-//		wallpapers = new Image(ClassLoader.getSystemResource("wallpapers.png").toString(), (Config.UNIT * 16), (1115),
-//				true, false);
-//		wallpaper = new WritableImage(wallpapers.getPixelReader(), 10, 258, 68, 90);
 		pixelStyleFont = Font.loadFont(ClassLoader.getSystemResource("pixelFont.ttf").toString(), 20);
 	}
 
 	public void add(IRenderable entity) {
-//		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
-//		for (IRenderable x : entities) {
-//			if (x instanceof Hotel)
-//				System.out.println("hotel");
-//
-//		}
 	}
 
 	public void update() {
@@ -135,13 +124,6 @@ public class RenderableHolder {
 	}
 
 	private static void loadCustomer() {
-		standardCustomerHappy = new Image(ClassLoader.getSystemResource("StandardMc.gif").toString(),
-				(Config.UNIT * 0.75), (Config.UNIT), true, false);
-		fatCustomerHappy = new Image(ClassLoader.getSystemResource("FatMc.gif").toString(), (Config.UNIT * 0.75),
-				(Config.UNIT), true, false);
-		vipCustomerHappy = new Image(ClassLoader.getSystemResource("VIPMc.gif").toString(), (Config.UNIT * 0.75),
-				(Config.UNIT), true, false);
-
 		standardCustomerHigh = new Image(ClassLoader.getSystemResource("StandardHc.gif").toString(),
 				(Config.UNIT * 0.75), (Config.UNIT), true, false);
 		standardCustomerMedium = new Image(ClassLoader.getSystemResource("StandardMc.gif").toString(),
