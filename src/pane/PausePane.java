@@ -37,10 +37,12 @@ public class PausePane extends VBox {
 
 		this.getResumeBtn().setOnMouseEntered((e) -> {
 			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
+			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 36));
 			this.getResumeBtn().setCursor(Cursor.HAND);
 		});
 
 		this.getResumeBtn().setOnMouseExited((e) -> {
+			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 			this.getResumeBtn().setCursor(Cursor.DEFAULT);
 		});
 	}
@@ -53,6 +55,18 @@ public class PausePane extends VBox {
 			this.setVisible(false);
 			this.getParent().getScene().setRoot(MainMenu.getInstance());
 		});
+
+		this.getMainMenuBtn().setOnMouseEntered((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
+			this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 36));
+			this.getMainMenuBtn().setCursor(Cursor.HAND);
+		});
+
+		this.getMainMenuBtn().setOnMouseExited((e) -> {
+			this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
+			this.getMainMenuBtn().setCursor(Cursor.DEFAULT);
+		});
+
 		this.getChildren().add(mainMenuBtn);
 	}
 

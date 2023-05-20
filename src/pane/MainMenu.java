@@ -1,6 +1,5 @@
 package pane;
 
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -21,6 +20,7 @@ import javafx.scene.text.Font;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.SoundUtils;
 
 public class MainMenu extends StackPane {
 
@@ -32,14 +32,15 @@ public class MainMenu extends StackPane {
 	public MainMenu() {
 //		this.getChildren().add(image);
 		this.gameTitle = new ImageView(RenderableHolder.gameName);
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.bgSprite, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.bgSprite, BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 		initializebtnWrapper();
 		this.getChildren().add(btnWrapper);
 		this.getChildren().add(gameTitle);
-		setAlignment(gameTitle,Pos.TOP_CENTER);
-		setMargin(gameTitle, new Insets(Config.UNIT*2, 0, 0, 0));
-		setAlignment(btnWrapper,Pos.CENTER);
-		setMargin(btnWrapper, new Insets(Config.UNIT*1.8, 0, 0, 0));
+		setAlignment(gameTitle, Pos.TOP_CENTER);
+		setMargin(gameTitle, new Insets(Config.UNIT * 2, 0, 0, 0));
+		setAlignment(btnWrapper, Pos.CENTER);
+		setMargin(btnWrapper, new Insets(Config.UNIT * 1.8, 0, 0, 0));
 	}
 
 	public static MainMenu getInstance() {
@@ -54,19 +55,26 @@ public class MainMenu extends StackPane {
 		initializeExit();
 		this.btnWrapper.getChildren().addAll(startBtn, instructionBtn, exitBtn);
 	}
-	
+
 	private void initializeStart() {
 		this.startBtn = new Button("Start");
 		this.startBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 38));
-		this.startBtn.setBackground(new Background(new BackgroundImage(RenderableHolder.startBg, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
+		this.startBtn
+				.setBackground(new Background(new BackgroundImage(RenderableHolder.startBg, BackgroundRepeat.NO_REPEAT,
+						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 		this.startBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.startBtn.setOnMouseEntered((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
+			this.startBtn.setCursor(Cursor.HAND);
 			this.startBtn.setTextFill(Color.rgb(231, 140, 156));
 		});
 		this.startBtn.setOnMouseExited((e) -> {
+			this.startBtn.setCursor(Cursor.DEFAULT);
 			this.startBtn.setTextFill(Color.rgb(94, 106, 111));
 		});
+
 		this.startBtn.setOnAction((e) -> {
+			SoundUtils.playTrack(RenderableHolder.gameStartTrack, 0.8);
 			GameScreen gameScreen = new GameScreen();
 			this.getScene().setRoot(gameScreen);
 			gameScreen.getContainerPane().requestFocus();
@@ -77,7 +85,7 @@ public class MainMenu extends StackPane {
 				public void handle(long arg0) {
 					// TODO Auto-generated method stub
 					// timer from GPT
-					if(!gameScreen.getPausePane().isVisible()) {
+					if (!gameScreen.getPausePane().isVisible()) {
 						gameScreen.getContainerPane().paintComponent();
 						logic.logicUpdate();
 						if (logic.isGameOver()) {
@@ -93,32 +101,42 @@ public class MainMenu extends StackPane {
 			animation.start();
 		});
 	}
-	
+
 	private void initializeExit() {
 		this.exitBtn = new Button("Exit");
 		this.exitBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 20));
-		this.exitBtn.setBackground(new Background(new BackgroundImage(RenderableHolder.exitBg, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
+		this.exitBtn
+				.setBackground(new Background(new BackgroundImage(RenderableHolder.exitBg, BackgroundRepeat.NO_REPEAT,
+						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 		this.exitBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.exitBtn.setOnMouseEntered((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
+			this.exitBtn.setCursor(Cursor.HAND);
 			this.exitBtn.setTextFill(Color.rgb(231, 140, 156));
 		});
 		this.exitBtn.setOnMouseExited((e) -> {
+			this.exitBtn.setCursor(Cursor.DEFAULT);
 			this.exitBtn.setTextFill(Color.rgb(94, 106, 111));
 		});
 		this.exitBtn.setOnAction((e) -> {
 			Platform.exit();
 		});
 	}
-	
+
 	private void initializeInstruction() {
 		this.instructionBtn = new Button("Instruction");
 		this.instructionBtn.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 20));
-		this.instructionBtn.setBackground(new Background(new BackgroundImage(RenderableHolder.instBg, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
+		this.instructionBtn
+				.setBackground(new Background(new BackgroundImage(RenderableHolder.instBg, BackgroundRepeat.NO_REPEAT,
+						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 		this.instructionBtn.setTextFill(Color.rgb(94, 106, 111));
 		this.instructionBtn.setOnMouseEntered((e) -> {
+			SoundUtils.playTrack(RenderableHolder.buttonHoverTrack, 0.3);
+			this.instructionBtn.setCursor(Cursor.HAND);
 			this.instructionBtn.setTextFill(Color.rgb(231, 140, 156));
 		});
 		this.instructionBtn.setOnMouseExited((e) -> {
+			this.instructionBtn.setCursor(Cursor.DEFAULT);
 			this.instructionBtn.setTextFill(Color.rgb(94, 106, 111));
 		});
 	}

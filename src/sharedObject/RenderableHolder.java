@@ -43,9 +43,10 @@ public class RenderableHolder {
 	public static Image fatCustomerHigh, fatCustomerMedium, fatCustomerLow;
 	public static Image vipCustomerHigh, vipCustomerMedium, vipCustomerLow;
 
-	public static MediaPlayer gameSoundTrack, buttonClickTrack, buttonHoverTrack, selectCabinTrack, moveElevatorTrack,
-			addPassengerSucceedTrack, addPassengerFailedTrack, sendPassengerFailedTrack, sendPassengerFailedHumanTrack,
-			standardCustomerSpawn, fatCustomerSpawn, vipCustomerSpawn;
+	public static MediaPlayer gameSoundTrack, gameStartTrack, gameOverTrack, buttonClickTrack, buttonHoverTrack,
+			selectCabinTrack, moveElevatorTrack, addPassengerSucceedTrack, addPassengerFailedTrack,
+			sendPassengerFailedTrack, sendPassengerFailedHumanTrack, standardCustomerSpawn, fatCustomerSpawn,
+			vipCustomerSpawn;
 
 	public static MediaPlayer[] sendPassengerSucceedTrack;
 
@@ -78,11 +79,11 @@ public class RenderableHolder {
 				(Config.UNIT * 1.125 * 7), true, false);
 		hotelSprite = new Image(ClassLoader.getSystemResource("hotel.png").toString(), (Config.UNIT * 8.5),
 				(Config.UNIT * 1.125 * 7), true, false);
-		healthBar = new Image(ClassLoader.getSystemResource("healthbar.png").toString(), 23*6, 80*6, false, false);
-		health = new WritableImage(healthBar.getPixelReader(),84,48,54,384);
-		healthContainer = new WritableImage(healthBar.getPixelReader(),0,0, 54,80*6);
-		shaftBg = new Image(ClassLoader.getSystemResource("shaftbg.png").toString(),
-				(Config.UNIT * 1.5), (Config.UNIT * 1.125 * 7), true, false);
+		healthBar = new Image(ClassLoader.getSystemResource("healthbar.png").toString(), 23 * 6, 80 * 6, false, false);
+		health = new WritableImage(healthBar.getPixelReader(), 84, 48, 54, 384);
+		healthContainer = new WritableImage(healthBar.getPixelReader(), 0, 0, 54, 80 * 6);
+		shaftBg = new Image(ClassLoader.getSystemResource("shaftbg.png").toString(), (Config.UNIT * 1.5),
+				(Config.UNIT * 1.125 * 7), true, false);
 		scifiTile = new Image(ClassLoader.getSystemResource("scifi_sheet.png").toString(), (491), (717), false, false);
 		cabinSprite = new WritableImage(scifiTile.getPixelReader(), 370, 0, 120, 90);
 		sideBarSprite = new Image(ClassLoader.getSystemResource("sidebar.png").toString(), 120, 120, true, false);
@@ -157,6 +158,10 @@ public class RenderableHolder {
 				new Media(ClassLoader.getSystemResource("music/gameSoundTrack.wav").toString()));
 		gameSoundTrack.setCycleCount(MediaPlayer.INDEFINITE);
 		gameSoundTrack.setVolume(0.03);
+
+		gameStartTrack = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource("music/gameStartTrack.wav").toString()));
+		gameOverTrack = new MediaPlayer(new Media(ClassLoader.getSystemResource("music/gameOverTrack.wav").toString()));
 
 		buttonClickTrack = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource("music/buttonClickTrack.wav").toString()));
