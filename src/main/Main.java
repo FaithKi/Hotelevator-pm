@@ -2,19 +2,10 @@ package main;
 
 import utils.Config;
 import utils.SoundUtils;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import logic.game.GameLogic;
-import pane.ContainerPane;
-import pane.GameScreen;
 import pane.MainMenu;
-import pane.PausePane;
 import sharedObject.RenderableHolder;
 
 public class Main extends Application {
