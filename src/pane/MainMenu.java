@@ -89,6 +89,7 @@ public class MainMenu extends StackPane {
 						gameScreen.getContainerPane().paintComponent();
 						logic.logicUpdate();
 						if (logic.isGameOver()) {
+							logic.getCustomerGenerator().stop();
 							gameScreen.getContainerPane().paintComponent();
 							logic.logicUpdate();
 							logic.resetInstance();
