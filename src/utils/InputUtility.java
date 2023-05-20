@@ -8,8 +8,6 @@ public class InputUtility {
 
 	public static double mouseX, mouseY;
 	public static boolean mouseOnScreen = true;
-	private static boolean isLeftDown = false;
-	private static boolean isLeftClickedLastTick = false;
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>();
 	private static Integer[] hotelGridPressed = new Integer[2];
 	private static Integer passengerIndexPressed;
@@ -62,22 +60,4 @@ public class InputUtility {
 		}
 		System.out.println("InputUtil Index P:" + passengerIndexPressed);
 	}
-
-	public static void mouseLeftDown() {
-		isLeftDown = true;
-		isLeftClickedLastTick = true;
-	}
-
-	public static void mouseLeftRelease() {
-		isLeftDown = false;
-	}
-
-	public static boolean isLeftClickTriggered() {
-		return isLeftClickedLastTick;
-	}
-
-	public static void updateInputState() {
-		isLeftClickedLastTick = false;
-	}
-
 }

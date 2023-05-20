@@ -74,9 +74,6 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-		startBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 240, 68, false, false);
-		instBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 246, 36, false, false);
-		exitBg = new Image(ClassLoader.getSystemResource("button.png").toString(), 106, 36, false, false);
 		gameName = new Image(ClassLoader.getSystemResource("game-name.png").toString(), (Config.UNIT * 10),
 				(Config.UNIT * 1.125 * 7), true, false);
 		healthBar = new Image(ClassLoader.getSystemResource("healthbar.png").toString(), 23 * 6, 80 * 6, false, false);
