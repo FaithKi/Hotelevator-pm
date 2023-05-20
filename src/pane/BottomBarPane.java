@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
@@ -28,8 +29,9 @@ public class BottomBarPane extends BorderPane {
 
 	public void initializeMenuBtn() {
 		this.menuBtn = new StackPane();
-
-		this.menuBtn.getChildren().add(new Text("PAUSE"));
+		Text pauseTxt = new Text("Pause");
+		pauseTxt.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 28));
+		this.menuBtn.getChildren().add(pauseTxt);
 		this.getMenuBtn().setPrefWidth(2 * Config.UNIT);
 		this.getMenuBtn().setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		this.setRight(this.getMenuBtn());
