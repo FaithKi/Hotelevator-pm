@@ -20,7 +20,7 @@ public class BottomBarPane extends BorderPane {
 
 	public BottomBarPane() {
 		this.setPrefSize(Config.UNIT * 16, Config.UNIT * 1.125);
-		this.setBackground(new Background(new BackgroundFill(Color.SALMON, null, null)));
+//		this.setBackground(new Background(new BackgroundFill(Color.SALMON, null, null)));
 		this.customerManager = new CustomerManager();
 		this.setCenter(customerManager);
 		initializeMenuBtn();

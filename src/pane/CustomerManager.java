@@ -5,6 +5,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -13,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import sharedObject.RenderableHolder;
 import utils.Config;
 
 public class CustomerManager extends GridPane {
@@ -26,6 +32,10 @@ public class CustomerManager extends GridPane {
 
 	private void initializeCustomerManager() {
 		setPrefSize(Config.UNIT * 14, Config.UNIT * 1.125);
+		setBackground(new Background(new BackgroundImage(RenderableHolder.insideCabin, BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
+
 	}
 
 	private void initializeCanvas() {
