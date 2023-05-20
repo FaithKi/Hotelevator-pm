@@ -5,7 +5,6 @@ import entity.elevator.InsideCabin;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import logic.game.PatienceLevel;
 import sharedObject.RenderableHolder;
 import utils.Config;
@@ -16,24 +15,32 @@ public abstract class BaseCustomer extends Entity {
 	private int currentFloor;
 	private int currentQueue;
 	private int destinationFloor;
-	protected int occupiedSpace;
+	protected int spaceNeeded;
 	protected double maxPatience;
 	protected double patienceLeft;
-	protected double rewardMultiplier;// extra time
-	protected int z;
+	protected double rewardMultiplier;
 	protected Image image;
 	protected Color gaugeColor;
 
 	public BaseCustomer() {
+		super(100);
+		setDestinationFloor();
+		this.spaceNeeded = 1;
+		this.rewardMultiplier = 1;
+	}
+
+	public BaseCustomer(int spaceNeeded, double rewardMultiplier) {
+		super(100);
+		setDestinationFloor();
+		this.spaceNeeded = spaceNeeded;
+		this.rewardMultiplier = rewardMultiplier;
+	}
+
+	private void setDestinationFloor() {
 		currentFloor = Randomizer.getRandomInt(0, 6);
 		do {
 			destinationFloor = Randomizer.getRandomInt(0, 6);
 		} while (destinationFloor == currentFloor);
-		this.patienceLeft = Config.MAX_PATIENCE;
-		this.z = 100; // layer of the guy
-		this.occupiedSpace = 1;
-		this.gaugeColor = Config.PATIENCE_GAUGE_HIGH_P;
-		this.rewardMultiplier = 1;
 	}
 
 	public abstract boolean canEnter(InsideCabin insideCabin);
@@ -72,17 +79,8 @@ public abstract class BaseCustomer extends Entity {
 		this.patienceLeft = patienceLeft;
 	}
 
-	public int getZ() {
-		return z;
-	}
-
 	public Image getImage() {
 		return image;
-	}
-
-	protected double setStartingPatience(double startingPatience) {
-		double oneTenthDeviation = (10 * Math.random()) / 100;
-		return startingPatience - (startingPatience * oneTenthDeviation);
 	}
 
 	public void setImage(Image image) {
@@ -101,13 +99,12 @@ public abstract class BaseCustomer extends Entity {
 		return maxPatience;
 	}
 
-	public int getOccupiedSpace() {
-		return occupiedSpace;
+	public int getSpaceNeeded() {
+		return spaceNeeded;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		this.setPatienceLeft(getPatienceLeft() - Config.DECREASE_RATE);
 	}
 
@@ -126,32 +123,29 @@ public abstract class BaseCustomer extends Entity {
 			double leftPaddingOfTheClickingPane, double customerWidthIncludePaneSpacing, int totalFloor) {
 
 		double oneTwelvthUnit = (Config.UNIT * 1 / 12);
-		double allowedWidth = Config.UNIT * (0.75);
+		double allowedImageWidth = Config.UNIT * (0.75);
 
-		double currentPatienceWidth = allowedWidth * (getPatienceLeft() / getMaxPatience());
-		double floorHeight = Config.UNIT * 1.125;
-		double yFirstFloor = floorHeight * totalFloor;
+		double currentPatienceLeft = allowedImageWidth * (getPatienceLeft() / getMaxPatience());
+		double yFirstFloor = Config.FLOOR_HEIGHT * totalFloor;
 		double XPos = currentQueue * customerWidthIncludePaneSpacing;
-		double YPos = yFirstFloor - (Config.UNIT / 20) - ((currentFloor) * floorHeight); // +5 = space for patienceGauge
+		double YPos = yFirstFloor - (Config.UNIT / 20) - ((currentFloor) * Config.FLOOR_HEIGHT); // +5 = space for
+																									// patienceGauge
+
+		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (Config.FLOOR_HEIGHT));
 
 		gc.setFill(this.gaugeColor);
-
 		gc.setStroke(Config.PATIENCE_GAUGE_BORDER);
-		gc.drawImage(image, leftPaddingOfTheClickingPane + XPos, YPos - (floorHeight)); // image draws from top left ->
-																						// // down right
-		gc.strokeRect(leftPaddingOfTheClickingPane + XPos, YPos - oneTwelvthUnit, allowedWidth, oneTwelvthUnit); // (startx,starty,width,height)
-		gc.fillRect(leftPaddingOfTheClickingPane + XPos, YPos - oneTwelvthUnit, currentPatienceWidth, oneTwelvthUnit);
+		gc.strokeRect(leftPaddingOfTheClickingPane + XPos, YPos - oneTwelvthUnit, allowedImageWidth, oneTwelvthUnit); // (startx,starty,width,height)
+		gc.fillRect(leftPaddingOfTheClickingPane + XPos, YPos - oneTwelvthUnit, currentPatienceLeft, oneTwelvthUnit);
 
 		gc.setFont(RenderableHolder.pixelStyleFont);
-
-		// Set fill color
 		gc.setFill(Config.TEXT_FILL);
 		gc.setStroke(Config.TEXT_STROKE);
-
 		gc.fillText(Integer.toString(getDestinationFloor() + 1),
-				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.70));
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (Config.FLOOR_HEIGHT * 0.70));
 		gc.strokeText(Integer.toString(getDestinationFloor() + 1),
-				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (floorHeight * 0.70));
+				leftPaddingOfTheClickingPane + XPos + (Config.UNIT * 0.025), YPos - (Config.FLOOR_HEIGHT * 0.70));
 
 	}
+
 }

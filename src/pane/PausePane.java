@@ -30,6 +30,7 @@ public class PausePane extends VBox {
 		this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 		this.getChildren().add(this.getResumeBtn());
 		this.getResumeBtn().setOnMouseClicked((e) -> {
+			RenderableHolder.gameSoundTrack.setVolume(0.03);
 			GameLogic.getInstance().getCustomerGenerator().play();
 			this.getParent().getChildrenUnmodifiable().get(1).requestFocus();
 			this.setVisible(false);
@@ -44,6 +45,7 @@ public class PausePane extends VBox {
 		this.getResumeBtn().setOnMouseExited((e) -> {
 			this.getResumeBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 			this.getResumeBtn().setCursor(Cursor.DEFAULT);
+
 		});
 	}
 
@@ -51,6 +53,7 @@ public class PausePane extends VBox {
 		this.mainMenuBtn = new Button("Main Menu");
 		this.getMainMenuBtn().setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 30));
 		this.getMainMenuBtn().setOnAction((e) -> {
+			RenderableHolder.gameSoundTrack.setVolume(0.03);
 			GameLogic.getInstance().setGameOver(true);
 			this.setVisible(false);
 			this.getParent().getScene().setRoot(MainMenu.getInstance());

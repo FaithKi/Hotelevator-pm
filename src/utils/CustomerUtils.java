@@ -1,10 +1,10 @@
 package utils;
 
-import entity.building.CustomerGrid;
 import entity.cutomer.BaseCustomer;
 import entity.cutomer.VIPCustomer;
-import entity.elevator.Elevator;
 import entity.elevator.InsideCabin;
+import logic.game.GameLogic;
+import sidebar.TimeGauge;
 
 public class CustomerUtils {
 
@@ -70,7 +70,7 @@ public class CustomerUtils {
 			if (passengers[queue] == null) {
 				customer.setCurrentQueue(queue);
 				passengers[queue] = customer;
-				insideCabin.setNumberOfPassenger(insideCabin.getNumberOfPassenger() + customer.getOccupiedSpace());
+				insideCabin.setNumberOfPassenger(insideCabin.getNumberOfPassenger() + customer.getSpaceNeeded());
 				;
 				return true;
 			}
@@ -79,7 +79,7 @@ public class CustomerUtils {
 
 	}
 
-	public static void removeCustomerFromCabin(BaseCustomer customer, InsideCabin insideCabin, int queueIndex) {
+	public static void removePassengerFromCabin(BaseCustomer customer, InsideCabin insideCabin, int queueIndex) {
 		BaseCustomer[] passengers = insideCabin.getPassengers();
 		passengers[queueIndex] = null;
 		// Perform the rearrangement
@@ -93,7 +93,7 @@ public class CustomerUtils {
 				nullIndex++;
 			}
 		}
-		insideCabin.setNumberOfPassenger((insideCabin.getNumberOfPassenger() - customer.getOccupiedSpace()));
+		insideCabin.setNumberOfPassenger((insideCabin.getNumberOfPassenger() - customer.getSpaceNeeded()));
 	}
 
 	public static boolean containVIP(BaseCustomer[] passengers) {
@@ -104,4 +104,6 @@ public class CustomerUtils {
 		}
 		return false;
 	}
+
+	
 }

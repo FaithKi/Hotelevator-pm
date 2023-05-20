@@ -8,19 +8,8 @@ import utils.CustomerUtils;
 
 public class FatCustomer extends BaseCustomer {
 
-	public FatCustomer() {
-		super();
-		this.maxPatience = setStartingPatience(Config.INFLUANCER_PATIENCE);
-		this.patienceLeft = maxPatience;
-		this.occupiedSpace = 2;
-		this.rewardMultiplier = 1;
-		setImage(RenderableHolder.fatCustomerHappy);
-	}
-
 	public FatCustomer(PatienceLevel patienceLevel) {
-		super();
-		this.occupiedSpace = 2;
-		this.rewardMultiplier = 2;
+		super(2, 1.5);
 		setCustomerPatienceType(patienceLevel);
 	}
 
@@ -28,7 +17,8 @@ public class FatCustomer extends BaseCustomer {
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
-		int spaceNeeded = this.getOccupiedSpace();
+		int spaceNeeded = this.getSpaceNeeded();
+
 		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
 			return false;
 		if (cabinCapacity < currentSpace + spaceNeeded) {
@@ -38,11 +28,6 @@ public class FatCustomer extends BaseCustomer {
 
 	}
 
-	@Override
-	public String toString() {
-		return "FatCustomer";
-	}
-	
 	@Override
 	public void setCustomerPatienceType(PatienceLevel patienceLevel) {
 		switch (patienceLevel) {
@@ -72,4 +57,8 @@ public class FatCustomer extends BaseCustomer {
 
 	}
 
+	@Override
+	public String toString() {
+		return "FatCustomer";
+	}
 }

@@ -10,22 +10,6 @@ import utils.CustomerUtils;
 
 public class StandardCustomer extends BaseCustomer {
 
-//	private int currentFloor; --SETTED
-//	private int destinationFloor; --SETTED
-////	protected PatienceLevel patienceLevel;
-//	protected double patienceLeft;
-//	protected int reward;// extra time
-//	protected int punishment;// reduced time 
-//	protected int z; --SETTED
-//	protected Image image;
-
-	public StandardCustomer() {
-		super();
-		this.maxPatience = setStartingPatience(Config.STANDARD_PATIENCE);
-		this.patienceLeft = maxPatience;
-		setImage(RenderableHolder.standardCustomerHappy);
-	}
-
 	public StandardCustomer(PatienceLevel patienceLevel) {
 		super();
 		setCustomerPatienceType(patienceLevel);
@@ -40,7 +24,7 @@ public class StandardCustomer extends BaseCustomer {
 	public boolean canEnter(InsideCabin insideCabin) {
 		int cabinCapacity = insideCabin.getCapacity();
 		int currentSpace = insideCabin.getNumberOfPassenger();
-		int spaceNeeded = this.getOccupiedSpace();
+		int spaceNeeded = this.getSpaceNeeded();
 		if (CustomerUtils.containVIP(insideCabin.getPassengers()))
 			return false;
 		if (cabinCapacity < currentSpace + spaceNeeded) {

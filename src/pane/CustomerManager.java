@@ -22,7 +22,6 @@ public class CustomerManager extends GridPane {
 		initializeCustomerManager();
 		initializeCanvas();
 		initializeCabinPane();
-
 	}
 
 	private void initializeCustomerManager() {

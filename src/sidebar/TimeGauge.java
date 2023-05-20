@@ -10,6 +10,7 @@ import logic.game.GameLogic;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import utils.Config;
+import utils.SoundUtils;
 
 public class TimeGauge extends Entity {
 
@@ -67,6 +68,9 @@ public class TimeGauge extends Entity {
 		// TODO Auto-generated method stub
 		if (this.getTimeLeft() > 0) {
 			this.setTimeLeft(this.getTimeLeft() - 1);
+			if (((double) this.getTimeLeft() / (double) this.MAX_TIME) < 0.15) {
+				RenderableHolder.tickTockTrack.play();
+			}
 //			this.y += Config.UNIT * 6 * 1.125 / MAX_TIME;
 //			this.height -= Config.UNIT * 6 * 1.125 / MAX_TIME;
 		} else {

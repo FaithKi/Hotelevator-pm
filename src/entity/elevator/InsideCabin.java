@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import logic.game.GameLogic;
 import sharedObject.RenderableHolder;
+import sidebar.TimeGauge;
 import utils.Config;
 import utils.CustomerUtils;
 
@@ -34,29 +35,34 @@ public class InsideCabin extends Entity {
 		gc.setFill(Color.BLACK);
 		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 80));
 		gc.fillText(Integer.toString(this.getElevator().getId()), 0.2 * Config.UNIT, Config.UNIT);
+
 		for (int i = 0; i < passengers.length - 1; i++) {
 			if (!(passengers[i] == null))
 				passengers[i].drawInCabin(gc);
 		}
+
 	}
 
 	@Override
 	public void update() {
 		for (int i = 0; i < passengers.length; i++) {
-			if (!(passengers[i] == null)) {
+			if (passengers[i] != null) {
 				BaseCustomer customer = passengers[i];
 				customer.update();
 				if (customer.getPatienceLeft() == 0) {
-					
-					CustomerUtils.removeCustomerFromCabin(customer, this, i);
-					GameLogic.getInstance().getTimeGauge()
-							.setTimeLeft(GameLogic.getInstance().getTimeGauge().getTimeLeft()
-									- (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
+					CustomerUtils.removePassengerFromCabin(customer, this, i);
+					deductTimeFromTimeGauge();
 				}
 			}
 
 		}
 
+	}
+
+	private void deductTimeFromTimeGauge() {
+		TimeGauge timeGauge = GameLogic.getInstance().getTimeGauge();
+		int timeDeducted = (int) Math.round(Config.MAX_TIME_GAUGE * Config.TIME_GAUGE_DECREASE_PERCENT);
+		timeGauge.setTimeLeft(timeGauge.getTimeLeft() - timeDeducted);
 	}
 
 	public int getNumberOfPassenger() {
