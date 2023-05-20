@@ -60,8 +60,8 @@ public class CustomerManager extends GridPane {
 	private GridPane createPassengerPane(int queue) {
 		GridPane passengerGridPane = new GridPane();
 		passengerGridPane.setPrefSize(Config.UNIT * 0.75, Config.UNIT * 1.125);
-		passengerGridPane.setBorder(new Border(
-				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)), null, null));
+//		passengerGridPane.setBorder(new Border(
+//				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2)), null, null));
 
 		passengerGridPane.setOnMouseClicked(e -> handlePassengerPaneClicked(queue));
 		passengerGridPane.setOnMouseEntered(event -> setCursorToHand(passengerGridPane));

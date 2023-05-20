@@ -2,6 +2,7 @@ package sidebar;
 
 import entity.Entity;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -47,8 +48,13 @@ public class TimeGauge extends Entity {
 //		gc.setStroke(Color.BLACK);
 //		gc.setLineWidth(2);
 //		gc.strokeRect(Config.UNIT / 4, Config.UNIT, Config.UNIT / 2, Config.UNIT * 6 * 1.125);
-		gc.setFill(Color.ALICEBLUE);
-		gc.fillRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5);
+		gc.setStroke(Color.rgb(23, 22, 36));
+		gc.setFill(Color.rgb(59, 70, 99));
+		gc.setLineWidth(10);
+
+		gc.fillRoundRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5, 5, 5);
+		gc.strokeRoundRect(0, Config.UNIT * 0.3, Config.UNIT, Config.UNIT * 0.5, 5, 5);
+
 		gc.setFill(Color.BLACK);
 		gc.setFont(Font.font(RenderableHolder.pixelStyleFont.getFamily(), 14));
 		gc.setTextAlign(TextAlignment.CENTER);
