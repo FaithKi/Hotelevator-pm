@@ -33,6 +33,7 @@ public class MainMenu extends StackPane {
 	private VBox btnWrapper;
 	private Button startBtn, instructionBtn, exitBtn;
 	private ImageView gameTitle;
+	private StackPane instructionPane;
 	private static MainMenu instance = new MainMenu();
 
 	public MainMenu() {
@@ -41,12 +42,13 @@ public class MainMenu extends StackPane {
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.bgSprite, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 		initializebtnWrapper();
-		this.getChildren().add(btnWrapper);
 		this.getChildren().add(gameTitle);
+		initializeInstructionPane();
 		setAlignment(gameTitle, Pos.TOP_CENTER);
 		setMargin(gameTitle, new Insets(Config.UNIT * 2, 0, 0, 0));
 		setAlignment(btnWrapper, Pos.CENTER);
 		setMargin(btnWrapper, new Insets(Config.UNIT * 1.8, 0, 0, 0));
+		
 	}
 
 	public static MainMenu getInstance() {
@@ -60,6 +62,7 @@ public class MainMenu extends StackPane {
 		initializeInstruction();
 		initializeExit();
 		this.btnWrapper.getChildren().addAll(startBtn, instructionBtn, exitBtn);
+		this.getChildren().add(btnWrapper);
 	}
 
 	private void initializeStart() {
@@ -154,6 +157,28 @@ public class MainMenu extends StackPane {
 			this.instructionBtn.setCursor(Cursor.DEFAULT);
 			this.instructionBtn.setTextFill(Color.rgb(94, 106, 111));
 		});
+		this.instructionBtn.setOnAction((e) -> {
+			this.instructionPane.setVisible(true);
+		});
+	}
+	
+	private void initializeInstructionPane() {
+		this.instructionPane = new StackPane();
+		this.instructionPane.setPrefSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
+		this.instructionPane.setBackground(new Background(new BackgroundFill(Color.rgb(59, 70, 99), new CornerRadii(15),null)));
+		this.instructionPane.setBorder(new Border(new BorderStroke(Color.rgb(23, 22, 36), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5)),null, null));
+		setAlignment(instructionPane, Pos.CENTER);
+		setMargin(instructionPane, new Insets(Config.UNIT,Config.UNIT,Config.UNIT,Config.UNIT));
+		this.getChildren().add(instructionPane);
+		this.instructionPane.setVisible(false);
+		Button closeBtn = new Button("Close");
+		this.instructionPane.getChildren().add(closeBtn);
+		setAlignment(closeBtn, Pos.BOTTOM_CENTER);
+		setMargin(closeBtn, new Insets(0,0,Config.UNIT/4,0));
+		closeBtn.setOnAction((e) -> {
+			this.instructionPane.setVisible(false);
+		});
 	}
 
+	
 }
