@@ -11,16 +11,11 @@ public class Config {
 	public static final double UNIT = (SCREEN_WIDTH / 16); // 16:9
 	public static final double FLOOR_HEIGHT = UNIT * 1.125;
 
-	public static final int DECREASE_RATE = 20;
-	public static final double MAX_PATIENCE = 90000;
+	public static final int DECREASE_RATE = 18;
+	public static final double MAX_PATIENCE = 80000;
 	public static final double MAX_LOW_PATIENCE = MAX_PATIENCE * 0.6;
 	public static final double MAX_MEDIUM_PATIENCE = MAX_PATIENCE;
-	public static final double MAX_HIGH_PATIENCE = MAX_PATIENCE * 1.2;
-
-	public static final double STANDARD_PATIENCE = 120000;
-	public static final double INFLUANCER_PATIENCE = 120000;
-	public static final double FAT_PATIENCE = 120000;
-	public static final double VIP_PATIENCE = 120000;
+	public static final double MAX_HIGH_PATIENCE = MAX_PATIENCE * 1.3;
 
 	public static final int TOTAL_FLOOR = 7;
 	public static final int FIRST_FLOOR = 0;
@@ -29,11 +24,11 @@ public class Config {
 	public static final int MAX_CUSTOMER_PER_FLOOR = 10;
 	public static final int MAX_CUSTOMER_PER_CABIN = 5;
 
-	public static final int MAX_TIME_GAUGE = 10000;
+	public static final int MAX_TIME_GAUGE = 14000;
 	public static final int BASE_SCORE_GAIN = 100;
 	public static final double TIME_GAIN = MAX_TIME_GAUGE * 0.01;
-	public static final double TIME_LOSS = MAX_TIME_GAUGE * 0.05;
-	public static final double TIME_GAUGE_DECREASE_PERCENT = 0.04;
+	public static final double TIME_LOSS = MAX_TIME_GAUGE * 0.02;
+	public static final double TIME_GAUGE_DECREASE_PERCENT = 0.015;
 
 	public static final Color PATIENCE_GAUGE = Color.GREEN;
 	public static final Color PATIENCE_GAUGE_HIGH_P = Color.GREEN;
@@ -47,5 +42,6 @@ public class Config {
 
 //	public static final double ELEV_SPEED = UNIT * 0.0225;
 	public static final double ELEV_SPEED = UNIT * 0.0125;
+	public static final double SPAWN_DELAY = 1.25;
 
 }

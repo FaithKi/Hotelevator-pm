@@ -171,7 +171,7 @@ public class Elevator extends Entity {
 		} else {
 			SoundUtils.playTrack(RenderableHolder.sendPassengerFailedTrack, 0.8);
 			SoundUtils.playTrack(RenderableHolder.sendPassengerFailedHumanTrack, 0.7);
-			timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.MAX_TIME_GAUGE * 0.05));
+			timeGauge.setTimeLeft(timeGauge.getTimeLeft() - (int) Math.round(Config.TIME_LOSS));
 		}
 		hasMoved = false;
 	}

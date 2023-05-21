@@ -35,7 +35,7 @@ public class CustomerGrid extends Entity {
 	@Override
 	public void update() {
 		handleCustomerUpdates();
-		handleAddPassengerToCabin();
+		handleAddPassengerToCabin(); // check for in put and perform
 	}
 
 	private void handleCustomerUpdates() {
