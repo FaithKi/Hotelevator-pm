@@ -157,11 +157,4 @@ public class GameLogic {
 		return selectedElev;
 	}
 
-//    public static GameLogic getInstance(int level) {
-//        if(instance == null) {
-//            instance = new GameLogic(level);
-//        }
-//        return instance;
-//    }
-
 }
