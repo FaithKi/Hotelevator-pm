@@ -50,10 +50,10 @@ public class InputUtility {
 		return index;
 	}
 
-	public static void setPassengerIndexPressed(Integer Index, boolean pressed) {
+	public static void setPassengerIndexPressed(Integer index, boolean pressed) {
 		if (pressed) {
-			if (!(passengerIndexPressed == Index)) {
-				passengerIndexPressed = Index;
+			if (!(passengerIndexPressed == index)) {
+				passengerIndexPressed = index;
 			}
 		} else {
 			passengerIndexPressed = null;
